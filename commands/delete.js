@@ -3,6 +3,51 @@ const store = require('../lib/lightweight_store');
 
 async function deleteCommand(sock, chatId, message, senderId) {
     try {
+        const isGroup = chatId.endsWith('@g.us');
+        const ctxInfo = message.message?.extendedTextMessage?.contextInfo || {};
+        const botJid = sock.user?.id ? sock.user.id.split(':')[0] + '@s.whatsapp.net' : '';
+        const botLid = sock.user?.lid ? sock.user.lid.split(':')[0] : '';
+
+        // Handle Private Chat (DM)
+        if (!isGroup) {
+            if (!ctxInfo.stanzaId) {
+                await sock.sendMessage(chatId, {
+                    text: '❌ Reply to a bot message with `.delete` to delete it in private chat.'
+                }, { quoted: message });
+                return;
+            }
+
+            const chatMessages = Array.isArray(store.messages[chatId]) ? store.messages[chatId] : [];
+            const repliedMsgInStore = chatMessages.find(m => m.key.id === ctxInfo.stanzaId);
+
+            // Determine if replied message is from bot
+            const isBotMessage = (
+                (repliedMsgInStore && repliedMsgInStore.key.fromMe) ||
+                (ctxInfo.participant && (ctxInfo.participant.includes(botJid) || (botLid && ctxInfo.participant.includes(botLid)))) ||
+                (!ctxInfo.participant && repliedMsgInStore?.key?.fromMe)
+            );
+
+            if (isBotMessage) {
+                try {
+                    await sock.sendMessage(chatId, {
+                        delete: {
+                            remoteJid: chatId,
+                            fromMe: true,
+                            id: ctxInfo.stanzaId
+                        }
+                    });
+                } catch (e) {
+                    await sock.sendMessage(chatId, { text: '❌ Failed to delete message.' }, { quoted: message });
+                }
+            } else {
+                await sock.sendMessage(chatId, {
+                    text: '❌ In private chat, only bot messages can be deleted. To delete messages from other users, use this command in a group where the bot is an admin.'
+                }, { quoted: message });
+            }
+            return;
+        }
+
+        // Group Chat Logic
         const { isSenderAdmin, isBotAdmin } = await isAdmin(sock, chatId, senderId);
 
         if (!isBotAdmin) {
@@ -29,7 +74,6 @@ async function deleteCommand(sock, chatId, message, senderId) {
         }
 
         // Check if user is replying to a message
-        const ctxInfo = message.message?.extendedTextMessage?.contextInfo || {};
         const repliedParticipant = ctxInfo.participant || null;
         const mentioned = Array.isArray(ctxInfo.mentionedJid) && ctxInfo.mentionedJid.length > 0 ? ctxInfo.mentionedJid[0] : null;
 

@@ -56,10 +56,14 @@ setInterval(cleanTempFolderIfLarge, 60 * 1000);
 // Load config
 function loadAntideleteConfig() {
     try {
-        if (!fs.existsSync(CONFIG_PATH)) return { enabled: false };
-        return JSON.parse(fs.readFileSync(CONFIG_PATH));
+        if (!fs.existsSync(CONFIG_PATH)) return { enabled: false, mode: 'p' };
+        const data = JSON.parse(fs.readFileSync(CONFIG_PATH));
+        return {
+            enabled: data.enabled ?? false,
+            mode: data.mode || 'p'
+        };
     } catch {
-        return { enabled: false };
+        return { enabled: false, mode: 'p' };
     }
 }
 
@@ -84,23 +88,35 @@ async function handleAntideleteCommand(sock, chatId, message, match) {
     }
 
     const config = loadAntideleteConfig();
+    const cleanMatch = (match || '').trim().toLowerCase();
 
-    if (!match) {
+    if (!cleanMatch) {
+        let statusText = '❌ Disabled';
+        if (config.enabled) {
+            statusText = config.mode === 'g' ? '✅ Enabled (Group/Chat)' : '✅ Enabled (Owner DM)';
+        }
         return sock.sendMessage(chatId, {
-            text: `*ANTIDELETE SETUP*\n\nCurrent Status: ${config.enabled ? '✅ Enabled' : '❌ Disabled'}\n\n*.antidelete on* - Enable\n*.antidelete off* - Disable`
-        }, {quoted: message});
+            text: `*ANTIDELETE SETUP*\n\nCurrent Status: ${statusText}\n\n• *.antidelete p* - Send deleted messages to owner DM\n• *.antidelete g* - Send deleted messages to chat/group\n• *.antidelete off* - Disable antidelete`
+        }, { quoted: message });
     }
 
-    if (match === 'on') {
+    if (cleanMatch === 'p' || cleanMatch === 'pm' || cleanMatch === 'on') {
         config.enabled = true;
-    } else if (match === 'off') {
+        config.mode = 'p';
+        saveAntideleteConfig(config);
+        return sock.sendMessage(chatId, { text: '*Antidelete enabled: Reports will be sent to Owner DM (p).*' }, { quoted: message });
+    } else if (cleanMatch === 'g' || cleanMatch === 'gc' || cleanMatch === 'group') {
+        config.enabled = true;
+        config.mode = 'g';
+        saveAntideleteConfig(config);
+        return sock.sendMessage(chatId, { text: '*Antidelete enabled: Reports will be sent to Group/Chat (g).*' }, { quoted: message });
+    } else if (cleanMatch === 'off') {
         config.enabled = false;
+        saveAntideleteConfig(config);
+        return sock.sendMessage(chatId, { text: '*Antidelete disabled.*' }, { quoted: message });
     } else {
-        return sock.sendMessage(chatId, { text: '*Invalid command. Use .antidelete to see usage.*' }, {quoted:message});
+        return sock.sendMessage(chatId, { text: '*Invalid command. Use .antidelete to see usage options (p / g / off).*' }, { quoted: message });
     }
-
-    saveAntideleteConfig(config);
-    return sock.sendMessage(chatId, { text: `*Antidelete ${match === 'on' ? 'enabled' : 'disabled'}*` }, {quoted:message});
 }
 
 // Store incoming messages (also handles anti-view-once by forwarding immediately)
@@ -210,7 +226,9 @@ async function handleMessageRevocation(sock, revocationMessage) {
         const config = loadAntideleteConfig();
         if (!config.enabled) return;
 
-        const messageId = revocationMessage.message.protocolMessage.key.id;
+        const messageId = revocationMessage.message?.protocolMessage?.key?.id;
+        if (!messageId) return;
+
         const deletedBy = revocationMessage.participant || revocationMessage.key.participant || revocationMessage.key.remoteJid;
         const ownerNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net';
 
@@ -219,9 +237,22 @@ async function handleMessageRevocation(sock, revocationMessage) {
         const original = messageStore.get(messageId);
         if (!original) return;
 
+        // Determine destination based on mode
+        let destinationJid = ownerNumber;
+        if (config.mode === 'g') {
+            destinationJid = original.group || revocationMessage.key.remoteJid;
+        }
+
         const sender = original.sender;
         const senderName = sender.split('@')[0];
-        const groupName = original.group ? (await sock.groupMetadata(original.group)).subject : '';
+        let groupName = '';
+        if (original.group) {
+            try {
+                groupName = (await sock.groupMetadata(original.group)).subject;
+            } catch {
+                groupName = '';
+            }
+        }
 
         const time = new Date().toLocaleString('en-US', {
             timeZone: 'Asia/Kolkata',
@@ -241,7 +272,7 @@ async function handleMessageRevocation(sock, revocationMessage) {
             text += `\n*💬 Deleted Message:*\n${original.content}`;
         }
 
-        await sock.sendMessage(ownerNumber, {
+        await sock.sendMessage(destinationJid, {
             text,
             mentions: [deletedBy, sender]
         });
@@ -256,25 +287,25 @@ async function handleMessageRevocation(sock, revocationMessage) {
             try {
                 switch (original.mediaType) {
                     case 'image':
-                        await sock.sendMessage(ownerNumber, {
+                        await sock.sendMessage(destinationJid, {
                             image: { url: original.mediaPath },
                             ...mediaOptions
                         });
                         break;
                     case 'sticker':
-                        await sock.sendMessage(ownerNumber, {
+                        await sock.sendMessage(destinationJid, {
                             sticker: { url: original.mediaPath },
                             ...mediaOptions
                         });
                         break;
                     case 'video':
-                        await sock.sendMessage(ownerNumber, {
+                        await sock.sendMessage(destinationJid, {
                             video: { url: original.mediaPath },
                             ...mediaOptions
                         });
                         break;
                     case 'audio':
-                        await sock.sendMessage(ownerNumber, {
+                        await sock.sendMessage(destinationJid, {
                             audio: { url: original.mediaPath },
                             mimetype: 'audio/mpeg',
                             ptt: false,
@@ -283,7 +314,7 @@ async function handleMessageRevocation(sock, revocationMessage) {
                         break;
                 }
             } catch (err) {
-                await sock.sendMessage(ownerNumber, {
+                await sock.sendMessage(destinationJid, {
                     text: `⚠️ Error sending media: ${err.message}`
                 });
             }

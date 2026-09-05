@@ -1,8 +1,8 @@
 const settings = {
-  packname: '𝙈𝘼𝙇𝙄𝙆 𝙈𝘿',
+  packname: 'MEHTAB-MD',
   author: '‎',
-  botName: "𝙈𝘼𝙇𝙄𝙆 𝙈𝘿",
-  botOwner: '𝙈𝘼𝙇𝙄𝙆 𝙈𝙀𝙃𝙏𝘼𝘽', // Your name
+  botName: "MEHTAB-MD",
+  botOwner: 'MALIK MEHTAB', // Your name
   ownerNumber: '923001234567', //Set your number here without + symbol, just add country code & number without any space
   giphyApiKey: process.env.GIPHY_API_KEY || 'qnl7ssQChTdPjsKta2Ax2LMaGXz303tq',
   commandMode: "public",
