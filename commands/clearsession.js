@@ -54,16 +54,25 @@ async function clearSessionCommand(sock, chatId, msg) {
         // Count files by type for optimization
         let appStateSyncCount = 0;
         let preKeyCount = 0;
+        let deviceListCount = 0;
+        let identityKeyCount = 0;
+        let lidMappingCount = 0;
+        let otherCount = 0;
 
         for (const file of files) {
+            if (file === 'creds.json') continue;
             if (file.startsWith('app-state-sync-')) appStateSyncCount++;
-            if (file.startsWith('pre-key-')) preKeyCount++;
+            else if (file.startsWith('pre-key-')) preKeyCount++;
+            else if (file.startsWith('device-list-')) deviceListCount++;
+            else if (file.startsWith('identity-key-')) identityKeyCount++;
+            else if (file.startsWith('lid-mapping-')) lidMappingCount++;
+            else otherCount++;
         }
 
         // Delete files
         for (const file of files) {
             if (file === 'creds.json') {
-                // Skip creds.json file
+                // Keep creds.json completely safe!
                 continue;
             }
             try {
@@ -80,8 +89,11 @@ async function clearSessionCommand(sock, chatId, msg) {
         const message = `✅ Session files cleared successfully!\n\n` +
                        `📊 Statistics:\n` +
                        `• Total files cleared: ${filesCleared}\n` +
-                       `• App state sync files: ${appStateSyncCount}\n` +
+                       `• Device list files: ${deviceListCount}\n` +
+                       `• Identity key files: ${identityKeyCount}\n` +
+                       `• LID mapping files: ${lidMappingCount}\n` +
                        `• Pre-key files: ${preKeyCount}\n` +
+                       `• App state sync files: ${appStateSyncCount}\n` +
                        (errors > 0 ? `\n⚠️ Errors encountered: ${errors}\n${errorDetails.join('\n')}` : '');
 
         await sock.sendMessage(chatId, {

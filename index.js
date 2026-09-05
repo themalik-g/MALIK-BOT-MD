@@ -100,6 +100,30 @@ gcTimer = setInterval(() => {
     }
 }, STABILITY_CONFIG.gcInterval)
 
+// Periodic session clutter cleanup (every 1 hour) - keeps creds.json safe!
+setInterval(() => {
+    try {
+        const sessionDir = path.join(__dirname, 'session');
+        if (fs.existsSync(sessionDir)) {
+            const files = fs.readdirSync(sessionDir);
+            for (const file of files) {
+                if (file === 'creds.json') continue;
+                if (
+                    file.startsWith('device-list-') ||
+                    file.startsWith('identity-key-') ||
+                    file.startsWith('lid-mapping-') ||
+                    file.startsWith('pre-key-') ||
+                    file.startsWith('app-state-sync-')
+                ) {
+                    try { fs.unlinkSync(path.join(sessionDir, file)); } catch {}
+                }
+            }
+        }
+    } catch (e) {
+        // ignore
+    }
+}, 60 * 60 * 1000);
+
 // Memory monitoring - WARN instead of KILL
 memoryTimer = setInterval(() => {
     try {
