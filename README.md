@@ -46,8 +46,8 @@
 
 + 🟢 Keep your Node.js version updated (v18+ recommended).
 + 🟢 Use PM2 or the provided startup file for 24/7 uptime.
-+ 🟢 Report bugs via GitHub Issues or contact the owner.```
-
++ 🟢 Report bugs via GitHub Issues or contact the owner.
+```
 
 <div align="center">
 
