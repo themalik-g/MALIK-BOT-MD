@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- ANIMATED TYPING SVG HEADER -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=40&duration=3000&pause=1000&color=00E5FF&center=true&vCenter=true&width=800&height=80&lines=🤖+𝙈𝘼𝙇𝙄𝙆+𝙈𝘿+𝘽𝙊𝙏;⚡+𝙏𝙝𝙚+𝙐𝙡𝙩𝙞𝙢𝙖𝙩𝙚+𝙒𝙝𝙖𝙩𝙨𝘼𝙥𝙥+𝘽𝙤𝙩;🚀+𝙋𝙤𝙬𝙚𝙧𝙚𝙙+𝙗𝙮+𝘽𝙖𝙞𝙡𝙚𝙮𝙨;🔥+24%2F7+𝙎𝙩𝙖𝙗𝙡𝙚+%26+𝙁𝙖𝙨𝙩" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=40&duration=3000&pause=1000&color=00E5FF&center=true&vCenter=true&width=800&height=80&lines=🤖+𝙈𝘼𝙇𝙄𝙆+𝙈𝘿+𝘽𝙊𝙏;⚡+𝙏𝙝𝙚+𝙐𝙡𝙩𝙞𝙢𝙖𝙩𝙚+𝙒𝙝𝙖𝙩𝙨𝘼𝙥𝙥+𝘽𝙤𝙏;🚀+𝙋𝙤𝙬𝙚𝙧𝙚𝙙+𝙗𝙮+𝘽𝙖𝙞𝙡𝙚𝙮𝙨;🔥+24%2F7+𝙎𝙩𝙖𝙗𝙡𝙚+%26+𝙁𝙖𝙨𝙩" alt="Typing SVG" />
 
 <!-- VIBRANT ELECTRIC OCEAN HEADER -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0052D4,50:1E88E5,100:00E5FF&height=200&section=header&text=MALIK%20MD&fontSize=70&fontColor=ffffff&animation=twinkling&fontAlignY=35" width="100%"/>
@@ -98,7 +98,7 @@
 
 <!-- MANUAL CODE FALLBACK DROPDOWN -->
 <details>
-<summary><b><img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=flat-square"/> <img src="https://img.shields.io/badge/Having_Trouble_Downloading_?_use_Copy_Code-0D47A1?style=flat-square"/></b></summary>
+<summary><b><img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=flat-square"/> <img src="https://img.shields.io/badge/Only_if_unable_to_download_file-0D47A1?style=flat-square"/></b></summary>
 
 <br>
 
