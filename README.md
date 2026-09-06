@@ -78,17 +78,16 @@
 
 
 ---
+<div align="center">
 
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=2500&pause=500&color=7B2FF7&center=true&vCenter=true&width=500&lines=Choose+Your+Platform" alt="Choose Platform"/>
+
+</div>
 
 ### 🎮 Game/Discord bot Panel (Pterodactyl / Katabump / Bot Hosting)
 
 > **1GB RAM recommended**
 
-<div align="center">
-
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Upload+as+index.js+in+your+panel+root!" alt="Panel"/>
-
-<br><br>
 
 <!-- DOWNLOAD BUTTON -->
 <a href="https://drive.usercontent.google.com/download?id=1JhoNTcun7msVPNkuh2wo8Ul_VaTEPgku&export=download">
@@ -102,13 +101,10 @@
 The file will be downloaded without any popup so check your downloads folder to find it. 
 Then upload it to your panel.</sub>
 
-</div>
 
 <div align="center">
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Upload+as+index.js+in+your+panel+root!" alt="Panel"/>
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=2500&pause=500&color=7B2FF7&center=true&vCenter=true&width=500&lines=Choose+Your+Platform" alt="Choose Platform"/>
-
-</div>
 
 **Steps:**
 1. Click the **⬇️ DOWNLOAD** button above
