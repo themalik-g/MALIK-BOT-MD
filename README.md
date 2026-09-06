@@ -56,19 +56,6 @@
 <tr>
 <td>
 
-**🛡️ Security Tips:**
-- Use environment variables for sensitive data
-- Never commit `session/` folder to Git
-- Regularly backup your `data/` folder
-- Keep dependencies updated with `npm update`
-
-</td>
-</tr>
-</table>
-
-</div>
-
----
 
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
@@ -100,13 +87,14 @@
 
 The file will be downloaded without any popup so check your downloads folder to find it. 
 Then upload it to your panel.</sub>
+</p>
 
 
 <div align="center">
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Upload+as+index.js+in+your+panel+root!" alt="Panel"/>
 
-
-**Steps:**
+<p style="text-align: left;">
+**Steps:**<br>
 1. Click the **⬇️ DOWNLOAD** button above
 2. Click download anyway to have`index.js`in your downloads(will download without notification )
 3. Upload it to your panel root (`/home/container/`)
