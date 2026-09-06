@@ -3,8 +3,8 @@
 <!-- ANIMATED TYPING SVG HEADER -->
 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=40&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&width=800&height=80&lines=🤖+𝙈𝘼𝙇𝙄𝙆+𝙈𝘿+𝘽𝙊𝙏;⚡+𝙏𝙝𝙚+𝙐𝙡𝙩𝙞𝙢𝙖𝙩𝙚+𝙒𝙝𝙖𝙩𝙨𝘼𝙥𝙥+𝘽𝙤𝙩;🚀+𝙋𝙤𝙬𝙚𝙧𝙚𝙙+𝙗𝙮+𝘽𝙖𝙞𝙡𝙚𝙮𝙨;🔥+24%2F7+𝙎𝙩𝙖𝙗𝙡𝙚+%26+𝙁𝙖𝙨𝙩" alt="Typing SVG" />
 
-<!-- ANIMATED WAVE SVG -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00F0FF,50:7B2FF7,100:FF0055&height=200&section=header&text=MALIK%20MD&fontSize=70&fontColor=fff&animation=twinkling&fontAlignY=35" width="100%"/>
+<!-- ANIMATED WAVE SVG (ELECTRIC OCEAN GRADIENT) -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0052D4,50:4364F7,100:6FB1FC&height=200&section=header&text=MALIK%20MD&fontSize=70&fontColor=fff&animation=twinkling&fontAlignY=35" width="100%"/>
 
 <!-- BADGES -->
 <p>
@@ -77,12 +77,12 @@
 <div align="center">
 
 <a href="https://drive.usercontent.google.com/download?id=1JhoNTcun7msVPNkuh2wo8Ul_VaTEPgku&export=download">
-  <img src="https://img.shields.io/badge/DOWNLOAD_INDEX.JS-00F0FF?style=for-the-badge&logo=javascript&logoColor=black"/>
+  <img src="https://img.shields.io/badge/⬇️_DOWNLOAD_INDEX.JS-10B981?style=for-the-badge&logo=javascript&logoColor=white&labelColor=047857"/>
 </a>
 
 <br><br>
 
-<sub>💡 Click the button above → download <code>index.js</code> (click <i>"Download anyway"</i> if prompted). Check your downloads folder, then upload it directly to your panel root.</sub>
+<sub>💡 Click the download button above → save <code>index.js</code> (click <i>"Download anyway"</i> if prompted). Check your downloads folder, then upload it directly to your panel root.</sub>
 
 <br><br>
 
@@ -91,7 +91,7 @@
 </div>
 
 #### Quick Setup Steps:
-1. Click the **DOWNLOAD INDEX.JS** button above.
+1. Click the **⬇️ DOWNLOAD INDEX.JS** button above.
 2. Upload the file to your panel root (`/home/container/`).
 3. Ensure it is named exactly `index.js`.
 4. Check that startup file is set to `index.js` in your panel settings.
@@ -379,7 +379,9 @@ npm install
 
 **Creator & Developer**
 
-<sub>🤝 Co-operated by **Hanzala Ahmad**</sub>
+<br>
+
+🤝 <b><font size="3">Co-operated by </font><font color="#00E5FF" size="4">Hanzala Ahmad</font></b>
 
 <br><br>
 
@@ -446,8 +448,8 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 <div align="center">
 
-<!-- ANIMATED FOOTER -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF0055,50:7B2FF7,100:00F0FF&height=150&section=footer&text=Thanks%20For%20Visiting!&fontSize=40&fontColor=fff&animation=twinkling&fontAlignY=65" width="100%"/>
+<!-- ANIMATED FOOTER (MATCHING ELECTRIC OCEAN GRADIENT) -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6FB1FC,50:4364F7,100:0052D4&height=150&section=footer&text=Thanks%20For%20Visiting!&fontSize=40&fontColor=fff&animation=twinkling&fontAlignY=65" width="100%"/>
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&width=600&lines=⭐+Star+this+repo+if+you+like+it!;🍴+Fork+to+contribute!;💬+Issues+and+PRs+are+welcome!" alt="Footer"/>
 
