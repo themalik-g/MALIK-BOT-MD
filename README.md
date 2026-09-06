@@ -25,7 +25,6 @@
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-
 ## ⚠️ Warnings
 
 > <div align="center">
@@ -49,60 +48,49 @@
 + 🟢 Report bugs via GitHub Issues or contact the owner.
 ```
 
-<div align="center">
-
-<!-- ANIMATED WARNING BOX -->
-<table>
-<tr>
-<td>
-
-
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## 🚀 Deployment Methods
 
-
-
----
 <div align="center">
-
 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=2500&pause=500&color=7B2FF7&center=true&vCenter=true&width=500&lines=Choose+Your+Platform" alt="Choose Platform"/>
-
 </div>
 
-### 🎮 Game/Discord bot Panel (Pterodactyl / Katabump / Bot Hosting)
+<br>
+
+<details>
+<summary><b>🎮 Game / Discord Bot Panel (Pterodactyl / Katabump)</b></summary>
 
 > **1GB RAM recommended**
 
 <div align="center">
-<!-- DOWNLOAD BUTTON -->
+
 <a href="https://drive.usercontent.google.com/download?id=1JhoNTcun7msVPNkuh2wo8Ul_VaTEPgku&export=download">
   <img src="https://img.shields.io/badge/𝗶𝗻𝗱𝗲𝘅.𝗷𝘀⬇️-00F0FF?style=for-the-badge"/>
 </a>
 
 <br>
 
-<sub>💡 Click the button above → it will ask for user consent to download <code>index.js</code> Click download anyway to download it.<br>
+<sub>💡 Click the button above → download <code>index.js</code> (click download anyway if prompted). Check your downloads folder, then upload it to your panel root.</sub>
 
-The file will be downloaded without any popup so check your downloads folder to find it. 
-Then upload it to your panel.</sub>
+<br><br>
 
-<div align="center">
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Upload+as+index.js+in+your+panel+root!" alt="Panel"/>
 
+</div>
 
+#### Steps:
+1. Click the **⬇️ DOWNLOAD** button above to get `index.js`.
+2. Upload it to your panel root (`/home/container/`).
+3. Ensure it is named exactly `index.js`.
+4. Set the startup file to `index.js` in server settings (default is usually `index.js`).
+5. Start the server — it will **auto-clone** your repository and launch.
 
-## Steps:
-1. Click the **⬇️ DOWNLOAD** button above
-2. Click download anyway to have`index.js`in your downloads(will download without notification )
-3. Upload it to your panel root (`/home/container/`)
-4. Make sure its named as <code>index.js</code> 
-5. Set startup file as `index.js` in server settings(by default its already index.js)
-6. Start the server — it will **auto-clone** your bot and run it!
+</details>
 
-
-### 🖥️ VPS / Dedicated Server
+<details>
+<summary><b>🖥️ VPS / Dedicated Server (Ubuntu / Debian)</b></summary>
 
 > **Recommended for 24/7 stable hosting**
 
@@ -114,7 +102,7 @@ sudo apt install -y git nodejs npm ffmpeg imagemagick webp
 
 #### Step 2: Clone Repository
 ```bash
-git clone https://github.com/themalik-g/MALIK-BOT-MD.git
+git clone [https://github.com/themalik-g/MALIK-BOT-MD.git](https://github.com/themalik-g/MALIK-BOT-MD.git)
 cd MALIK-BOT-MD
 ```
 
@@ -139,7 +127,7 @@ module.exports = {
 node index.js
 ```
 
-#### 🔄 Run with PM2 (For 24/7)
+#### 🔄 Run with PM2 (24/7 Background Process)
 ```bash
 npm install -g pm2
 pm2 start index.js --name "malik-md"
@@ -147,55 +135,61 @@ pm2 save
 pm2 startup
 ```
 
----
+</details>
 
-### ☁️ Heroku
+<details>
+<summary><b>☁️ Heroku (One-Click / Manual)</b></summary>
 
 > **One-Click Deploy**
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/themalik-g/MALIK-BOT-MD)
 
-**Or Manual Deploy:**
-1. Fork this repository
-2. Create a new Heroku app
-3. Connect your GitHub repo
-4. Add buildpacks: `heroku/nodejs`, `https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git`
-5. Set environment variables in Config Vars
-6. Deploy!
+#### Manual Deploy:
+1. Fork this repository.
+2. Create a new Heroku app.
+3. Connect your GitHub repository.
+4. Add buildpacks:
+   - `heroku/nodejs`
+   - `https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git`
+5. Set environment variables in **Config Vars**.
+6. Deploy the branch.
 
----
+</details>
 
-### 🚂 Railway
+<details>
+<summary><b>🚂 Railway</b></summary>
 
 > **Free Tier Available**
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/themalik-g/MALIK-BOT-MD)
 
-**Manual Steps:**
-1. Login to [Railway](https://railway.app)
-2. Click "New Project" → "Deploy from GitHub repo"
-3. Select your forked repo
-4. Add environment variables
-5. Deploy!
+#### Manual Steps:
+1. Log in to [Railway](https://railway.app).
+2. Click **New Project** → **Deploy from GitHub repo**.
+3. Select your forked repository.
+4. Add environment variables.
+5. Deploy.
 
----
+</details>
 
-### 🎨 Render
+<details>
+<summary><b>🎨 Render</b></summary>
 
 > **Free Web Service**
 
-1. Go to [Render](https://render.com)
-2. Create a new Web Service
-3. Connect your GitHub repository
-4. Use these settings:
+1. Go to [Render](https://render.com).
+2. Create a new **Web Service**.
+3. Connect your GitHub repository.
+4. Configure settings:
    - **Build Command:** `npm install`
    - **Start Command:** `node index.js`
-5. Add Environment Variables
-6. Deploy!
+5. Add your Environment Variables.
+6. Click **Deploy**.
 
----
+</details>
 
-### 📱 Termux (Android)
+<details>
+<summary><b>📱 Termux (Android Mobile)</b></summary>
 
 > **For mobile testing only**
 
@@ -203,11 +197,13 @@ pm2 startup
 pkg update && pkg upgrade
 pkg install git nodejs ffmpeg imagemagick
 
-git clone https://github.com/themalik-g/MALIK-BOT-MD.git
+git clone [https://github.com/themalik-g/MALIK-BOT-MD.git](https://github.com/themalik-g/MALIK-BOT-MD.git)
 cd MALIK-BOT-MD
 npm install
 node index.js
 ```
+
+</details>
 
 ---
 
@@ -236,8 +232,6 @@ OPENAI_API_KEY=your_key_here
 
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-
-
 
 <div align="center">
 
