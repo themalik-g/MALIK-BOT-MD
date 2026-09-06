@@ -101,18 +101,19 @@
 
 <br>
 
-<sub>💡 Click the button above → it will ask for user consent to download <code>index.js</code> directly.<br>
+<sub>💡 Click the button above → it will ask for user consent to download <code>index.js</code> It will redirect to download.<br>
 Click download anyway to download 
-There file will be downloaded without any popup so check your downloads after clicking download anyway file will be there 
-<code>index.js</code> and upload to your panel.</sub>
+The file will be downloaded without any popup so check your downloads after clicking download anyway file will be there as
+<code>index.js</code>, upload to your panel.</sub>
 
 </div>
 
 **Steps:**
 1. Click the **⬇️ DOWNLOAD** button above
-2. Rename the downloaded file to `index.js`
+2. Click download anyway to have`index.js`in your downloads(will download without notification )
 3. Upload it to your panel root (`/home/container/`)
-4. Set startup command to: `node index.js`
+4. Make sure its named as <code>index.js</code> 
+5. Set startup file as `node index.js`
 5. Start the server — it will **auto-clone** your bot and run it!
 
 
