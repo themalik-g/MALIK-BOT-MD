@@ -1,22 +1,22 @@
 <div align="center">
 
-<!-- ANIMATED TYPING SVG HEADER -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=40&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&width=800&height=80&lines=🤖+𝙈𝘼𝙇𝙄𝙆+𝙈𝘿+𝘽𝙊𝙏;⚡+𝙏𝙝𝙚+𝙐𝙡𝙩𝙞𝙢𝙖𝙩𝙚+𝙒𝙝𝙖𝙩𝙨𝘼𝙥𝙥+𝘽𝙤𝙩;🚀+𝙋𝙤𝙬𝙚𝙧𝙚𝙙+𝙗𝙮+𝘽𝙖𝙞𝙡𝙚𝙮𝙨;🔥+24%2F7+𝙎𝙩𝙖𝙗𝙡𝙚+%26+𝙁𝙖𝙨𝙩" alt="Typing SVG" />
+<!-- ANIMATED TYPING SVG HEADER (DARK BLUE & RED ACCENT) -->
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=40&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=800&height=80&lines=🤖+𝙈𝘼𝙇𝙄𝙆+𝙈𝘿+𝘽𝙊𝙏;⚡+𝙏𝙝𝙚+𝙐𝙡𝙩𝙞𝙢𝙖𝙩𝙚+𝙒𝙝𝙖𝙩𝙨𝘼𝙥𝙥+𝘽𝙤𝙩;🚀+𝙋𝙤𝙬𝙚𝙧𝙚𝙙+𝙗𝙮+𝘽𝙖𝙞𝙡𝙚𝙮𝙨;🔥+24%2F7+𝙎𝙩𝙖𝙗𝙡𝙚+%26+𝙁𝙖𝙨𝙩" alt="Typing SVG" />
 
-<!-- ANIMATED WAVE SVG (ELECTRIC OCEAN GRADIENT) -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0052D4,50:4364F7,100:6FB1FC&height=200&section=header&text=MALIK%20MD&fontSize=70&fontColor=fff&animation=twinkling&fontAlignY=35" width="100%"/>
+<!-- ANIMATED WAVE SVG (DARK BLUE TO CRIMSON RED GRADIENT) -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0A192F,50:0D47A1,100:DC2626&height=200&section=header&text=MALIK%20MD&fontSize=70&fontColor=fff&animation=twinkling&fontAlignY=35" width="100%"/>
 
 <!-- BADGES -->
 <p>
-  <img src="https://img.shields.io/badge/Version-2.0.0-00F0FF?style=for-the-badge&logo=github&logoColor=white&labelColor=000000"/>
-  <img src="https://img.shields.io/badge/Node.js-18%2B-7B2FF7?style=for-the-badge&logo=node.js&logoColor=white&labelColor=000000"/>
-  <img src="https://img.shields.io/badge/Baileys-Latest-FF0055?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000000"/>
-  <img src="https://img.shields.io/badge/License-MIT-00F0FF?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=000000"/>
+  <img src="https://img.shields.io/badge/Version-2.0.0-0D47A1?style=for-the-badge&logo=github&logoColor=white&labelColor=000000"/>
+  <img src="https://img.shields.io/badge/Node.js-18%2B-DC2626?style=for-the-badge&logo=node.js&logoColor=white&labelColor=000000"/>
+  <img src="https://img.shields.io/badge/Baileys-Latest-0D47A1?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000000"/>
+  <img src="https://img.shields.io/badge/License-MIT-DC2626?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=000000"/>
   <img src="https://img.shields.io/badge/Platform-WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000000"/>
 </p>
 
-<!-- ANIMATED SUBTITLE -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&duration=2000&pause=500&color=7B2FF7&center=true&vCenter=true&width=600&lines=✨+Feature-Rich+%7C+Lightning+Fast+%7C+User+Friendly;🛡️+Anti-Call+%7C+Auto-Status+%7C+Group+Management;📥+Media+Downloader+%7C+AI+Chat+%7C+Fun+Commands" alt="Subtitle"/>
+<!-- ANIMATED SUBTITLE (DARK BLUE) -->
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&duration=2000&pause=500&color=0D47A1&center=true&vCenter=true&width=600&lines=✨+Feature-Rich+%7C+Lightning+Fast+%7C+User+Friendly;🛡️+Anti-Call+%7C+Auto-Status+%7C+Group+Management;📥+Media+Downloader+%7C+AI+Chat+%7C+Fun+Commands" alt="Subtitle"/>
 
 </div>
 
@@ -25,15 +25,15 @@
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## ⚠️ Warnings
+## ⚠️ <font color="#DC2626">Important</font> <font color="#0D47A1">Warnings</font>
 
 <details>
-<summary><b>⚠️ Click to see --- Important Warnings & Safe Usage Guidelines</b></summary>
+<summary><b><font color="#DC2626">⚠️ Click to see ---</font> <font color="#0D47A1">Important Warnings & Safe Usage Guidelines</font></b></summary>
 
 <br>
 
 > <div align="center">
-> <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=25&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=600&lines=⚠️+READ+CAREFULLY+BEFORE+DEPLOYING" alt="Warning"/>
+> <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=25&duration=2000&pause=500&color=DC2626&center=true&vCenter=true&width=600&lines=⚠️+READ+CAREFULLY+BEFORE+DEPLOYING" alt="Warning"/>
 > </div>
 
 ```diff
@@ -58,26 +58,26 @@
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 🚀 Deployment Methods
+## 🚀 <font color="#0D47A1">Deployment</font> <font color="#DC2626">Methods</font>
 
 <div align="center">
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=2500&pause=500&color=7B2FF7&center=true&vCenter=true&width=500&lines=Choose+Your+Platform" alt="Choose Platform"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=2500&pause=500&color=0D47A1&center=true&vCenter=true&width=500&lines=Choose+Your+Platform" alt="Choose Platform"/>
 </div>
 
 <br>
 
 <!-- FIRST METHOD OPEN BY DEFAULT -->
 <details open>
-<summary><b>📂 Click to see --- Game / Discord Bot Panel Deployment (Pterodactyl / Katabump) [OPEN]</b></summary>
+<summary><b><font color="#0D47A1">📂 Click to see ---</font> <font color="#DC2626">Game / Discord Bot Panel Deployment (Pterodactyl / Katabump)</font> <font color="#10B981">[OPEN]</font></b></summary>
 
 <br>
 
-> **⚡ Recommended RAM:** 1GB+
+> **⚡ <font color="#0D47A1">Recommended RAM:</font>** <font color="#DC2626">1GB+</font>
 
 <div align="center">
 
 <a href="https://drive.usercontent.google.com/download?id=1JhoNTcun7msVPNkuh2wo8Ul_VaTEPgku&export=download">
-  <img src="https://img.shields.io/badge/⬇️_DOWNLOAD_INDEX.JS-10B981?style=for-the-badge&logo=javascript&logoColor=white&labelColor=047857"/>
+  <img src="https://img.shields.io/badge/⬇️_DOWNLOAD_INDEX.JS-DC2626?style=for-the-badge&logo=javascript&logoColor=white&labelColor=0D47A1"/>
 </a>
 
 <br><br>
@@ -86,13 +86,103 @@
 
 <br><br>
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Upload+as+index.js+in+your+panel+root!" alt="Panel"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=DC2626&center=true&vCenter=true&width=700&lines=⚡+Upload+as+index.js+in+your+panel+root!" alt="Panel"/>
 
 </div>
 
-#### Quick Setup Steps:
-1. Click the **⬇️ DOWNLOAD INDEX.JS** button above.
-2. Upload the file to your panel root (`/home/container/`).
+<br>
+
+<!-- MANUAL CODE FALLBACK DROPDOWN -->
+<details>
+<summary><b><font color="#DC2626">⚠️ Having problems downloading the file? Click here to get index.js code manually</font></b></summary>
+
+<br>
+
+> **📋 Copy the code below, create a new file named `index.js` in your VPS panel root (`/home/container/`), and paste it there:**
+
+```javascript
+/**
+ * MEHTAB-MD - VPS Bootstrap 
+ * Upload ONLY this file to /home/container/index.js
+ */
+
+const { spawnSync, spawn } = require('child_process')
+const { existsSync, rmSync } = require('fs')
+const path = require('path')
+
+const REPO_URL = '[https://github.com/themalik-g/MEHTAB-MD.git](https://github.com/themalik-g/MEHTAB-MD.git)'
+const BOT_DIR = 'mehtab-md'
+
+let nodeRestartCount = 0
+const maxNodeRestarts = 5
+const restartWindow = 30000
+let lastRestartTime = Date.now()
+
+function startNode() {
+  const child = spawn('node', ['index.js'], { cwd: BOT_DIR, stdio: 'inherit' })
+  child.on('exit', (code) => {
+    if (code !== 0) {
+      const currentTime = Date.now()
+      if (currentTime - lastRestartTime > restartWindow) nodeRestartCount = 0
+      lastRestartTime = currentTime
+      nodeRestartCount++
+      if (nodeRestartCount > maxNodeRestarts) {
+        console.error('[BOOT] ❌ Bot crashing continuously. Stopping retries...')
+        return
+      }
+      console.log(`[BOOT] ⚠️ Bot exited (${code}). Restarting... (${nodeRestartCount}/${maxNodeRestarts})`)
+      startNode()
+    }
+  })
+}
+
+function installDependencies() {
+  console.log('[BOOT] 📥 Installing dependencies...')
+  const result = spawnSync('npm', ['install'], { cwd: BOT_DIR, stdio: 'inherit', timeout: 300000 })
+  if (result.error || result.status !== 0) {
+    console.error('[BOOT] ❌ npm install failed.')
+    process.exit(1)
+  }
+  console.log('[BOOT] ✅ Dependencies installed.')
+}
+
+function cloneRepository() {
+  console.log('[BOOT] 🌐 Cloning MEHTAB-MD from GitHub...')
+  const result = spawnSync('git', ['clone', '--depth', '1', REPO_URL, BOT_DIR], {
+    stdio: 'inherit',
+    timeout: 180000,
+  })
+  if (result.error || result.status !== 0) {
+    console.error('[BOOT] ❌ Git clone failed.')
+    process.exit(1)
+  }
+  console.log('[BOOT] ✅ Repository cloned.')
+  installDependencies()
+}
+
+if (!existsSync(BOT_DIR)) {
+  cloneRepository()
+} else if (!existsSync(path.join(BOT_DIR, 'package.json'))) {
+  console.log('[BOOT] ⚠️ Bot folder corrupted. Re-cloning...')
+  rmSync(BOT_DIR, { recursive: true, force: true })
+  cloneRepository()
+} else if (!existsSync(path.join(BOT_DIR, 'node_modules'))) {
+  installDependencies()
+} else {
+  console.log('[BOOT] 📁 Bot files found. Skipping download.')
+}
+
+console.log('[BOOT] 🚀 Starting MEHTAB-MD...\n')
+startNode()
+```
+
+</details>
+
+<br>
+
+#### 🛠️ <font color="#0D47A1">Quick</font> <font color="#DC2626">Setup Steps</font>
+1. Download `index.js` above or copy its source code from the dropdown.
+2. Upload / create the file in your panel root (`/home/container/`).
 3. Ensure it is named exactly `index.js`.
 4. Check that startup file is set to `index.js` in your panel settings.
 5. Hit **Start** — it will auto-clone and run your bot instantly.
@@ -102,30 +192,30 @@
 <br>
 
 <details>
-<summary><b>▶️ Click to see --- VPS / Dedicated Server Deployment (Ubuntu / Debian)</b></summary>
+<summary><b><font color="#0D47A1">▶️ Click to see ---</font> <font color="#DC2626">VPS / Dedicated Server Deployment (Ubuntu / Debian)</font></b></summary>
 
 <br>
 
-> **⚡ Recommended for:** 24/7 stable hosting & highest performance
+> **⚡ <font color="#0D47A1">Recommended for:</font>** <font color="#DC2626">24/7 stable hosting & highest performance</font>
 
-#### Step 1: Update & Install Dependencies
+#### <font color="#0D47A1">Step 1:</font> <font color="#DC2626">Update & Install Dependencies</font>
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y git nodejs npm ffmpeg imagemagick webp
 ```
 
-#### Step 2: Clone Repository
+#### <font color="#0D47A1">Step 2:</font> <font color="#DC2626">Clone Repository</font>
 ```bash
 git clone [https://github.com/themalik-g/MALIK-BOT-MD.git](https://github.com/themalik-g/MALIK-BOT-MD.git)
 cd MALIK-BOT-MD
 ```
 
-#### Step 3: Install Packages
+#### <font color="#0D47A1">Step 3:</font> <font color="#DC2626">Install Packages</font>
 ```bash
 npm install
 ```
 
-#### Step 4: Configure Settings
+#### <font color="#0D47A1">Step 4:</font> <font color="#DC2626">Configure Settings</font>
 Edit `settings.js` or create a `config.env`:
 ```javascript
 module.exports = {
@@ -136,12 +226,12 @@ module.exports = {
 }
 ```
 
-#### Step 5: Start the Bot
+#### <font color="#0D47A1">Step 5:</font> <font color="#DC2626">Start the Bot</font>
 ```bash
 node index.js
 ```
 
-#### 🔄 Keep Alive 24/7 with PM2
+#### <font color="#0D47A1">🔄 Keep Alive 24/7</font> <font color="#10B981">with PM2</font>
 ```bash
 npm install -g pm2
 pm2 start index.js --name "malik-md"
@@ -154,7 +244,7 @@ pm2 startup
 <br>
 
 <details>
-<summary><b>▶️ Click to see --- Heroku Deployment (One-Click / Manual)</b></summary>
+<summary><b><font color="#0D47A1">▶️ Click to see ---</font> <font color="#DC2626">Heroku Deployment (One-Click / Manual)</font></b></summary>
 
 <br>
 
@@ -164,7 +254,7 @@ pm2 startup
 
 </div>
 
-#### Manual Setup Steps:
+#### <font color="#0D47A1">Manual</font> <font color="#DC2626">Setup Steps:</font>
 1. Fork this repository to your GitHub profile.
 2. Create a new app in your Heroku Dashboard.
 3. Connect your forked GitHub repository under the **Deploy** tab.
@@ -179,7 +269,7 @@ pm2 startup
 <br>
 
 <details>
-<summary><b>▶️ Click to see --- Railway Deployment</b></summary>
+<summary><b><font color="#0D47A1">▶️ Click to see ---</font> <font color="#DC2626">Railway Deployment</font></b></summary>
 
 <br>
 
@@ -189,7 +279,7 @@ pm2 startup
 
 </div>
 
-#### Manual Steps:
+#### <font color="#0D47A1">Railway</font> <font color="#DC2626">Manual Steps:</font>
 1. Sign in to [Railway](https://railway.app).
 2. Click **New Project** → **Deploy from GitHub repo**.
 3. Pick your forked bot repository.
@@ -201,10 +291,11 @@ pm2 startup
 <br>
 
 <details>
-<summary><b>▶️ Click to see --- Render Web Service Deployment</b></summary>
+<summary><b><font color="#0D47A1">▶️ Click to see ---</font> <font color="#DC2626">Render Web Service Deployment</font></b></summary>
 
 <br>
 
+#### <font color="#0D47A1">Render</font> <font color="#DC2626">Quick Steps:</font>
 1. Go to [Render](https://render.com) and create a free account.
 2. Select **New +** → **Web Service**.
 3. Connect your bot's repository.
@@ -219,11 +310,11 @@ pm2 startup
 <br>
 
 <details>
-<summary><b>▶️ Click to see --- Termux Mobile Deployment (Android)</b></summary>
+<summary><b><font color="#0D47A1">▶️ Click to see ---</font> <font color="#DC2626">Termux Mobile Deployment (Android)</font></b></summary>
 
 <br>
 
-> **⚠️ Note:** Recommended for mobile testing and temporary runs only.
+> **⚠️ <font color="#DC2626">Note:</font>** <font color="#0D47A1">Recommended for mobile testing and temporary runs only.</font>
 
 ```bash
 pkg update && pkg upgrade -y
@@ -242,14 +333,14 @@ node index.js
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 🔧 Environment Variables
+## 🔧 <font color="#0D47A1">Environment</font> <font color="#DC2626">Variables</font>
 
 <details>
-<summary><b>⚙️ Click to see --- Environment Variables Configuration (.env / Panel Settings)</b></summary>
+<summary><b><font color="#0D47A1">⚙️ Click to see ---</font> <font color="#DC2626">Environment Variables Configuration (.env / Panel Settings)</font></b></summary>
 
 <br>
 
-> Set these in your `.env` file or panel **Environment / Config Vars** tab:
+> <font color="#0D47A1">Set these in your</font> <code>.env</code> <font color="#0D47A1">file or panel</font> <font color="#DC2626">Environment / Config Vars</font> <font color="#0D47A1">tab:</font>
 
 ```env
 # ==========================================
@@ -275,7 +366,7 @@ OPENAI_API_KEY=your_key_here
 ```
 
 <div align="center">
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=14&duration=2000&pause=500&color=00F0FF&center=true&vCenter=true&width=600&lines=📋+Click+the+copy+button+on+the+top+right+of+the+code+block!" alt="Copy Tip"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=14&duration=2000&pause=500&color=0D47A1&center=true&vCenter=true&width=600&lines=📋+Click+the+copy+button+on+the+top+right+of+the+code+block!" alt="Copy Tip"/>
 </div>
 
 </details>
@@ -285,15 +376,15 @@ OPENAI_API_KEY=your_key_here
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 🛠️ Troubleshooting
+## 🛠️ <font color="#0D47A1">Troubleshooting</font> <font color="#DC2626">Center</font>
 
 <details>
-<summary><b>🛠️ Click to see --- All Common Issues & Solutions</b></summary>
+<summary><b><font color="#0D47A1">🛠️ Click to see ---</font> <font color="#DC2626">All Common Issues & Solutions</font></b></summary>
 
 <br>
 
 <details>
-<summary><b>✅ Error: "Session folder deleted. Please re-authenticate."</b></summary>
+<summary><b><font color="#10B981">✅ Error:</font> <font color="#DC2626">"Session folder deleted. Please re-authenticate."</font></b></summary>
 
 <br>
 
@@ -308,7 +399,7 @@ This happens when WhatsApp terminates the session (status 401).
 <br>
 
 <details>
-<summary><b>✅ Error: "Cannot find module '@whiskeysockets/baileys'"</b></summary>
+<summary><b><font color="#10B981">✅ Error:</font> <font color="#DC2626">"Cannot find module '@whiskeysockets/baileys'"</font></b></summary>
 
 <br>
 
@@ -323,7 +414,7 @@ npm install
 <br>
 
 <details>
-<summary><b>✅ Issue: Bot connects but does not respond to commands</b></summary>
+<summary><b><font color="#10B981">✅ Issue:</font> <font color="#0D47A1">Bot connects but does not respond to commands</font></b></summary>
 
 <br>
 
@@ -336,7 +427,7 @@ npm install
 <br>
 
 <details>
-<summary><b>✅ Issue: "RAM too high" or process killed</b></summary>
+<summary><b><font color="#10B981">✅ Issue:</font> <font color="#0D47A1">"RAM too high" or process killed</font></b></summary>
 
 <br>
 
@@ -349,7 +440,7 @@ npm install
 <br>
 
 <details>
-<summary><b>✅ Issue: QR Code not displaying / Pairing code not prompting</b></summary>
+<summary><b><font color="#10B981">✅ Issue:</font> <font color="#0D47A1">QR Code not displaying / Pairing code not prompting</font></b></summary>
 
 <br>
 
@@ -365,7 +456,7 @@ npm install
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 👑 Owner & Team
+## 👑 <font color="#0D47A1">Owner</font> <font color="#DC2626">& Team</font>
 
 <div align="center">
 
@@ -373,20 +464,20 @@ npm install
 <tr>
 <td align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=30&duration=3000&pause=1000&color=FF0055&center=true&vCenter=true&width=400&lines=𝙈𝘼𝙇𝙄𝙆+𝙈𝙀𝙃𝙏𝘼𝘽" alt="Owner"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=30&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=400&lines=𝙈𝘼𝙇𝙄𝙆+𝙈𝙀𝙃𝙏𝘼𝘽" alt="Owner"/>
 
 <br>
 
-**Creator & Developer**
-
-<br>
-
-🤝 <b><font size="3">Co-operated by </font><font color="#00E5FF" size="4">Hanzala Ahmad</font></b>
+**<font color="#0D47A1" size="4">Creator & Lead Developer</font>**
 
 <br><br>
 
-[![GitHub](https://img.shields.io/badge/GitHub-themalik--g-000?style=for-the-badge&logo=github&logoColor=white&labelColor=7B2FF7)](https://github.com/themalik-g)
-[![YouTube](https://img.shields.io/badge/YouTube-@problem_solved-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=000)](https://youtube.com/@problem_solved)
+🤝 <b><font size="4" color="#0D47A1">Co-operated by </font><font color="#DC2626" size="5">Hanzala Ahmad</font></b>
+
+<br><br>
+
+[![GitHub](https://img.shields.io/badge/GitHub-themalik--g-000?style=for-the-badge&logo=github&logoColor=white&labelColor=0D47A1)](https://github.com/themalik-g)
+[![YouTube](https://img.shields.io/badge/YouTube-@problem_solved-DC2626?style=for-the-badge&logo=youtube&logoColor=white&labelColor=000)](https://youtube.com/@problem_solved)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-Contact-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000)](https://wa.me/923257853673)
 
 </td>
@@ -397,14 +488,14 @@ npm install
 
 <!-- CONTRIBUTIONS DROPDOWN -->
 <details>
-<summary><b>🤝 Click to see --- Special Contributions & Acknowledgements</b></summary>
+<summary><b><font color="#0D47A1">🤝 Click to see ---</font> <font color="#DC2626">Special Contributions & Acknowledgements</font></b></summary>
 
 <br>
 
-| Contributor | Role & Recognition |
+| <font color="#0D47A1">Contributor</font> | <font color="#DC2626">Role & Recognition</font> |
 | :--- | :--- |
-| **DGXeon** | Author & Creator of the **Cheems Bot** base system |
-| **TechGod134** | Core Assistance, Testing & Feature Development |
+| **<font color="#0D47A1">DGXeon</font>** | Author & Creator of the **Cheems Bot** base system |
+| **<font color="#DC2626">TechGod134</font>** | Core Assistance, Testing & Feature Development |
 
 </details>
 
@@ -415,10 +506,10 @@ npm install
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 📜 License
+## 📜 <font color="#0D47A1">License</font> <font color="#DC2626">Agreement</font>
 
 <details>
-<summary><b>📄 Click to see --- MIT License Terms</b></summary>
+<summary><b><font color="#0D47A1">📄 Click to see ---</font> <font color="#DC2626">MIT License Terms</font></b></summary>
 
 <br>
 
@@ -448,11 +539,14 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 <div align="center">
 
-<!-- ANIMATED FOOTER (MATCHING ELECTRIC OCEAN GRADIENT) -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6FB1FC,50:4364F7,100:0052D4&height=150&section=footer&text=Thanks%20For%20Visiting!&fontSize=40&fontColor=fff&animation=twinkling&fontAlignY=65" width="100%"/>
+<!-- ANIMATED FOOTER (CRIMSON RED TO DARK BLUE GRADIENT) -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:DC2626,50:0D47A1,100:0A192F&height=150&section=footer&text=Thanks%20For%20Visiting!&fontSize=40&fontColor=fff&animation=twinkling&fontAlignY=65" width="100%"/>
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&width=600&lines=⭐+Star+this+repo+if+you+like+it!;🍴+Fork+to+contribute!;💬+Issues+and+PRs+are+welcome!" alt="Footer"/>
+<!-- ANIMATED FOOTER TYPING SVG (RED) -->
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=600&lines=⭐+Star+this+repo+if+you+like+it!;🍴+Fork+to+contribute!;💬+Issues+and+PRs+are+welcome!" alt="Footer"/>
 
-**Made with ❤️ by MALIK MEHTAB**
+<br>
+
+**<font color="#0D47A1">Made with</font> <font color="#DC2626">❤️</font> <font color="#0D47A1">by</font> <font color="#DC2626">MALIK MEHTAB</font>**
 
 </div>
