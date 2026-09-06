@@ -92,15 +92,15 @@ Then upload it to your panel.</sub>
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Upload+as+index.js+in+your+panel+root!" alt="Panel"/>
 
 
-<p style="text-align: left;">
-**Steps:**<br>
+
+## Steps:
 1. Click the **⬇️ DOWNLOAD** button above
 2. Click download anyway to have`index.js`in your downloads(will download without notification )
 3. Upload it to your panel root (`/home/container/`)
 4. Make sure its named as <code>index.js</code> 
 5. Set startup file as `index.js` in server settings(by default its already index.js)
 6. Start the server — it will **auto-clone** your bot and run it!
-</p>
+
 
 ### 🖥️ VPS / Dedicated Server
 
