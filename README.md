@@ -98,7 +98,7 @@
 
 <!-- MANUAL CODE FALLBACK DROPDOWN (404 BUG FIXED) -->
 <details>
-<summary><b><img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=flat-square"/> <img src="https://img.shields.io/badge/Having_Trouble_Downloading--Click_to_Copy_Code-0D47A1?style=flat-square"/></b></summary>
+<summary><b><img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=flat-square"/> <img src="https://img.shields.io/badge/If-unable-to-download-index.js-click-abobe--Click_to_Copy_Code-0D47A1?style=flat-square"/></b></summary>
 
 <br>
 
