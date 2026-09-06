@@ -75,11 +75,7 @@
 
 ## 🚀 Deployment Methods
 
-<div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=2500&pause=500&color=7B2FF7&center=true&vCenter=true&width=500&lines=Choose+Your+Platform" alt="Choose Platform"/>
-
-</div>
 
 ---
 
@@ -104,7 +100,13 @@
 <sub>💡 Click the button above → it will ask for user consent to download <code>index.js</code> Click download anyway to download it.<br>
 
 The file will be downloaded without any popup so check your downloads folder to find it. 
-Then upload <code>index.js</code> to your panel.</sub>
+Then upload it to your panel.</sub>
+
+</div>
+
+<div align="center">
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=2500&pause=500&color=7B2FF7&center=true&vCenter=true&width=500&lines=Choose+Your+Platform" alt="Choose Platform"/>
 
 </div>
 
@@ -113,8 +115,8 @@ Then upload <code>index.js</code> to your panel.</sub>
 2. Click download anyway to have`index.js`in your downloads(will download without notification )
 3. Upload it to your panel root (`/home/container/`)
 4. Make sure its named as <code>index.js</code> 
-5. Set startup file as `index.js` in server settings(by default its already index.js change only if there is something else) 
-5. Start the server — it will **auto-clone** your bot and run it!
+5. Set startup file as `index.js` in server settings(by default its already index.js)
+6. Start the server — it will **auto-clone** your bot and run it!
 
 
 
