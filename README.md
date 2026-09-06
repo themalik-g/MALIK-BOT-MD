@@ -32,7 +32,7 @@
 > <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=25&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=600&lines=⚠️+READ+CAREFULLY+BEFORE+DEPLOYING" alt="Warning"/>
 > </div>
 
-diff
+```diff
 - 🔴 DO NOT share your SESSION folder with anyone!
 - 🔴 DO NOT upload your session credentials to public repos!
 - 🔴 DO NOT run multiple instances with the same session simultaneously!
@@ -46,7 +46,7 @@ diff
 
 + 🟢 Keep your Node.js version updated (v18+ recommended).
 + 🟢 Use PM2 or the provided startup file for 24/7 uptime.
-+ 🟢 Report bugs via GitHub Issues or contact the owner.
++ 🟢 Report bugs via GitHub Issues or contact the owner.```
 
 
 <div align="center">
