@@ -3,7 +3,7 @@
 <!-- ANIMATED TYPING SVG HEADER -->
 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=40&duration=3000&pause=1000&color=00E5FF&center=true&vCenter=true&width=800&height=80&lines=🤖+𝙈𝘼𝙇𝙄𝙆+𝙈𝘿+𝘽𝙊𝙏;⚡+𝙏𝙝𝙚+𝙐𝙡𝙩𝙞𝙢𝙖𝙩𝙚+𝙒𝙝𝙖𝙩𝙨𝘼𝙥𝙥+𝘽𝙤𝙩;🚀+𝙋𝙤𝙬𝙚𝙧𝙚𝙙+𝙗𝙮+𝘽𝙖𝙞𝙡𝙚𝙮𝙨;🔥+24%2F7+𝙎𝙩𝙖𝙗𝙡𝙚+%26+𝙁𝙖𝙨𝙩" alt="Typing SVG" />
 
-<!-- VIBRANT ELECTRIC OCEAN HEADER (HIGH CONTRAST & CRISP) -->
+<!-- VIBRANT ELECTRIC OCEAN HEADER -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0052D4,50:1E88E5,100:00E5FF&height=200&section=header&text=MALIK%20MD&fontSize=70&fontColor=ffffff&animation=twinkling&fontAlignY=35" width="100%"/>
 
 <!-- BADGES -->
@@ -96,9 +96,9 @@
 
 <br>
 
-<!-- MANUAL CODE FALLBACK DROPDOWN -->
+<!-- MANUAL CODE FALLBACK DROPDOWN (404 BUG FIXED) -->
 <details>
-<summary><b><img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=flat-square"/> <img src="https://img.shields.io/badge/Having_problems_downloading?_Click_to_copy_index.js-0D47A1?style=flat-square"/></b></summary>
+<summary><b><img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=flat-square"/> <img src="https://img.shields.io/badge/Having_Trouble_Downloading--Click_to_Copy_Code-0D47A1?style=flat-square"/></b></summary>
 
 <br>
 
@@ -472,9 +472,10 @@ npm install
 
 <table>
 <tr>
-<td align="center">
+<td align="center" width="480">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=30&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=400&lines=𝙈𝘼𝙇𝙄𝙆+𝙈𝙀𝙃𝙏𝘼𝘽" alt="Owner"/>
+<!-- LEAD DEVELOPER (MALIK MEHTAB) -->
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=30&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=450&lines=𝙈𝘼𝙇𝙄𝙆+𝙈𝙀𝙃𝙏𝘼𝘽" alt="Malik Mehtab"/>
 
 <br>
 
@@ -482,15 +483,25 @@ npm install
 
 <br><br>
 
-<p>
-  <b><font size="5" color="#0D47A1">🤝 Co-operated by </font><font size="6" color="#DC2626">Hanzala Ahmad</font></b>
-</p>
-
-<br>
-
 [![GitHub](https://img.shields.io/badge/GitHub-themalik--g-000?style=for-the-badge&logo=github&logoColor=white&labelColor=0D47A1)](https://github.com/themalik-g)
 [![YouTube](https://img.shields.io/badge/YouTube-@problem_solved-DC2626?style=for-the-badge&logo=youtube&logoColor=white&labelColor=000)](https://youtube.com/@problem_solved)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-Contact-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000)](https://wa.me/923257853673)
+
+<br><br>
+<hr style="border: 0; height: 1px; background-color: #0D47A1;">
+<br>
+
+<!-- CO-OPERATOR (HANZALA AHMAD) -->
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=25&duration=3000&pause=1000&color=0D47A1&center=true&vCenter=true&width=450&lines=𝙃𝘼𝙉𝙕𝘼𝙇𝘼+𝘼𝙃𝙈𝘼𝘿" alt="Hanzala Ahmad"/>
+
+<br>
+
+**<font color="#DC2626" size="3">Co-Operated & Developed With</font>**
+
+<br><br>
+
+[![Instagram](https://img.shields.io/badge/Instagram-@hnzla.ahmad-E4405F?style=for-the-badge&logo=instagram&logoColor=white&labelColor=000000)](https://instagram.com/hnzla.ahmad)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-+92_326_7982864-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000000)](https://wa.me/923267982864)
 
 </td>
 </tr>
@@ -563,3 +574,4 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 **<font color="#0D47A1">Made with</font> <font color="#DC2626">❤️</font> <font color="#0D47A1">by</font> <font color="#DC2626">MALIK MEHTAB</font>**
 
 </div>
+```
