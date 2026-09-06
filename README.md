@@ -96,15 +96,15 @@
 
 <!-- DOWNLOAD BUTTON -->
 <a href="https://drive.usercontent.google.com/download?id=1JhoNTcun7msVPNkuh2wo8Ul_VaTEPgku&export=download">
-  <img src="https://img.shields.io/badge/⬇️_DOWNLOAD-VPS_Bootstrap_File-00F0FF?style=for-the-badge&logo=javascript&logoColor=white&labelColor=000000"/>
+  <img src="https://img.shields.io/badge/⬇️_DOWNLOAD-VPS_index.js-00F0FF?style=for-the-badge&logo=javascript&logoColor=white&labelColor=000000"/>
 </a>
 
 <br>
 
-<sub>💡 Click the button above → it will ask for user consent to download <code>index.js</code> It will redirect to download.<br>
-Click download anyway to download 
-The file will be downloaded without any popup so check your downloads after clicking download anyway file will be there as
-<code>index.js</code>, upload to your panel.</sub>
+<sub>💡 Click the button above → it will ask for user consent to download <code>index.js</code> Click download anyway to download it.<br>
+
+The file will be downloaded without any popup so check your downloads folder to find it. 
+upload <code>index.js</code> to your panel.</sub>
 
 </div>
 
