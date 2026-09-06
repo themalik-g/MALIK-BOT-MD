@@ -1,10 +1,10 @@
 <div align="center">
 
-<!-- ANIMATED TYPING SVG HEADER (DARK BLUE & RED ACCENT) -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=40&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=800&height=80&lines=🤖+𝙈𝘼𝙇𝙄𝙆+𝙈𝘿+𝘽𝙊𝙏;⚡+𝙏𝙝𝙚+𝙐𝙡𝙩𝙞𝙢𝙖𝙩𝙚+𝙒𝙝𝙖𝙩𝙨𝘼𝙥𝙥+𝘽𝙤𝙩;🚀+𝙋𝙤𝙬𝙚𝙧𝙚𝙙+𝙗𝙮+𝘽𝙖𝙞𝙡𝙚𝙮𝙨;🔥+24%2F7+𝙎𝙩𝙖𝙗𝙡𝙚+%26+𝙁𝙖𝙨𝙩" alt="Typing SVG" />
+<!-- ANIMATED TYPING SVG HEADER -->
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=40&duration=3000&pause=1000&color=00E5FF&center=true&vCenter=true&width=800&height=80&lines=🤖+𝙈𝘼𝙇𝙄𝙆+𝙈𝘿+𝘽𝙊𝙏;⚡+𝙏𝙝𝙚+𝙐𝙡𝙩𝙞𝙢𝙖𝙩𝙚+𝙒𝙝𝙖𝙩𝙨𝘼𝙥𝙥+𝘽𝙤𝙩;🚀+𝙋𝙤𝙬𝙚𝙧𝙚𝙙+𝙗𝙮+𝘽𝙖𝙞𝙡𝙚𝙮𝙨;🔥+24%2F7+𝙎𝙩𝙖𝙗𝙡𝙚+%26+𝙁𝙖𝙨𝙩" alt="Typing SVG" />
 
-<!-- ANIMATED WAVE SVG (DARK BLUE TO CRIMSON RED GRADIENT) -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0A192F,50:0D47A1,100:DC2626&height=200&section=header&text=MALIK%20MD&fontSize=70&fontColor=fff&animation=twinkling&fontAlignY=35" width="100%"/>
+<!-- VIBRANT ELECTRIC OCEAN HEADER (HIGH CONTRAST & CRISP) -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0052D4,50:1E88E5,100:00E5FF&height=200&section=header&text=MALIK%20MD&fontSize=70&fontColor=ffffff&animation=twinkling&fontAlignY=35" width="100%"/>
 
 <!-- BADGES -->
 <p>
@@ -15,20 +15,20 @@
   <img src="https://img.shields.io/badge/Platform-WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000000"/>
 </p>
 
-<!-- ANIMATED SUBTITLE (DARK BLUE) -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&duration=2000&pause=500&color=0D47A1&center=true&vCenter=true&width=600&lines=✨+Feature-Rich+%7C+Lightning+Fast+%7C+User+Friendly;🛡️+Anti-Call+%7C+Auto-Status+%7C+Group+Management;📥+Media+Downloader+%7C+AI+Chat+%7C+Fun+Commands" alt="Subtitle"/>
+<!-- ANIMATED SUBTITLE -->
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&duration=2000&pause=500&color=00E5FF&center=true&vCenter=true&width=600&lines=✨+Feature-Rich+%7C+Lightning+Fast+%7C+User+Friendly;🛡️+Anti-Call+%7C+Auto-Status+%7C+Group+Management;📥+Media+Downloader+%7C+AI+Chat+%7C+Fun+Commands" alt="Subtitle"/>
 
 </div>
 
----
+<!-- DARK BLUE & RED HORIZONTAL DIVIDER LINE -->
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A192F,35:0D47A1,65:B91C1C,100:DC2626&height=6" width="100%"/>
 
-<!-- ANIMATED DIVIDER -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<br>
 
-## ⚠️ <font color="#DC2626">Important</font> <font color="#0D47A1">Warnings</font>
+## <img src="https://img.shields.io/badge/⚠️_IMPORTANT-WARNINGS-DC2626?style=for-the-badge&logo=alert&logoColor=white&labelColor=0D47A1" height="34"/>
 
 <details>
-<summary><b><font color="#DC2626">⚠️ Click to see ---</font> <font color="#0D47A1">Important Warnings & Safe Usage Guidelines</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/⚠️_Important_Warnings_&_Safe_Usage_Guidelines-DC2626?style=flat-square"/></b></summary>
 
 <br>
 
@@ -55,10 +55,14 @@
 
 </details>
 
-<!-- ANIMATED DIVIDER -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<br>
 
-## 🚀 <font color="#0D47A1">Deployment</font> <font color="#DC2626">Methods</font>
+<!-- DARK BLUE & RED HORIZONTAL DIVIDER LINE -->
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A192F,35:0D47A1,65:B91C1C,100:DC2626&height=6" width="100%"/>
+
+<br>
+
+## <img src="https://img.shields.io/badge/🚀_DEPLOYMENT-METHODS-0D47A1?style=for-the-badge&logo=rocket&logoColor=white&labelColor=DC2626" height="34"/>
 
 <div align="center">
 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=2500&pause=500&color=0D47A1&center=true&vCenter=true&width=500&lines=Choose+Your+Platform" alt="Choose Platform"/>
@@ -68,7 +72,7 @@
 
 <!-- FIRST METHOD OPEN BY DEFAULT -->
 <details open>
-<summary><b><font color="#0D47A1">📂 Click to see ---</font> <font color="#DC2626">Game / Discord Bot Panel Deployment (Pterodactyl / Katabump)</font> <font color="#10B981">[OPEN]</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/OPEN-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/🎮_Game_/_Discord_Bot_Panel_(Pterodactyl)-0D47A1?style=flat-square"/></b></summary>
 
 <br>
 
@@ -77,7 +81,7 @@
 <div align="center">
 
 <a href="https://drive.usercontent.google.com/download?id=1JhoNTcun7msVPNkuh2wo8Ul_VaTEPgku&export=download">
-  <img src="https://img.shields.io/badge/⬇️_DOWNLOAD_INDEX.JS-DC2626?style=for-the-badge&logo=javascript&logoColor=white&labelColor=0D47A1"/>
+  <img src="https://img.shields.io/badge/⬇️_DOWNLOAD_INDEX.JS-00E5FF?style=for-the-badge&logo=javascript&logoColor=black&labelColor=0D47A1"/>
 </a>
 
 <br><br>
@@ -94,7 +98,7 @@
 
 <!-- MANUAL CODE FALLBACK DROPDOWN -->
 <details>
-<summary><b><font color="#DC2626">⚠️ Having problems downloading the file? Click here to get index.js code manually</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=flat-square"/> <img src="https://img.shields.io/badge/Having_problems_downloading?_Click_to_copy_index.js-0D47A1?style=flat-square"/></b></summary>
 
 <br>
 
@@ -192,7 +196,7 @@ startNode()
 <br>
 
 <details>
-<summary><b><font color="#0D47A1">▶️ Click to see ---</font> <font color="#DC2626">VPS / Dedicated Server Deployment (Ubuntu / Debian)</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/🖥️_VPS_/_Dedicated_Server_(Ubuntu/Debian)-DC2626?style=flat-square"/></b></summary>
 
 <br>
 
@@ -244,7 +248,7 @@ pm2 startup
 <br>
 
 <details>
-<summary><b><font color="#0D47A1">▶️ Click to see ---</font> <font color="#DC2626">Heroku Deployment (One-Click / Manual)</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/☁️_Heroku_Deployment_(One--Click/Manual)-7B2FF7?style=flat-square"/></b></summary>
 
 <br>
 
@@ -269,7 +273,7 @@ pm2 startup
 <br>
 
 <details>
-<summary><b><font color="#0D47A1">▶️ Click to see ---</font> <font color="#DC2626">Railway Deployment</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/🚂_Railway_Cloud_Deployment-0B0B0B?style=flat-square"/></b></summary>
 
 <br>
 
@@ -291,7 +295,7 @@ pm2 startup
 <br>
 
 <details>
-<summary><b><font color="#0D47A1">▶️ Click to see ---</font> <font color="#DC2626">Render Web Service Deployment</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/🎨_Render_Web_Service-46E3B7?style=flat-square&labelColor=000000"/></b></summary>
 
 <br>
 
@@ -310,7 +314,7 @@ pm2 startup
 <br>
 
 <details>
-<summary><b><font color="#0D47A1">▶️ Click to see ---</font> <font color="#DC2626">Termux Mobile Deployment (Android)</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/📱_Termux_Mobile_Deployment_(Android)-000000?style=flat-square"/></b></summary>
 
 <br>
 
@@ -328,15 +332,17 @@ node index.js
 
 </details>
 
----
+<br>
 
-<!-- ANIMATED DIVIDER -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<!-- DARK BLUE & RED HORIZONTAL DIVIDER LINE -->
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A192F,35:0D47A1,65:B91C1C,100:DC2626&height=6" width="100%"/>
 
-## 🔧 <font color="#0D47A1">Environment</font> <font color="#DC2626">Variables</font>
+<br>
+
+## <img src="https://img.shields.io/badge/🔧_ENVIRONMENT-VARIABLES-0D47A1?style=for-the-badge&logo=gear&logoColor=white&labelColor=DC2626" height="34"/>
 
 <details>
-<summary><b><font color="#0D47A1">⚙️ Click to see ---</font> <font color="#DC2626">Environment Variables Configuration (.env / Panel Settings)</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/⚙️_Environment_Variables_Configuration_(.env)-DC2626?style=flat-square"/></b></summary>
 
 <br>
 
@@ -366,25 +372,27 @@ OPENAI_API_KEY=your_key_here
 ```
 
 <div align="center">
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=14&duration=2000&pause=500&color=0D47A1&center=true&vCenter=true&width=600&lines=📋+Click+the+copy+button+on+the+top+right+of+the+code+block!" alt="Copy Tip"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=14&duration=2000&pause=500&color=00E5FF&center=true&vCenter=true&width=600&lines=📋+Click+the+copy+button+on+the+top+right+of+the+code+block!" alt="Copy Tip"/>
 </div>
 
 </details>
 
----
+<br>
 
-<!-- ANIMATED DIVIDER -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<!-- DARK BLUE & RED HORIZONTAL DIVIDER LINE -->
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A192F,35:0D47A1,65:B91C1C,100:DC2626&height=6" width="100%"/>
 
-## 🛠️ <font color="#0D47A1">Troubleshooting</font> <font color="#DC2626">Center</font>
+<br>
+
+## <img src="https://img.shields.io/badge/🛠️_TROUBLESHOOTING-CENTER-10B981?style=for-the-badge&logo=tools&logoColor=white&labelColor=0D47A1" height="34"/>
 
 <details>
-<summary><b><font color="#0D47A1">🛠️ Click to see ---</font> <font color="#DC2626">All Common Issues & Solutions</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/🛠️_All_Common_Issues_&_Solutions-10B981?style=flat-square"/></b></summary>
 
 <br>
 
 <details>
-<summary><b><font color="#10B981">✅ Error:</font> <font color="#DC2626">"Session folder deleted. Please re-authenticate."</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/Session_folder_deleted._Please_re--authenticate.-DC2626?style=flat-square"/></b></summary>
 
 <br>
 
@@ -399,7 +407,7 @@ This happens when WhatsApp terminates the session (status 401).
 <br>
 
 <details>
-<summary><b><font color="#10B981">✅ Error:</font> <font color="#DC2626">"Cannot find module '@whiskeysockets/baileys'"</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/Cannot_find_module_'@whiskeysockets/baileys'-DC2626?style=flat-square"/></b></summary>
 
 <br>
 
@@ -414,7 +422,7 @@ npm install
 <br>
 
 <details>
-<summary><b><font color="#10B981">✅ Issue:</font> <font color="#0D47A1">Bot connects but does not respond to commands</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/Bot_connects_but_does_not_respond_to_commands-0D47A1?style=flat-square"/></b></summary>
 
 <br>
 
@@ -427,7 +435,7 @@ npm install
 <br>
 
 <details>
-<summary><b><font color="#10B981">✅ Issue:</font> <font color="#0D47A1">"RAM too high" or process killed</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/RAM_too_high_or_process_killed-DC2626?style=flat-square"/></b></summary>
 
 <br>
 
@@ -440,7 +448,7 @@ npm install
 <br>
 
 <details>
-<summary><b><font color="#10B981">✅ Issue:</font> <font color="#0D47A1">QR Code not displaying / Pairing code not prompting</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/QR_Code_not_displaying_/_Pairing_code_issue-0D47A1?style=flat-square"/></b></summary>
 
 <br>
 
@@ -451,12 +459,14 @@ npm install
 
 </details>
 
----
+<br>
 
-<!-- ANIMATED DIVIDER -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<!-- DARK BLUE & RED HORIZONTAL DIVIDER LINE -->
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A192F,35:0D47A1,65:B91C1C,100:DC2626&height=6" width="100%"/>
 
-## 👑 <font color="#0D47A1">Owner</font> <font color="#DC2626">& Team</font>
+<br>
+
+## <img src="https://img.shields.io/badge/👑_OWNER-&_TEAM-DC2626?style=for-the-badge&logoColor=white&labelColor=0D47A1" height="34"/>
 
 <div align="center">
 
@@ -472,9 +482,11 @@ npm install
 
 <br><br>
 
-🤝 <b><font size="4" color="#0D47A1">Co-operated by </font><font color="#DC2626" size="5">Hanzala Ahmad</font></b>
+<p>
+  <b><font size="5" color="#0D47A1">🤝 Co-operated by </font><font size="6" color="#DC2626">Hanzala Ahmad</font></b>
+</p>
 
-<br><br>
+<br>
 
 [![GitHub](https://img.shields.io/badge/GitHub-themalik--g-000?style=for-the-badge&logo=github&logoColor=white&labelColor=0D47A1)](https://github.com/themalik-g)
 [![YouTube](https://img.shields.io/badge/YouTube-@problem_solved-DC2626?style=for-the-badge&logo=youtube&logoColor=white&labelColor=000)](https://youtube.com/@problem_solved)
@@ -488,7 +500,7 @@ npm install
 
 <!-- CONTRIBUTIONS DROPDOWN -->
 <details>
-<summary><b><font color="#0D47A1">🤝 Click to see ---</font> <font color="#DC2626">Special Contributions & Acknowledgements</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/🤝_Special_Contributions_&_Acknowledgements-DC2626?style=flat-square"/></b></summary>
 
 <br>
 
@@ -501,15 +513,17 @@ npm install
 
 </div>
 
----
+<br>
 
-<!-- ANIMATED DIVIDER -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<!-- DARK BLUE & RED HORIZONTAL DIVIDER LINE -->
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A192F,35:0D47A1,65:B91C1C,100:DC2626&height=6" width="100%"/>
 
-## 📜 <font color="#0D47A1">License</font> <font color="#DC2626">Agreement</font>
+<br>
+
+## <img src="https://img.shields.io/badge/📜_LICENSE-AGREEMENT-0D47A1?style=for-the-badge&logoColor=white&labelColor=DC2626" height="34"/>
 
 <details>
-<summary><b><font color="#0D47A1">📄 Click to see ---</font> <font color="#DC2626">MIT License Terms</font></b></summary>
+<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/📄_MIT_License_Terms-DC2626?style=flat-square"/></b></summary>
 
 <br>
 
@@ -535,15 +549,14 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 </details>
 
----
+<br>
 
 <div align="center">
 
-<!-- ANIMATED FOOTER (CRIMSON RED TO DARK BLUE GRADIENT) -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:DC2626,50:0D47A1,100:0A192F&height=150&section=footer&text=Thanks%20For%20Visiting!&fontSize=40&fontColor=fff&animation=twinkling&fontAlignY=65" width="100%"/>
+<!-- VIBRANT ELECTRIC OCEAN FOOTER -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00E5FF,50:1E88E5,100:0052D4&height=150&section=footer&text=Thanks%20For%20Visiting!&fontSize=40&fontColor=ffffff&animation=twinkling&fontAlignY=65" width="100%"/>
 
-<!-- ANIMATED FOOTER TYPING SVG (RED) -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=600&lines=⭐+Star+this+repo+if+you+like+it!;🍴+Fork+to+contribute!;💬+Issues+and+PRs+are+welcome!" alt="Footer"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=3000&pause=1000&color=00E5FF&center=true&vCenter=true&width=600&lines=⭐+Star+this+repo+if+you+like+it!;🍴+Fork+to+contribute!;💬+Issues+and+PRs+are+welcome!" alt="Footer"/>
 
 <br>
 
