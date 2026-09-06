@@ -101,8 +101,10 @@
 
 <br>
 
-<sub>💡 Click the button above → it will download <code>vps-bootstrap.js</code> directly.<br>
-Then rename it to <code>index.js</code> and upload to your panel.</sub>
+<sub>💡 Click the button above → it will ask for user consent to download <code>index.js</code> directly.<br>
+Click download anyway to download 
+There file will be downloaded without any popup so check your downloads after clicking download anyway file will be there 
+<code>index.js</code> and upload to your panel.</sub>
 
 </div>
 
