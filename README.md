@@ -96,9 +96,9 @@
 
 <br>
 
-<!-- MANUAL CODE FALLBACK DROPDOWN (404 BUG FIXED) -->
+<!-- MANUAL CODE FALLBACK DROPDOWN -->
 <details>
-<summary><b><img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=flat-square"/> <img src="https://img.shields.io/badge/Cannot_download_index.js?--Click_for_manual_Copy_Code_method-0D47A1?style=flat-square"/></b></summary>
+<summary><b><img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=flat-square"/> <img src="https://img.shields.io/badge/Having_Trouble_Downloading--Click_to_Copy_Code-0D47A1?style=flat-square"/></b></summary>
 
 <br>
 
@@ -183,6 +183,10 @@ startNode()
 </details>
 
 <br>
+
+<sub>💡 <b><font color="#DC2626">Open above</font> <font color="#0D47A1">for manual file method</font></b></sub>
+
+<br><br>
 
 #### 🛠️ <font color="#0D47A1">Quick</font> <font color="#DC2626">Setup Steps</font>
 1. Download `index.js` above or copy its source code from the dropdown.
@@ -574,4 +578,3 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 **<font color="#0D47A1">Made with</font> <font color="#DC2626">❤️</font> <font color="#0D47A1">by</font> <font color="#DC2626">MALIK MEHTAB</font>**
 
 </div>
-```
