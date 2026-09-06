@@ -104,7 +104,7 @@
 <sub>💡 Click the button above → it will ask for user consent to download <code>index.js</code> Click download anyway to download it.<br>
 
 The file will be downloaded without any popup so check your downloads folder to find it. 
-upload <code>index.js</code> to your panel.</sub>
+Then upload <code>index.js</code> to your panel.</sub>
 
 </div>
 
@@ -113,7 +113,7 @@ upload <code>index.js</code> to your panel.</sub>
 2. Click download anyway to have`index.js`in your downloads(will download without notification )
 3. Upload it to your panel root (`/home/container/`)
 4. Make sure its named as <code>index.js</code> 
-5. Set startup file as `node index.js`
+5. Set startup file as `index.js` in server settings(by default its already index.js change only if there is something else) 
 5. Start the server — it will **auto-clone** your bot and run it!
 
 
