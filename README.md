@@ -83,73 +83,36 @@
 
 ---
 
-### 🎮 Game/Discord bot Panel (Pterodactyl/ Katabump/ bot hosting)
 
-> **1GB Ram is recommended**
+### 🎮 Game/Discord bot Panel (Pterodactyl / Katabump / Bot Hosting)
+
+> **1GB RAM recommended**
 
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Use+the+VPS+Startup+code+below+in+index.js+file+for+any+Panel!" alt="Panel"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Upload+as+index.js+in+your+panel+root!" alt="Panel"/>
+
+<br><br>
+
+<!-- DOWNLOAD BUTTON -->
+<a href="https://github.com/themalik-g/MALIK-BOT-MD/raw/main/vps-bootstrap.js">
+  <img src="https://img.shields.io/badge/⬇️_DOWNLOAD-VPS_Bootstrap_File-00F0FF?style=for-the-badge&logo=javascript&logoColor=white&labelColor=000000"/>
+</a>
+
+<br>
+
+<sub>💡 Click the button above → it will download <code>vps-bootstrap.js</code> directly.<br>
+Then rename it to <code>index.js</code> and upload to your panel.</sub>
 
 </div>
-<!-- 1. THE COPY BUTTON -->
-<!-- Paste whatever text you want copied inside the value="" quotes below -->
-<button class="click-to-copy-btn" onclick="copyHiddenData(this)" value="text_here">
-  Click here to copy
-</button>
-
-<!-- 2. THE SCRIPT TO SEND DATA TO CLIPBOARD -->
-<script>
-  function copyHiddenData(buttonElement) {
-    // 1. Pull out the text stored in the hidden value attribute
-    const secretText = buttonElement.getAttribute('value');
-    
-    // 2. Direct transfer to clipboard without flashing it on screen
-    navigator.clipboard.writeText(secretText).then(() => {
-      
-      // Optional: Visual change to show it worked!
-      const originalLabel = buttonElement.innerHTML;
-      buttonElement.innerHTML = "✅ Copied!";
-      buttonElement.style.background = "#27ae60"; // Turns green briefly
-      
-      setTimeout(() => {
-        buttonElement.innerHTML = originalLabel;
-        buttonElement.style.background = "#2980b9"; // Resets back
-      }, 1500);
-    });
-  }
-</script>
-
-<!-- 3. THE BUTTON DESIGN -->
-<style>
-  .click-to-copy-btn {
-    background-color: #2980b9;  /* Nice modern blue button color */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-  .click-to-copy-btn:hover {
-    background-color: #3498db;   /* Lightens slightly when hovering */
-  }
-</style>
-
-
 
 **Steps:**
-1. Upload the **VPS Startup File** (below) as `index.js` in your panel root
-2. Set startup command to: `node index.js`
-3. Start the server
-4. The file will **auto-clone** your bot and run it!
+1. Click the **⬇️ DOWNLOAD** button above
+2. Rename the downloaded file to `index.js`
+3. Upload it to your panel root (`/home/container/`)
+4. Set startup command to: `node index.js`
+5. Start the server — it will **auto-clone** your bot and run it!
 
----
-
-<!-- ANIMATED DIVIDER -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 
 ### 🖥️ VPS / Dedicated Server
