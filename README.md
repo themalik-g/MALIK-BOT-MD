@@ -25,52 +25,6 @@
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 📋 Table of Contents
-
-- [✨ Features](#-features)
-- [⚠️ Warnings](#️-warnings)
-- [🚀 Deployment Methods](#-deployment-methods)
-  - [🖥️ VPS / Dedicated Server](#️-vps--dedicated-server)
-  - [☁️ Heroku](#-heroku)
-  - [🚂 Railway](#-railway)
-  - [🎨 Render](#-render)
-  - [📱 Termux](#-termux)
-  - [🎮 Game Panel (FalixNodes / Pterodactyl)](#-game-panel-falixnodes--pterodactyl)
-- [🔧 Environment Variables](#-environment-variables)
-- [📁 VPS Startup File](#-vps-startup-file)
-- [🛠️ Troubleshooting](#️-troubleshooting)
-- [👑 Owner](#-owner)
-- [📜 License](#-license)
-
-<!-- ANIMATED DIVIDER -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-
-## ✨ Features
-
-<div align="center">
-
-| Category | Commands | Status |
-|----------|----------|--------|
-| 🤖 **AI & Chat** | GPT, Bard, SimSimi, ChatGPT | ✅ Active |
-| 📥 **Downloads** | YT Video/Audio, TikTok, Instagram, Facebook, Spotify | ✅ Active |
-| 🛡️ **Security** | Anti-Call, Anti-Delete, Anti-Link, Anti-Spam | ✅ Active |
-| 👥 **Group Tools** | Welcome/Goodbye, Tag All, Mute, Promote/Demote, Anti-Badword | ✅ Active |
-| 🎭 **Fun & Games** | Truth/Dare, Quiz, Trivia, Memes, Stickers | ✅ Active |
-| 🎵 **Media** | Sticker Maker, Image-to-Sticker, Video-to-Sticker, Exif | ✅ Active |
-| 🔍 **Search** | Google, Pinterest, Wikipedia, Lyrics, Weather | ✅ Active |
-| ⚙️ **Admin** | Broadcast, Set Bio, Block/Unblock, Restart, Update | ✅ Active |
-| 📊 **Status** | Auto-View Status, Status Downloader, Status Reply | ✅ Active |
-| 🌐 **Tools** | Translate, QR Code, Short URL, Calculate, Reminder | ✅ Active |
-
-</div>
-
-<!-- ANIMATED FEATURE SHOWCASE -->
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&width=800&lines=⚡+Zero+Lag+%7C+Multi-Device+Support;🔄+Auto-Reconnect+%7C+Session+Persistence;📡+24%2F7+Uptime+%7C+Low+RAM+Usage" alt="Features"/>
-
----
-
-<!-- ANIMATED DIVIDER -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## ⚠️ Warnings
 
@@ -128,6 +82,28 @@
 </div>
 
 ---
+
+### 🎮 Game/Discord bot Panel (Pterodactyl/ Katabump/ bot hosting)
+
+> **1GB Ram is recommended**
+
+<div align="center">
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Use+the+VPS+Startup+File+below+for+any+Panel!" alt="Panel"/>
+
+</div>
+
+**Steps:**
+1. Upload the **VPS Startup File** (below) as `index.js` in your panel root
+2. Set startup command to: `node index.js`
+3. Start the server
+4. The file will **auto-clone** your bot and run it!
+
+---
+
+<!-- ANIMATED DIVIDER -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
 
 ### 🖥️ VPS / Dedicated Server
 
@@ -237,27 +213,6 @@ node index.js
 ```
 
 ---
-
-### 🎮 Game Panel (FalixNodes / Pterodactyl)
-
-> **Best for free Minecraft-style panels**
-
-<div align="center">
-
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Use+the+VPS+Startup+File+below+for+any+Panel!" alt="Panel"/>
-
-</div>
-
-**Steps:**
-1. Upload the **VPS Startup File** (below) as `index.js` in your panel root
-2. Set startup command to: `node index.js`
-3. Start the server
-4. The file will **auto-clone** your bot and run it!
-
----
-
-<!-- ANIMATED DIVIDER -->
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## 🔧 Environment Variables
 
