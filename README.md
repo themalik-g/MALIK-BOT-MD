@@ -27,6 +27,11 @@
 
 ## ⚠️ Warnings
 
+<details>
+<summary><b>⚠️ Click to see --- Important Warnings & Safe Usage Guidelines</b></summary>
+
+<br>
+
 > <div align="center">
 > <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=25&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=600&lines=⚠️+READ+CAREFULLY+BEFORE+DEPLOYING" alt="Warning"/>
 > </div>
@@ -47,6 +52,8 @@
 + 🟢 Use PM2 or the provided startup file for 24/7 uptime.
 + 🟢 Report bugs via GitHub Issues or contact the owner.
 ```
+
+</details>
 
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
@@ -281,24 +288,31 @@ OPENAI_API_KEY=your_key_here
 ## 🛠️ Troubleshooting
 
 <details>
-<summary><b>❌ Error: "Session folder deleted. Please re-authenticate."</b></summary>
+<summary><b>🛠️ Click to see --- All Common Issues & Solutions</b></summary>
 
 <br>
 
-This occurs when WhatsApp revokes the active session (status 401).
+<details>
+<summary><b>✅ Error: "Session folder deleted. Please re-authenticate."</b></summary>
+
+<br>
+
+This happens when WhatsApp terminates the session (status 401).
 - Stop the bot process.
-- Delete the `session/` directory completely.
+- Delete the `session/` folder completely.
 - Re-run the bot to generate a fresh QR code or pairing code.
-- Ensure the same credentials aren't running in duplicate instances.
+- Ensure the session is not open on multiple machines simultaneously.
 
 </details>
 
+<br>
+
 <details>
-<summary><b>❌ Error: "Cannot find module '@whiskeysockets/baileys'"</b></summary>
+<summary><b>✅ Error: "Cannot find module '@whiskeysockets/baileys'"</b></summary>
 
 <br>
 
-Run the following commands to rebuild your dependencies:
+Run these commands to clean and rebuild your node dependencies:
 ```bash
 rm -rf node_modules package-lock.json
 npm install
@@ -306,36 +320,43 @@ npm install
 
 </details>
 
+<br>
+
 <details>
-<summary><b>❌ Bot connects but doesn't respond to commands</b></summary>
+<summary><b>✅ Issue: Bot connects but does not respond to commands</b></summary>
 
 <br>
 
-- Ensure `prefix` matches what you are typing (e.g., `.menu`).
-- Check if `public: true` is enabled in your `settings.js`.
-- Confirm your number is saved in the owner array.
-- Look at real-time logs for handler crashes.
+- Verify your command starts with the correct `prefix` configured in `settings.js`.
+- Make sure `public: true` is set in configuration (or your number is in the owners list).
+- Check panel/terminal logs for errors inside the command dispatcher.
 
 </details>
 
+<br>
+
 <details>
-<summary><b>❌ "RAM too high" or process killed</b></summary>
+<summary><b>✅ Issue: "RAM too high" or process killed</b></summary>
 
 <br>
 
-- Enable swap memory if you are running on a lightweight VPS.
-- Start Node with garbage collection exposed: `node --expose-gc index.js`.
-- Keep `syncFullHistory: false` in your socket configuration.
+- Add swap memory if running on a VPS with 512MB–1GB RAM.
+- Start Node with garbage collector exposed: `node --expose-gc index.js`.
+- Keep `syncFullHistory: false` in socket settings to reduce memory usage.
 
 </details>
 
+<br>
+
 <details>
-<summary><b>❌ QR Code not showing / Pairing code not working</b></summary>
+<summary><b>✅ Issue: QR Code not displaying / Pairing code not prompting</b></summary>
 
 <br>
 
-- Non-interactive hosting panels cannot prompt for input; preconfigure `ownerNumber` in `settings.js`.
-- Use the pairing code method rather than QR on headless VPS servers.
+- Hosting panels often lack interactive terminals; fill in `ownerNumber` in `settings.js` prior to launch.
+- Prefer pairing code over QR codes for remote, headless Linux servers.
+
+</details>
 
 </details>
 
@@ -344,7 +365,7 @@ npm install
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 👑 Owner
+## 👑 Owner & Team
 
 <div align="center">
 
@@ -358,7 +379,9 @@ npm install
 
 **Creator & Developer**
 
-<br>
+<sub>🤝 Co-operated by **Hanzala Ahmad**</sub>
+
+<br><br>
 
 [![GitHub](https://img.shields.io/badge/GitHub-themalik--g-000?style=for-the-badge&logo=github&logoColor=white&labelColor=7B2FF7)](https://github.com/themalik-g)
 [![YouTube](https://img.shields.io/badge/YouTube-@problem_solved-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=000)](https://youtube.com/@problem_solved)
@@ -367,6 +390,21 @@ npm install
 </td>
 </tr>
 </table>
+
+<br>
+
+<!-- CONTRIBUTIONS DROPDOWN -->
+<details>
+<summary><b>🤝 Click to see --- Special Contributions & Acknowledgements</b></summary>
+
+<br>
+
+| Contributor | Role & Recognition |
+| :--- | :--- |
+| **DGXeon** | Author & Creator of the **Cheems Bot** base system |
+| **TechGod134** | Core Assistance, Testing & Feature Development |
+
+</details>
 
 </div>
 
