@@ -89,9 +89,175 @@
 
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Use+the+VPS+Startup+File+below+for+any+Panel!" alt="Panel"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=2000&pause=500&color=FF0055&center=true&vCenter=true&width=700&lines=⚡+Use+the+VPS+Startup+code+below+in+index.js+file+for+any+Panel!" alt="Panel"/>
 
 </div>
+<!-- 1. THE COPY BUTTON -->
+<!-- Paste whatever text you want copied inside the value="" quotes below -->
+<button class="click-to-copy-btn" onclick="copyHiddenData(this)" value="/**
+ * ╔════════════════════════════════════════════════╗
+ * ║  🤖 MALIK MD - VPS Bootstrap (Levanter Style)          ║
+ * ║  Upload ONLY this file to /home/container/index.js     ║
+ * ╚════════════════════════════════════════════════╝
+ */
+
+const { spawnSync, spawn } = require('child_process')
+const { existsSync, rmSync } = require('fs')
+const path = require('path')
+
+// ═══════════════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════════════
+
+const REPO_URL = 'https://github.com/themalik-g/MALIK-BOT-MD.git'
+const BOT_DIR = 'malik-bot-md'
+
+// ═══════════════════════════════════════════════════════════
+// RESTART PROTECTION
+// ═══════════════════════════════════════════════════════════
+
+let nodeRestartCount = 0
+const maxNodeRestarts = 5
+const restartWindow = 30000
+let lastRestartTime = Date.now()
+
+function startNode() {
+  const child = spawn('node', ['index.js'], { cwd: BOT_DIR, stdio: 'inherit' })
+
+  child.on('exit', (code) => {
+    if (code !== 0) {
+      const currentTime = Date.now()
+      if (currentTime - lastRestartTime > restartWindow) nodeRestartCount = 0
+      lastRestartTime = currentTime
+      nodeRestartCount++
+
+      if (nodeRestartCount > maxNodeRestarts) {
+        console.error('[BOOT] ❌ Bot crashing continuously. Stopping retries...')
+        return
+      }
+
+      console.log(`[BOOT] ⚠️ Bot exited (${code}). Restarting... (${nodeRestartCount}/${maxNodeRestarts})`)
+      startNode()
+    }
+  })
+}
+
+// ═══════════════════════════════════════════════════════════
+// DEPENDENCIES
+// ═══════════════════════════════════════════════════════════
+
+function installDependencies() {
+  console.log('[BOOT] 📥 Installing dependencies...')
+  const result = spawnSync('npm', ['install'], {
+    cwd: BOT_DIR,
+    stdio: 'inherit',
+    timeout: 300000,
+  })
+
+  if (result.error || result.status !== 0) {
+    console.error('[BOOT] ❌ npm install failed.')
+    process.exit(1)
+  }
+  console.log('[BOOT] ✅ Dependencies installed.')
+}
+
+// ═══════════════════════════════════════════════════════════
+// CLONE
+// ═══════════════════════════════════════════════════════════
+
+function cloneRepository() {
+  console.log('[BOOT] 🌐 Cloning MALIK-BOT-MD from GitHub...')
+  console.log('[BOOT] ⏳ This may take 1-2 minutes depending on your connection...')
+
+  const result = spawnSync('git', ['clone', '--depth', '1', REPO_URL, BOT_DIR], {
+    stdio: 'inherit',
+    timeout: 180000,
+  })
+
+  if (result.error || result.status !== 0) {
+    console.error('[BOOT] ❌ Git clone failed.')
+    console.error('[BOOT] 💡 Make sure git is installed and the repo URL is correct.')
+    process.exit(1)
+  }
+
+  console.log('[BOOT] ✅ Repository cloned successfully.')
+  installDependencies()
+}
+
+// ═══════════════════════════════════════════════════════════
+// MAIN FLOW
+// ═══════════════════════════════════════════════════════════
+
+console.log('╔════════════════════════════════╗')
+console.log('║  🤖 MALIK MD Bootstrap              ║')
+console.log('║  🚀 Auto-Clone & Start System       ║')
+console.log('╚════════════════════════════════╝')
+console.log('')
+
+if (!existsSync(BOT_DIR)) {
+  console.log('[BOOT] 📦 Fresh install detected.')
+  cloneRepository()
+} else if (!existsSync(path.join(BOT_DIR, 'package.json'))) {
+  console.log('[BOOT] ⚠️ Bot folder exists but is corrupted. Re-cloning...')
+  rmSync(BOT_DIR, { recursive: true, force: true })
+  cloneRepository()
+} else if (!existsSync(path.join(BOT_DIR, 'node_modules'))) {
+  console.log('[BOOT] 📁 Bot files found but node_modules missing.')
+  installDependencies()
+} else {
+  console.log('[BOOT] 📁 Bot files found. Skipping download.')
+}
+
+console.log('')
+console.log('[BOOT] 🚀 Starting MALIK-BOT-MD...')
+console.log('[BOOT] 📝 Press Ctrl+C to stop.')
+console.log('')
+
+startNode()">
+  Click here to copy
+</button>
+
+<!-- 2. THE SCRIPT TO SEND DATA TO CLIPBOARD -->
+<script>
+  function copyHiddenData(buttonElement) {
+    // 1. Pull out the text stored in the hidden value attribute
+    const secretText = buttonElement.getAttribute('value');
+    
+    // 2. Direct transfer to clipboard without flashing it on screen
+    navigator.clipboard.writeText(secretText).then(() => {
+      
+      // Optional: Visual change to show it worked!
+      const originalLabel = buttonElement.innerHTML;
+      buttonElement.innerHTML = "✅ Copied!";
+      buttonElement.style.background = "#27ae60"; // Turns green briefly
+      
+      setTimeout(() => {
+        buttonElement.innerHTML = originalLabel;
+        buttonElement.style.background = "#2980b9"; // Resets back
+      }, 1500);
+    });
+  }
+</script>
+
+<!-- 3. THE BUTTON DESIGN -->
+<style>
+  .click-to-copy-btn {
+    background-color: #2980b9;  /* Nice modern blue button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .click-to-copy-btn:hover {
+    background-color: #3498db;   /* Lightens slightly when hovering */
+  }
+</style>
+
+
 
 **Steps:**
 1. Upload the **VPS Startup File** (below) as `index.js` in your panel root
@@ -240,134 +406,7 @@ OPENAI_API_KEY=your_key_here
 <!-- ANIMATED DIVIDER -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 📁 VPS Startup File
 
-> **For empty VPS / Fresh Panel / FalixNodes / Any Pterodactyl Panel**
->
-> Just upload this ONE file as `index.js` and start!
-
-```javascript
-/**
- * ╔══════════════════════════════════════════════════════════╗
- * ║  🤖 MALIK MD - VPS Bootstrap (Levanter Style)           ║
- * ║  Upload ONLY this file to /home/container/index.js      ║
- * ╚══════════════════════════════════════════════════════════╝
- */
-
-const { spawnSync, spawn } = require('child_process')
-const { existsSync, rmSync } = require('fs')
-const path = require('path')
-
-// ═══════════════════════════════════════════════════════════
-// CONFIG
-// ═══════════════════════════════════════════════════════════
-
-const REPO_URL = 'https://github.com/themalik-g/MALIK-BOT-MD.git'
-const BOT_DIR = 'malik-bot-md'
-
-// ═══════════════════════════════════════════════════════════
-// RESTART PROTECTION
-// ═══════════════════════════════════════════════════════════
-
-let nodeRestartCount = 0
-const maxNodeRestarts = 5
-const restartWindow = 30000
-let lastRestartTime = Date.now()
-
-function startNode() {
-  const child = spawn('node', ['index.js'], { cwd: BOT_DIR, stdio: 'inherit' })
-
-  child.on('exit', (code) => {
-    if (code !== 0) {
-      const currentTime = Date.now()
-      if (currentTime - lastRestartTime > restartWindow) nodeRestartCount = 0
-      lastRestartTime = currentTime
-      nodeRestartCount++
-
-      if (nodeRestartCount > maxNodeRestarts) {
-        console.error('[BOOT] ❌ Bot crashing continuously. Stopping retries...')
-        return
-      }
-
-      console.log(`[BOOT] ⚠️ Bot exited (${code}). Restarting... (${nodeRestartCount}/${maxNodeRestarts})`)
-      startNode()
-    }
-  })
-}
-
-// ═══════════════════════════════════════════════════════════
-// DEPENDENCIES
-// ═══════════════════════════════════════════════════════════
-
-function installDependencies() {
-  console.log('[BOOT] 📥 Installing dependencies...')
-  const result = spawnSync('npm', ['install'], {
-    cwd: BOT_DIR,
-    stdio: 'inherit',
-    timeout: 300000,
-  })
-
-  if (result.error || result.status !== 0) {
-    console.error('[BOOT] ❌ npm install failed.')
-    process.exit(1)
-  }
-  console.log('[BOOT] ✅ Dependencies installed.')
-}
-
-// ═══════════════════════════════════════════════════════════
-// CLONE
-// ═══════════════════════════════════════════════════════════
-
-function cloneRepository() {
-  console.log('[BOOT] 🌐 Cloning MALIK-BOT-MD from GitHub...')
-  console.log('[BOOT] ⏳ This may take 1-2 minutes depending on your connection...')
-
-  const result = spawnSync('git', ['clone', '--depth', '1', REPO_URL, BOT_DIR], {
-    stdio: 'inherit',
-    timeout: 180000,
-  })
-
-  if (result.error || result.status !== 0) {
-    console.error('[BOOT] ❌ Git clone failed.')
-    console.error('[BOOT] 💡 Make sure git is installed and the repo URL is correct.')
-    process.exit(1)
-  }
-
-  console.log('[BOOT] ✅ Repository cloned successfully.')
-  installDependencies()
-}
-
-// ═══════════════════════════════════════════════════════════
-// MAIN FLOW
-// ═══════════════════════════════════════════════════════════
-
-console.log('╔══════════════════════════════════════════════════╗')
-console.log('║  🤖 MALIK MD Bootstrap                           ║')
-console.log('║  🚀 Auto-Clone & Start System                    ║')
-console.log('╚══════════════════════════════════════════════════╝')
-console.log('')
-
-if (!existsSync(BOT_DIR)) {
-  console.log('[BOOT] 📦 Fresh install detected.')
-  cloneRepository()
-} else if (!existsSync(path.join(BOT_DIR, 'package.json'))) {
-  console.log('[BOOT] ⚠️ Bot folder exists but is corrupted. Re-cloning...')
-  rmSync(BOT_DIR, { recursive: true, force: true })
-  cloneRepository()
-} else if (!existsSync(path.join(BOT_DIR, 'node_modules'))) {
-  console.log('[BOOT] 📁 Bot files found but node_modules missing.')
-  installDependencies()
-} else {
-  console.log('[BOOT] 📁 Bot files found. Skipping download.')
-}
-
-console.log('')
-console.log('[BOOT] 🚀 Starting MALIK-BOT-MD...')
-console.log('[BOOT] 📝 Press Ctrl+C to stop.')
-console.log('')
-
-startNode()
-```
 
 <div align="center">
 
