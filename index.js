@@ -289,7 +289,7 @@ async function startXeonBotInc() {
         })
 
         XeonBotInc.getName = (jid, withoutContact = false) => {
-            const id = XeonBotInc.decodeJid(jid)  // ← FIXED: was undeclared global
+            const id = XeonBotInc.decodeJid(jid)
             withoutContact = XeonBotInc.withoutContact || withoutContact
             let v
             if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
@@ -341,7 +341,7 @@ async function startXeonBotInc() {
         }
 
         // ═══════════════════════════════════════════════════
-        // CONNECTION HANDLER (Stable reconnection with backoff)
+        // CONNECTION HANDLER (Fixed: Auto re-auth on 401/session loss)
         // ═══════════════════════════════════════════════════
 
         XeonBotInc.ev.on('connection.update', async (s) => {
@@ -405,21 +405,39 @@ async function startXeonBotInc() {
 
             if (connection === 'close') {
                 const statusCode = lastDisconnect?.error?.output?.statusCode
-                const shouldReconnect = statusCode !== DisconnectReason.loggedOut
+                const reason = lastDisconnect?.error?.message || "Unknown"
+                console.log(chalk.red(`Connection closed. Status: ${statusCode}, Reason: ${reason}`))
 
-                console.log(chalk.red(`Connection closed. Status: ${statusCode}, reconnecting: ${shouldReconnect}`))
+                // FIX: Treat 401/badSession/multideviceMismatch as "needs re-auth", not permanent stop
+                const needsReauth = [
+                    DisconnectReason.loggedOut,      // 401
+                    DisconnectReason.badSession,     // 500
+                    DisconnectReason.multideviceMismatch // 411
+                ].includes(statusCode)
 
-                if (statusCode === DisconnectReason.loggedOut || statusCode === 401) {
+                if (needsReauth) {
+                    console.log(chalk.yellow('🔄 Session invalid or logged out. Clearing auth and restarting for fresh pairing...'))
                     try {
                         rmSync('./session', { recursive: true, force: true })
-                        console.log(chalk.yellow('Session folder deleted. Please re-authenticate.'))
+                        console.log(chalk.green('✅ Session folder cleared.'))
                     } catch (error) {
                         console.error('Error deleting session:', error)
                     }
-                    console.log(chalk.red('Session logged out. Please re-authenticate.'))
                     isConnecting = false
+                    // FIX: Restart bot to trigger fresh pairing code / QR
+                    const delayMs = getReconnectDelay()
+                    console.log(chalk.yellow(`🔄 Restarting for re-authentication in ${(delayMs/1000).toFixed(1)}s...`))
+                    setTimeout(() => {
+                        startXeonBotInc().catch(err => {
+                            console.error('Reconnection failed:', err)
+                            isConnecting = false
+                        })
+                    }, delayMs)
                     return
                 }
+
+                // For other disconnects (restartRequired, connectionLost, etc.), reconnect normally
+                const shouldReconnect = statusCode !== DisconnectReason.loggedOut
 
                 if (shouldReconnect) {
                     if (isConnecting) {
