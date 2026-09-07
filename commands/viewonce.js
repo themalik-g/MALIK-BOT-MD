@@ -1,25 +1,82 @@
-const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
+const { downloadMediaMessage } = require('@crysnovax/baileys');
 
 async function viewonceCommand(sock, chatId, message) {
-    // Extract quoted imageMessage or videoMessage from your structure
     const quoted = message.message?.extendedTextMessage?.contextInfo?.quotedMessage;
-    const quotedImage = quoted?.imageMessage;
-    const quotedVideo = quoted?.videoMessage;
+    if (!quoted) {
+        return sock.sendMessage(chatId, { text: '❌ Reply to a view‑once message with .vv' }, { quoted: message });
+    }
 
-    if (quotedImage && quotedImage.viewOnce) {
-        // Download and send the image
-        const stream = await downloadContentFromMessage(quotedImage, 'image');
-        let buffer = Buffer.from([]);
-        for await (const chunk of stream) buffer = Buffer.concat([buffer, chunk]);
-        await sock.sendMessage(chatId, { image: buffer, fileName: 'media.jpg', caption: quotedImage.caption || '' }, { quoted: message });
-    } else if (quotedVideo && quotedVideo.viewOnce) {
-        // Download and send the video
-        const stream = await downloadContentFromMessage(quotedVideo, 'video');
-        let buffer = Buffer.from([]);
-        for await (const chunk of stream) buffer = Buffer.concat([buffer, chunk]);
-        await sock.sendMessage(chatId, { video: buffer, fileName: 'media.mp4', caption: quotedVideo.caption || '' }, { quoted: message });
-    } else {
-        await sock.sendMessage(chatId, { text: '❌ Please reply to a view-once image or video.' }, { quoted: message });
+    let mediaMsg = null;
+    let msgType = null;
+    if (quoted.viewOnceMessageV2) {
+        mediaMsg = quoted.viewOnceMessageV2.message;
+        msgType = 'viewOnceMessageV2';
+    } else if (quoted.viewOnceMessageV3) {
+        mediaMsg = quoted.viewOnceMessageV3.message;
+        msgType = 'viewOnceMessageV3';
+    } else if (quoted.viewOnceMessage) {
+        mediaMsg = quoted.viewOnceMessage.message;
+        msgType = 'viewOnceMessage';
+    } else if (quoted.imageMessage?.viewOnce) {
+        mediaMsg = quoted.imageMessage;
+        msgType = 'imageMessage';
+    } else if (quoted.videoMessage?.viewOnce) {
+        mediaMsg = quoted.videoMessage;
+        msgType = 'videoMessage';
+    }
+
+    if (!mediaMsg) {
+        return sock.sendMessage(chatId, { text: '❌ Not a view‑once media.' }, { quoted: message });
+    }
+
+    try {
+        const fakeMsg = {
+            key: {
+                remoteJid: chatId,
+                id: message.key.id,
+                participant: message.key.participant
+            },
+            message: msgType.startsWith('viewOnce')
+                ? { [msgType]: { message: mediaMsg } }
+                : { [msgType]: mediaMsg }
+        };
+
+        const buffer = await downloadMediaMessage(
+            fakeMsg,
+            'buffer',
+            {},
+            { logger: console }
+        );
+
+        if (!buffer) throw new Error('Download failed');
+
+        let mime = 'document';
+        let ext = 'bin';
+        if (mediaMsg.imageMessage) {
+            mime = 'image';
+            ext = 'jpg';
+        } else if (mediaMsg.videoMessage) {
+            mime = 'video';
+            ext = 'mp4';
+        } else if (mediaMsg.audioMessage) {
+            mime = 'audio';
+            ext = 'mp3';
+        } else {
+            mime = 'document';
+            ext = 'bin';
+        }
+
+        await sock.sendMessage(chatId, {
+            [mime]: buffer,
+            fileName: `viewonce.${ext}`,
+            caption: '📸 View‑once media saved!'
+        }, { quoted: message });
+
+    } catch (error) {
+        console.error('ViewOnce error:', error);
+        await sock.sendMessage(chatId, {
+            text: '❌ Failed to download view‑once media.'
+        }, { quoted: message });
     }
 }
 
