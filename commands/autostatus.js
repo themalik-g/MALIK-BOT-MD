@@ -138,34 +138,21 @@ function isStatusReactionEnabled() {
     }
 }
 
-// Function to react to status using proper method
+// --- FIXED: reactToStatus uses sendMessage with react object ---
 async function reactToStatus(sock, statusKey) {
+    if (!isStatusReactionEnabled()) return;
     try {
-        if (!isStatusReactionEnabled()) {
-            return;
-        }
-
-        // Use the proper relayMessage method for status reactions
-        await sock.relayMessage(
-            'status@broadcast',
-            {
-                reactionMessage: {
-                    key: {
-                        remoteJid: 'status@broadcast',
-                        id: statusKey.id,
-                        participant: statusKey.participant || statusKey.remoteJid,
-                        fromMe: false
-                    },
-                    text: '💚'
+        await sock.sendMessage('status@broadcast', {
+            react: {
+                text: '💚',
+                key: {
+                    remoteJid: 'status@broadcast',
+                    id: statusKey.id,
+                    participant: statusKey.participant || statusKey.remoteJid,
+                    fromMe: false
                 }
-            },
-            {
-                messageId: statusKey.id,
-                statusJidList: [statusKey.remoteJid, statusKey.participant || statusKey.remoteJid]
             }
-        );
-
-        // Removed success log - only keep errors
+        });
     } catch (error) {
         console.error('❌ Error reacting to status:', error.message);
     }
