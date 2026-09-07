@@ -220,7 +220,7 @@ From: @${senderName}`,
     }
 }
 
-// Handle message deletion
+// Handle message deletion (revoke)
 async function handleMessageRevocation(sock, revocationMessage) {
     try {
         const config = loadAntideleteConfig();
@@ -334,8 +334,49 @@ async function handleMessageRevocation(sock, revocationMessage) {
     }
 }
 
+// --- NEW: handleMessageEdit for detecting edited messages ---
+async function handleMessageEdit(sock, update) {
+    const config = loadAntideleteConfig();
+    if (!config.enabled) return;
+
+    const jid = update.key.remoteJid;
+    const editedText = update.update?.edited;
+    if (!editedText) return;
+
+    const sender = update.key.participant || update.key.remoteJid;
+    const ownerNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net';
+
+    let destinationJid = ownerNumber;
+    if (config.mode === 'g') {
+        destinationJid = jid;
+    }
+
+    const time = new Date().toLocaleString('en-US', {
+        timeZone: 'Asia/Kolkata',
+        hour12: true,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+
+    const text = `✏️ *MESSAGE EDITED*\n\n` +
+        `👤 Sender: @${sender.split('@')[0]}\n` +
+        `📝 New Text: ${editedText}\n` +
+        `🕒 Time: ${time}`;
+
+    await sock.sendMessage(destinationJid, {
+        text,
+        mentions: [sender]
+    });
+}
+
+// Exports updated to include handleMessageEdit
 module.exports = {
     handleAntideleteCommand,
     handleMessageRevocation,
-    storeMessage
+    storeMessage,
+    handleMessageEdit
 };
