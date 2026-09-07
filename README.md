@@ -25,19 +25,10 @@
 
 <br>
 
-## <img src="https://img.shields.io/badge/⚠️_IMPORTANT-WARNINGS-DC2626?style=for-the-badge&logo=alert&logoColor=white&labelColor=0D47A1" height="34"/>
+## ⚠️ IMPORTANT WARNINGS
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/⚠️_IMPORTANT-0D47A1?style=for-the-badge&logoColor=white" alt="Important" style="pointer-events: none;">
-  <img src="https://img.shields.io/badge/WARNINGS-DC2626?style=for-the-badge&logoColor=white" alt="Warnings" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>👆 CLICK HERE TO EXPAND</h3></summary>
 
 <br>
 
@@ -71,7 +62,7 @@
 
 <br>
 
-## <img src="https://img.shields.io/badge/🚀_DEPLOYMENT-METHODS-0D47A1?style=for-the-badge&logo=rocket&logoColor=white&labelColor=DC2626" height="34"/>
+## 🚀 DEPLOYMENT METHODS
 
 <div align="center">
 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=2500&pause=500&color=0D47A1&center=true&vCenter=true&width=500&lines=Choose+Your+Platform" alt="Choose Platform"/>
@@ -81,19 +72,11 @@
 
 <!-- FIRST METHOD OPEN BY DEFAULT -->
 <details open>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/🎮_Game_/_Discord_Bot_Panel_(Pterodactyl)-0D47A1?style=for-the-badge&logoColor=white" alt="Panel" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND / COLLAPSE</b>
-</p>
-
-</summary>
+<summary><h3>🎮 Game / Discord Bot Panel (Pterodactyl) — 👆 CLICK TO EXPAND</h3></summary>
 
 <br>
 
-> **⚡ <font color="#0D47A1">Recommended RAM:</font>** <font color="#DC2626">1GB+</font>
+> **⚡ Recommended RAM:** 1GB+
 
 <div align="center">
 
@@ -115,20 +98,11 @@
 
 <!-- MANUAL CODE FALLBACK DROPDOWN -->
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=for-the-badge&logoColor=white" alt="Manual" style="pointer-events: none;">
-  <img src="https://img.shields.io/badge/Only_if_unable_to_download_file-0D47A1?style=for-the-badge&logoColor=white" alt="Fallback" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>📋 MANUAL CODE — Only if unable to download file — 👆 CLICK TO EXPAND</h3></summary>
 
 <br>
 
-> **📋 Copy the code below, create a new file named `index.js` in your VPS panel root (`/home/container/`), and paste it there:**
+> **Copy the code below, create a new file named `index.js` in your VPS panel root (`/home/container/`), and paste it there:**
 
 ```javascript
 /**
@@ -210,11 +184,11 @@ startNode()
 
 <br>
 
-<sub>💡 <b><font color="#DC2626">Open above</font> <font color="#0D47A1">for manual file method</font></b></sub>
+<sub>💡 <b>Open above for manual file method</b></sub>
 
 <br><br>
 
-#### 🛠️ <font color="#0D47A1">Quick</font> <font color="#DC2626">Setup Steps</font>
+#### 🛠️ Quick Setup Steps
 1. Download `index.js` above or copy its source code from the dropdown.
 2. Upload / create the file in your panel root (`/home/container/`).
 3. Ensure it is named exactly `index.js`.
@@ -226,38 +200,30 @@ startNode()
 <br>
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/🖥️_VPS_/_Dedicated_Server_(Ubuntu/Debian)-DC2626?style=for-the-badge&logoColor=white" alt="VPS" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>🖥️ VPS / Dedicated Server (Ubuntu/Debian) — 👆 CLICK TO EXPAND</h3></summary>
 
 <br>
 
-> **⚡ <font color="#0D47A1">Recommended for:</font>** <font color="#DC2626">24/7 stable hosting & highest performance</font>
+> **⚡ Recommended for:** 24/7 stable hosting & highest performance
 
-#### <font color="#0D47A1">Step 1:</font> <font color="#DC2626">Update & Install Dependencies</font>
+#### Step 1: Update & Install Dependencies
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y git nodejs npm ffmpeg imagemagick webp
 ```
 
-#### <font color="#0D47A1">Step 2:</font> <font color="#DC2626">Clone Repository</font>
+#### Step 2: Clone Repository
 ```bash
 git clone https://github.com/themalik-g/MALIK-BOT-MD.git
 cd MALIK-BOT-MD
 ```
 
-#### <font color="#0D47A1">Step 3:</font> <font color="#DC2626">Install Packages</font>
+#### Step 3: Install Packages
 ```bash
 npm install
 ```
 
-#### <font color="#0D47A1">Step 4:</font> <font color="#DC2626">Configure Settings</font>
+#### Step 4: Configure Settings
 Edit `settings.js` or create a `config.env`:
 ```javascript
 module.exports = {
@@ -268,12 +234,12 @@ module.exports = {
 }
 ```
 
-#### <font color="#0D47A1">Step 5:</font> <font color="#DC2626">Start the Bot</font>
+#### Step 5: Start the Bot
 ```bash
 node index.js
 ```
 
-#### <font color="#0D47A1">🔄 Keep Alive 24/7</font> <font color="#10B981">with PM2</font>
+#### 🔄 Keep Alive 24/7 with PM2
 ```bash
 npm install -g pm2
 pm2 start index.js --name "malik-md"
@@ -286,15 +252,7 @@ pm2 startup
 <br>
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/☁️_Heroku_Deployment_(One--Click/Manual)-7B2FF7?style=for-the-badge&logoColor=white" alt="Heroku" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>☁️ Heroku Deployment (One-Click/Manual) — 👆 CLICK TO EXPAND</h3></summary>
 
 <br>
 
@@ -304,7 +262,7 @@ pm2 startup
 </a>
 </div>
 
-#### <font color="#0D47A1">Manual</font> <font color="#DC2626">Setup Steps:</font>
+#### Manual Setup Steps:
 1. Fork this repository to your GitHub profile.
 2. Create a new app in your Heroku Dashboard.
 3. Connect your forked GitHub repository under the **Deploy** tab.
@@ -319,15 +277,7 @@ pm2 startup
 <br>
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/🚂_Railway_Cloud_Deployment-0B0B0B?style=for-the-badge&logoColor=white" alt="Railway" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>🚂 Railway Cloud Deployment — 👆 CLICK TO EXPAND</h3></summary>
 
 <br>
 
@@ -337,7 +287,7 @@ pm2 startup
 </a>
 </div>
 
-#### <font color="#0D47A1">Railway</font> <font color="#DC2626">Manual Steps:</font>
+#### Railway Manual Steps:
 1. Sign in to [Railway](https://railway.app).
 2. Click **New Project** → **Deploy from GitHub repo**.
 3. Pick your forked bot repository.
@@ -349,19 +299,11 @@ pm2 startup
 <br>
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/🎨_Render_Web_Service-46E3B7?style=for-the-badge&logoColor=black&labelColor=000000" alt="Render" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>🎨 Render Web Service — 👆 CLICK TO EXPAND</h3></summary>
 
 <br>
 
-#### <font color="#0D47A1">Render</font> <font color="#DC2626">Quick Steps:</font>
+#### Render Quick Steps:
 1. Go to [Render](https://render.com) and create a free account.
 2. Select **New +** → **Web Service**.
 3. Connect your bot's repository.
@@ -376,19 +318,11 @@ pm2 startup
 <br>
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/📱_Termux_Mobile_Deployment_(Android)-000000?style=for-the-badge&logoColor=white" alt="Termux" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>📱 Termux Mobile Deployment (Android) — 👆 CLICK TO EXPAND</h3></summary>
 
 <br>
 
-> **⚠️ <font color="#DC2626">Note:</font>** <font color="#0D47A1">Recommended for mobile testing and temporary runs only.</font>
+> **⚠️ Note:** Recommended for mobile testing and temporary runs only.
 
 ```bash
 pkg update && pkg upgrade -y
@@ -409,23 +343,14 @@ node index.js
 
 <br>
 
-## <img src="https://img.shields.io/badge/🔧_ENVIRONMENT-VARIABLES-0D47A1?style=for-the-badge&logo=gear&logoColor=white&labelColor=DC2626" height="34"/>
+## 🔧 ENVIRONMENT VARIABLES
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/🔧_ENVIRONMENT-ff0000?style=for-the-badge&logoColor=white" alt="Environment" style="pointer-events: none;">
-  <img src="https://img.shields.io/badge/VARIABLES-0033cc?style=for-the-badge&logoColor=white" alt="Variables" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>👆 CLICK HERE TO EXPAND</h3></summary>
 
 <br>
 
-> <font color="#0D47A1">Set these in your</font> <code>.env</code> <font color="#0D47A1">file or panel</font> <font color="#DC2626">Environment / Config Vars</font> <font color="#0D47A1">tab:</font>
+> Set these in your `.env` file or panel **Environment / Config Vars** tab:
 
 ```env
 # ==========================================
@@ -463,33 +388,15 @@ OPENAI_API_KEY=your_key_here
 
 <br>
 
-## <img src="https://img.shields.io/badge/🛠️_TROUBLESHOOTING-CENTER-10B981?style=for-the-badge&logo=tools&logoColor=white&labelColor=0D47A1" height="34"/>
+## 🛠️ TROUBLESHOOTING CENTER
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/🛠️_TROUBLESHOOTING-0D47A1?style=for-the-badge&logoColor=white" alt="Troubleshooting" style="pointer-events: none;">
-  <img src="https://img.shields.io/badge/CENTER-10B981?style=for-the-badge&logoColor=white" alt="Center" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>👆 CLICK HERE TO EXPAND</h3></summary>
 
 <br>
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=for-the-badge&logoColor=white" alt="Solution" style="pointer-events: none;">
-  <img src="https://img.shields.io/badge/Session_folder_deleted._Please_re--authenticate.-DC2626?style=for-the-badge&logoColor=white" alt="Issue" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h4>✅ Session folder deleted. Please re-authenticate. — 👆 CLICK TO EXPAND</h4></summary>
 
 <br>
 
@@ -504,16 +411,7 @@ This happens when WhatsApp terminates the session (status 401).
 <br>
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=for-the-badge&logoColor=white" alt="Solution" style="pointer-events: none;">
-  <img src="https://img.shields.io/badge/Cannot_find_module_'@whiskeysockets/baileys'-DC2626?style=for-the-badge&logoColor=white" alt="Issue" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h4>✅ Cannot find module '@whiskeysockets/baileys' — 👆 CLICK TO EXPAND</h4></summary>
 
 <br>
 
@@ -528,16 +426,7 @@ npm install
 <br>
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=for-the-badge&logoColor=white" alt="Solution" style="pointer-events: none;">
-  <img src="https://img.shields.io/badge/Bot_connects_but_does_not_respond_to_commands-0D47A1?style=for-the-badge&logoColor=white" alt="Issue" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h4>✅ Bot connects but does not respond to commands — 👆 CLICK TO EXPAND</h4></summary>
 
 <br>
 
@@ -550,16 +439,7 @@ npm install
 <br>
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=for-the-badge&logoColor=white" alt="Solution" style="pointer-events: none;">
-  <img src="https://img.shields.io/badge/RAM_too_high_or_process_killed-DC2626?style=for-the-badge&logoColor=white" alt="Issue" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h4>✅ RAM too high or process killed — 👆 CLICK TO EXPAND</h4></summary>
 
 <br>
 
@@ -572,16 +452,7 @@ npm install
 <br>
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=for-the-badge&logoColor=white" alt="Solution" style="pointer-events: none;">
-  <img src="https://img.shields.io/badge/QR_Code_not_displaying_/_Pairing_code_issue-0D47A1?style=for-the-badge&logoColor=white" alt="Issue" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h4>✅ QR Code not displaying / Pairing code issue — 👆 CLICK TO EXPAND</h4></summary>
 
 <br>
 
@@ -599,7 +470,7 @@ npm install
 
 <br>
 
-## <img src="https://img.shields.io/badge/👑_OWNER-&_TEAM-DC2626?style=for-the-badge&logoColor=white&labelColor=0D47A1" height="34"/>
+## 👑 OWNER & TEAM
 
 <div align="center">
 
@@ -612,7 +483,7 @@ npm install
 
 <br>
 
-**<font color="#0D47A1" size="4">Creator & Lead Developer</font>**
+**Creator & Lead Developer**
 
 <br><br>
 <a href="https://github.com/themalik-g"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/></a>
@@ -627,7 +498,7 @@ npm install
 
 <br>
 
-**<font color="#DC2626" size="3">Co-Operated & Developed With</font>**
+**Co-Operated & Developed With**
 
 <br><br>
 <a href="https://instagram.com/hnzla.ahmad"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/></a>
@@ -640,22 +511,14 @@ npm install
 
 <!-- CONTRIBUTIONS DROPDOWN -->
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/🤝_Special_Contributions_&_Acknowledgements-DC2626?style=for-the-badge&logoColor=white" alt="Contributions" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>🤝 Special Contributions & Acknowledgements — 👆 CLICK TO EXPAND</h3></summary>
 
 <br>
 
-| <font color="#0D47A1">Contributor</font> | <font color="#DC2626">Role & Recognition</font> |
+| Contributor | Role & Recognition |
 | :--- | :--- |
-| **<font color="#0D47A1">DGXeon</font>** | Author & Creator of the **Cheems Bot** base system |
-| **<font color="#DC2626">TechGod134</font>** | Core Assistance, Testing & Feature Development |
+| **DGXeon** | Author & Creator of the **Cheems Bot** base system |
+| **TechGod134** | Core Assistance, Testing & Feature Development |
 
 </details>
 
@@ -668,18 +531,10 @@ npm install
 
 <br>
 
-## <img src="https://img.shields.io/badge/📜_LICENSE-AGREEMENT-0D47A1?style=for-the-badge&logoColor=white&labelColor=DC2626" height="34"/>
+## 📜 LICENSE AGREEMENT
 
 <details>
-<summary>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/📄_MIT_License_Terms-DC2626?style=for-the-badge&logoColor=white" alt="License" style="pointer-events: none;">
-  <br><br>
-  <b>👆 CLICK TO EXPAND</b>
-</p>
-
-</summary>
+<summary><h3>📄 MIT License Terms — 👆 CLICK TO EXPAND</h3></summary>
 
 <br>
 
@@ -716,6 +571,6 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 <br>
 
-**<font color="#0D47A1">Made with</font> <font color="#DC2626">❤️</font> <font color="#0D47A1">by</font> <font color="#DC2626">MALIK MEHTAB</font>**
+**Made with ❤️ by MALIK MEHTAB**
 
 </div>
