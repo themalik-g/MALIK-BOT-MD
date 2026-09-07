@@ -1,8 +1,8 @@
-const sharp = require('sharp');
 const fs = require('fs');
 const fsPromises = require('fs/promises');
 const fse = require('fs-extra');
 const path = require('path');
+const { exec } = require('child_process');
 const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
 
 const tempDir = './temp';
@@ -35,7 +35,12 @@ const convertStickerToImage = async (sock, quotedMessage, chatId) => {
         for await (const chunk of stream) buffer = Buffer.concat([buffer, chunk]);
 
         await fsPromises.writeFile(stickerFilePath, buffer);
-        await sharp(stickerFilePath).toFormat('png').toFile(outputImagePath);
+        await new Promise((resolve, reject) => {
+            exec(`ffmpeg -y -i "${stickerFilePath}" "${outputImagePath}"`, (error) => {
+                if (error) reject(error);
+                else resolve();
+            });
+        });
 
         const imageBuffer = await fsPromises.readFile(outputImagePath);
         await sock.sendMessage(chatId, { image: imageBuffer, caption: 'Here is the converted image!' });

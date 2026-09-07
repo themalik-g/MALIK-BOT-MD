@@ -25,7 +25,8 @@ const {
     jidDecode,
     jidNormalizedUser,
     makeCacheableSignalKeyStore,
-    delay
+    delay,
+    Browsers
 } = require("@whiskeysockets/baileys")
 const NodeCache = require("node-cache")
 const pino = require("pino")
@@ -98,8 +99,9 @@ memoryTimer = setInterval(() => {
             setTimeout(() => {
                 const stillUsed = process.memoryUsage().rss / 1024 / 1024
                 if (stillUsed > STABILITY_CONFIG.ramCriticalThreshold) {
-                    console.log(`💀 RAM still critical. Graceful restart...`)
-                    process.exit(1)
+                    console.log(`💀 RAM still critical (${stillUsed.toFixed(1)}MB). Cleaning store memory cache...`)
+                    if (store && store.messages) store.messages = {}
+                    if (global.gc) global.gc()
                 }
             }, 5000)
         } else if (used > STABILITY_CONFIG.ramWarningThreshold) {
@@ -113,7 +115,8 @@ memoryTimer = setInterval(() => {
 // BOT CONFIG
 // ═══════════════════════════════════════════════════════════
 
-let phoneNumber = "923257853673"
+let phoneNumber = settings.ownerNumber || "923257853673"
+global.phoneNumber = phoneNumber
 let owner = []
 try {
     owner = JSON.parse(fs.readFileSync('./data/owner.json'))
@@ -128,7 +131,7 @@ const useMobile = process.argv.includes("--mobile")
 const rl = process.stdin.isTTY ? readline.createInterface({ input: process.stdin, output: process.stdout }) : null
 const question = (text) => {
     if (rl) return new Promise((resolve) => rl.question(text, resolve))
-    return Promise.resolve(settings.ownerNumber || phoneNumber)
+    return Promise.resolve(global.phoneNumber || settings.ownerNumber || phoneNumber)
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -178,14 +181,13 @@ async function startXeonBotInc() {
         const XeonBotInc = makeWASocket({
             version,
             logger: pino({ level: 'silent' }),
-            // FIX: Do NOT set printQRInTerminal when using pairing code (deprecated in v7)
-            browser: ["Ubuntu", "Chrome", "20.0.04"],
+            browser: Browsers.ubuntu("Chrome"),
             auth: {
                 creds: state.creds,
                 keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
             },
             markOnlineOnConnect: true,
-            generateHighQualityLinkPreview: true,
+            generateHighQualityLinkPreview: false,
             syncFullHistory: false,
             getMessage: async (key) => {
                 let jid = jidNormalizedUser(key.remoteJid)
@@ -313,37 +315,46 @@ async function startXeonBotInc() {
         XeonBotInc.ev.on('connection.update', async (s) => {
             const { connection, lastDisconnect, qr } = s
 
-            // FIX: Request pairing code ONLY when qr event fires and socket is ready
+            // Request pairing code ONLY when qr event fires and socket is ready
             if (qr && !XeonBotInc.authState.creds.registered && !pairingRequested) {
                 pairingRequested = true
                 if (useMobile) {
                     console.log(chalk.red('Cannot use pairing code with mobile api'))
-                    process.exit(1)
+                    return
                 }
 
-                let phoneNumber
-                if (!!global.phoneNumber) {
-                    phoneNumber = global.phoneNumber
-                } else {
-                    phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 6281376552730 (without + or spaces) : `)))
+                // Short delay to allow socket stream state to normalize and avoid 515 stream error
+                await delay(3000)
+
+                let numToPair = global.phoneNumber || settings.ownerNumber || "923257853673"
+                if (rl && process.stdin.isTTY) {
+                    try {
+                        const inputNum = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 923257853673 (without + or spaces) [Press Enter for default: ${numToPair}]: `)))
+                        if (inputNum && inputNum.trim().length > 0) {
+                            numToPair = inputNum.trim()
+                        }
+                    } catch (e) {
+                        console.error('Error reading input, falling back to default number:', e)
+                    }
                 }
 
-                phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
+                numToPair = numToPair.replace(/[^0-9]/g, '')
 
-                const pn = require('awesome-phonenumber');
-                if (!pn('+' + phoneNumber).isValid()) {
-                    console.log(chalk.red('Invalid phone number. Please enter your full international number without + or spaces.'));
-                    process.exit(1);
+                const pn = require('awesome-phonenumber')
+                if (!pn('+' + numToPair).isValid()) {
+                    console.log(chalk.red(`Invalid phone number (+${numToPair}). Please enter valid international number without + or spaces.`))
+                    pairingRequested = false
+                    return
                 }
 
                 try {
-                    let code = await XeonBotInc.requestPairingCode(phoneNumber)
+                    let code = await XeonBotInc.requestPairingCode(numToPair)
                     code = code?.match(/.{1,4}/g)?.join("-") || code
-                    console.log(chalk.black(chalk.bgGreen(`Your Pairing Code : `)), chalk.black(chalk.white(code)))
-                    console.log(chalk.yellow(`\nPlease enter this code in your WhatsApp app:\n1. Open WhatsApp\n2. Go to Settings > Linked Devices\n3. Tap "Link a Device"\n4. Enter the code shown above`))
+                    console.log(chalk.black(chalk.bgGreen(` Your Pairing Code : `)), chalk.black(chalk.white(` ${code} `)))
+                    console.log(chalk.yellow(`\nPlease enter this code in your WhatsApp app:\n1. Open WhatsApp\n2. Go to Settings > Linked Devices\n3. Tap "Link a Device" -> "Link with phone number instead"\n4. Enter code: ${code}`))
                 } catch (error) {
-                    console.error('Error requesting pairing code:', error)
-                    console.log(chalk.red('Failed to get pairing code. Please check your phone number and try again.'))
+                    console.error('Error requesting pairing code:', error?.message || error)
+                    console.log(chalk.red('Failed to get pairing code. Will retry on next connection attempt.'))
                     pairingRequested = false // Allow retry
                 }
             }
@@ -556,14 +567,13 @@ process.on('SIGINT', () => {
 // START
 // ═══════════════════════════════════════════════════════════
 
-startXeonBotInc().catch(error => {
-    console.error('Fatal startup error:', error)
-    const delayMs = getReconnectDelay()
-    console.log(chalk.yellow(`Retrying startup in ${(delayMs/1000).toFixed(1)}s...`))
-    setTimeout(() => {
-        startXeonBotInc().catch(err => {
-            console.error('Second startup attempt failed:', err)
-            process.exit(1)
-        })
-    }, delayMs)
-})
+function keepBotAlive() {
+    startXeonBotInc().catch(error => {
+        console.error('Startup error:', error?.message || error)
+        const delayMs = getReconnectDelay()
+        console.log(chalk.yellow(`Retrying startup in ${(delayMs/1000).toFixed(1)}s...`))
+        setTimeout(() => keepBotAlive(), delayMs)
+    })
+}
+
+keepBotAlive()

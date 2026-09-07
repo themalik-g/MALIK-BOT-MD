@@ -1,6 +1,7 @@
 const { downloadMediaMessage } = require('@whiskeysockets/baileys');
-const axios = require('axios');
-const sharp = require('sharp');
+const fs = require('fs');
+const path = require('path');
+const { exec } = require('child_process');
 
 async function blurCommand(sock, chatId, message, quotedMessage) {
     try {
@@ -43,19 +44,24 @@ async function blurCommand(sock, chatId, message, quotedMessage) {
             return;
         }
 
-        // Resize and optimize image
-        const resizedImage = await sharp(imageBuffer)
-            .resize(800, 800, { // Resize to max 800x800
-                fit: 'inside',
-                withoutEnlargement: true
-            })
-            .jpeg({ quality: 80 }) // Convert to JPEG with 80% quality
-            .toBuffer();
+        const tmpDir = path.join(process.cwd(), 'temp');
+        if (!fs.existsSync(tmpDir)) fs.mkdirSync(tmpDir, { recursive: true });
 
-        // Apply blur effect directly using sharp
-        const blurredImage = await sharp(resizedImage)
-            .blur(10) // Blur radius of 10
-            .toBuffer();
+        const inputPath = path.join(tmpDir, `blur_in_${Date.now()}.jpg`);
+        const outputPath = path.join(tmpDir, `blur_out_${Date.now()}.jpg`);
+
+        fs.writeFileSync(inputPath, imageBuffer);
+
+        await new Promise((resolve, reject) => {
+            exec(`ffmpeg -y -i "${inputPath}" -vf "scale='min(800,iw)':'min(800,ih)':force_original_aspect_ratio=decrease,gblur=sigma=10" "${outputPath}"`, (error) => {
+                if (error) reject(error);
+                else resolve();
+            });
+        });
+
+        const blurredImage = fs.readFileSync(outputPath);
+
+        try { fs.unlinkSync(inputPath); fs.unlinkSync(outputPath); } catch (e) {}
 
         // Send the blurred image
         await sock.sendMessage(chatId, {
