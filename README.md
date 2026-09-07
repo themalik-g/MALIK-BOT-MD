@@ -28,7 +28,16 @@
 ## <img src="https://img.shields.io/badge/⚠️_IMPORTANT-WARNINGS-DC2626?style=for-the-badge&logo=alert&logoColor=white&labelColor=0D47A1" height="34"/>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/⚠️_Important_Warnings_&_Safe_Usage_Guidelines-DC2626?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/⚠️_IMPORTANT-0D47A1?style=for-the-badge&logoColor=white" alt="Important" style="pointer-events: none;">
+  <img src="https://img.shields.io/badge/WARNINGS-DC2626?style=for-the-badge&logoColor=white" alt="Warnings" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -72,7 +81,15 @@
 
 <!-- FIRST METHOD OPEN BY DEFAULT -->
 <details open>
-<summary><b><img src="https://img.shields.io/badge/OPEN-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/🎮_Game_/_Discord_Bot_Panel_(Pterodactyl)-0D47A1?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/🎮_Game_/_Discord_Bot_Panel_(Pterodactyl)-0D47A1?style=for-the-badge&logoColor=white" alt="Panel" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND / COLLAPSE</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -98,7 +115,16 @@
 
 <!-- MANUAL CODE FALLBACK DROPDOWN -->
 <details>
-<summary><b><img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=flat-square"/> <img src="https://img.shields.io/badge/Only_if_unable_to_download_file-0D47A1?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/MANUAL_CODE-DC2626?style=for-the-badge&logoColor=white" alt="Manual" style="pointer-events: none;">
+  <img src="https://img.shields.io/badge/Only_if_unable_to_download_file-0D47A1?style=for-the-badge&logoColor=white" alt="Fallback" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -114,7 +140,7 @@ const { spawnSync, spawn } = require('child_process')
 const { existsSync, rmSync } = require('fs')
 const path = require('path')
 
-const REPO_URL = '[https://github.com/themalik-g/MEHTAB-MD.git](https://github.com/themalik-g/MEHTAB-MD.git)'
+const REPO_URL = 'https://github.com/themalik-g/MEHTAB-MD.git'
 const BOT_DIR = 'mehtab-md'
 
 let nodeRestartCount = 0
@@ -200,7 +226,15 @@ startNode()
 <br>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/🖥️_VPS_/_Dedicated_Server_(Ubuntu/Debian)-DC2626?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/🖥️_VPS_/_Dedicated_Server_(Ubuntu/Debian)-DC2626?style=for-the-badge&logoColor=white" alt="VPS" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -214,7 +248,7 @@ sudo apt install -y git nodejs npm ffmpeg imagemagick webp
 
 #### <font color="#0D47A1">Step 2:</font> <font color="#DC2626">Clone Repository</font>
 ```bash
-git clone [https://github.com/themalik-g/MALIK-BOT-MD.git](https://github.com/themalik-g/MALIK-BOT-MD.git)
+git clone https://github.com/themalik-g/MALIK-BOT-MD.git
 cd MALIK-BOT-MD
 ```
 
@@ -252,14 +286,22 @@ pm2 startup
 <br>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/☁️_Heroku_Deployment_(One--Click/Manual)-7B2FF7?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/☁️_Heroku_Deployment_(One--Click/Manual)-7B2FF7?style=for-the-badge&logoColor=white" alt="Heroku" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
 <div align="center">
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/themalik-g/MALIK-BOT-MD)
-
+<a href="https://heroku.com/deploy?template=https://github.com/themalik-g/MALIK-BOT-MD">
+  <img src="https://img.shields.io/badge/Deploy_to_Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white"/>
+</a>
 </div>
 
 #### <font color="#0D47A1">Manual</font> <font color="#DC2626">Setup Steps:</font>
@@ -277,14 +319,22 @@ pm2 startup
 <br>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/🚂_Railway_Cloud_Deployment-0B0B0B?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/🚂_Railway_Cloud_Deployment-0B0B0B?style=for-the-badge&logoColor=white" alt="Railway" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
 <div align="center">
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/themalik-g/MALIK-BOT-MD)
-
+<a href="https://railway.app/new/template?template=https://github.com/themalik-g/MALIK-BOT-MD">
+  <img src="https://img.shields.io/badge/Deploy_to_Railway-0B0B0B?style=for-the-badge&logo=railway&logoColor=white"/>
+</a>
 </div>
 
 #### <font color="#0D47A1">Railway</font> <font color="#DC2626">Manual Steps:</font>
@@ -299,7 +349,15 @@ pm2 startup
 <br>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/🎨_Render_Web_Service-46E3B7?style=flat-square&labelColor=000000"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/🎨_Render_Web_Service-46E3B7?style=for-the-badge&logoColor=black&labelColor=000000" alt="Render" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -318,7 +376,15 @@ pm2 startup
 <br>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/📱_Termux_Mobile_Deployment_(Android)-000000?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/📱_Termux_Mobile_Deployment_(Android)-000000?style=for-the-badge&logoColor=white" alt="Termux" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -328,7 +394,7 @@ pm2 startup
 pkg update && pkg upgrade -y
 pkg install git nodejs ffmpeg imagemagick -y
 
-git clone [https://github.com/themalik-g/MALIK-BOT-MD.git](https://github.com/themalik-g/MALIK-BOT-MD.git)
+git clone https://github.com/themalik-g/MALIK-BOT-MD.git
 cd MALIK-BOT-MD
 npm install
 node index.js
@@ -346,7 +412,16 @@ node index.js
 ## <img src="https://img.shields.io/badge/🔧_ENVIRONMENT-VARIABLES-0D47A1?style=for-the-badge&logo=gear&logoColor=white&labelColor=DC2626" height="34"/>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/⚙️_Environment_Variables_Configuration_(.env)-DC2626?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/🔧_ENVIRONMENT-ff0000?style=for-the-badge&logoColor=white" alt="Environment" style="pointer-events: none;">
+  <img src="https://img.shields.io/badge/VARIABLES-0033cc?style=for-the-badge&logoColor=white" alt="Variables" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -391,12 +466,30 @@ OPENAI_API_KEY=your_key_here
 ## <img src="https://img.shields.io/badge/🛠️_TROUBLESHOOTING-CENTER-10B981?style=for-the-badge&logo=tools&logoColor=white&labelColor=0D47A1" height="34"/>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/🛠️_All_Common_Issues_&_Solutions-10B981?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/🛠️_TROUBLESHOOTING-0D47A1?style=for-the-badge&logoColor=white" alt="Troubleshooting" style="pointer-events: none;">
+  <img src="https://img.shields.io/badge/CENTER-10B981?style=for-the-badge&logoColor=white" alt="Center" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/Session_folder_deleted._Please_re--authenticate.-DC2626?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=for-the-badge&logoColor=white" alt="Solution" style="pointer-events: none;">
+  <img src="https://img.shields.io/badge/Session_folder_deleted._Please_re--authenticate.-DC2626?style=for-the-badge&logoColor=white" alt="Issue" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -411,7 +504,16 @@ This happens when WhatsApp terminates the session (status 401).
 <br>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/Cannot_find_module_'@whiskeysockets/baileys'-DC2626?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=for-the-badge&logoColor=white" alt="Solution" style="pointer-events: none;">
+  <img src="https://img.shields.io/badge/Cannot_find_module_'@whiskeysockets/baileys'-DC2626?style=for-the-badge&logoColor=white" alt="Issue" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -426,7 +528,16 @@ npm install
 <br>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/Bot_connects_but_does_not_respond_to_commands-0D47A1?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=for-the-badge&logoColor=white" alt="Solution" style="pointer-events: none;">
+  <img src="https://img.shields.io/badge/Bot_connects_but_does_not_respond_to_commands-0D47A1?style=for-the-badge&logoColor=white" alt="Issue" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -439,7 +550,16 @@ npm install
 <br>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/RAM_too_high_or_process_killed-DC2626?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=for-the-badge&logoColor=white" alt="Solution" style="pointer-events: none;">
+  <img src="https://img.shields.io/badge/RAM_too_high_or_process_killed-DC2626?style=for-the-badge&logoColor=white" alt="Issue" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -452,7 +572,16 @@ npm install
 <br>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=flat-square"/> <img src="https://img.shields.io/badge/QR_Code_not_displaying_/_Pairing_code_issue-0D47A1?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/✅_SOLUTION-10B981?style=for-the-badge&logoColor=white" alt="Solution" style="pointer-events: none;">
+  <img src="https://img.shields.io/badge/QR_Code_not_displaying_/_Pairing_code_issue-0D47A1?style=for-the-badge&logoColor=white" alt="Issue" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -486,11 +615,9 @@ npm install
 **<font color="#0D47A1" size="4">Creator & Lead Developer</font>**
 
 <br><br>
-
-[![GitHub](https://img.shields.io/badge/GitHub-themalik--g-000?style=for-the-badge&logo=github&logoColor=white&labelColor=0D47A1)](https://github.com/themalik-g)
-[![YouTube](https://img.shields.io/badge/YouTube-@problem_solved-DC2626?style=for-the-badge&logo=youtube&logoColor=white&labelColor=000)](https://youtube.com/@problem_solved)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-Contact-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000)](https://wa.me/923257853673)
-
+<a href="https://github.com/themalik-g"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/></a>
+<a href="https://youtube.com/@problem_solved"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white"/></a>
+<a href="https://wa.me/923257853673"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
 <br><br>
 <hr style="border: 0; height: 1px; background-color: #0D47A1;">
 <br>
@@ -503,10 +630,8 @@ npm install
 **<font color="#DC2626" size="3">Co-Operated & Developed With</font>**
 
 <br><br>
-
-[![Instagram](https://img.shields.io/badge/Instagram-@hnzla.ahmad-E4405F?style=for-the-badge&logo=instagram&logoColor=white&labelColor=000000)](https://instagram.com/hnzla.ahmad)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-+92_326_7982864-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000000)](https://wa.me/923267982864)
-
+<a href="https://instagram.com/hnzla.ahmad"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/></a>
+<a href="https://wa.me/923267982864"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
 </td>
 </tr>
 </table>
@@ -515,7 +640,15 @@ npm install
 
 <!-- CONTRIBUTIONS DROPDOWN -->
 <details>
-<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/🤝_Special_Contributions_&_Acknowledgements-DC2626?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/🤝_Special_Contributions_&_Acknowledgements-DC2626?style=for-the-badge&logoColor=white" alt="Contributions" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
@@ -538,7 +671,15 @@ npm install
 ## <img src="https://img.shields.io/badge/📜_LICENSE-AGREEMENT-0D47A1?style=for-the-badge&logoColor=white&labelColor=DC2626" height="34"/>
 
 <details>
-<summary><b><img src="https://img.shields.io/badge/CLICK_TO_SEE-0D47A1?style=flat-square"/> <img src="https://img.shields.io/badge/📄_MIT_License_Terms-DC2626?style=flat-square"/></b></summary>
+<summary>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/📄_MIT_License_Terms-DC2626?style=for-the-badge&logoColor=white" alt="License" style="pointer-events: none;">
+  <br><br>
+  <b>👆 CLICK TO EXPAND</b>
+</p>
+
+</summary>
 
 <br>
 
