@@ -62,6 +62,7 @@ let isConnecting = false
 let gcTimer = null
 let storeTimer = null
 let memoryTimer = null
+let pairingRequested = false // FIX: prevent duplicate pairing requests
 
 // ═══════════════════════════════════════════════════════════
 // STORE INITIALIZATION
@@ -122,7 +123,6 @@ try {
 
 global.botname = "MEHTAB-MD"
 global.themeemoji = "•"
-const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
 const useMobile = process.argv.includes("--mobile")
 
 const rl = process.stdin.isTTY ? readline.createInterface({ input: process.stdin, output: process.stdout }) : null
@@ -168,6 +168,7 @@ async function startXeonBotInc() {
         return
     }
     isConnecting = true
+    pairingRequested = false // Reset on each start
 
     try {
         let { version, isLatest } = await fetchLatestBaileysVersion()
@@ -177,7 +178,7 @@ async function startXeonBotInc() {
         const XeonBotInc = makeWASocket({
             version,
             logger: pino({ level: 'silent' }),
-            printQRInTerminal: !pairingCode,
+            // FIX: Do NOT set printQRInTerminal when using pairing code (deprecated in v7)
             browser: ["Ubuntu", "Chrome", "20.0.04"],
             auth: {
                 creds: state.creds,
@@ -306,28 +307,35 @@ async function startXeonBotInc() {
         XeonBotInc.serializeM = (m) => smsg(XeonBotInc, m, store)
 
         // ═══════════════════════════════════════════════════
-        // PAIRING CODE
+        // CONNECTION HANDLER (Fixed: pairing code + reconnection)
         // ═══════════════════════════════════════════════════
 
-        if (pairingCode && !XeonBotInc.authState.creds.registered) {
-            if (useMobile) throw new Error('Cannot use pairing code with mobile api')
+        XeonBotInc.ev.on('connection.update', async (s) => {
+            const { connection, lastDisconnect, qr } = s
 
-            let phoneNumber
-            if (!!global.phoneNumber) {
-                phoneNumber = global.phoneNumber
-            } else {
-                phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 6281376552730 (without + or spaces) : `)))
-            }
+            // FIX: Request pairing code ONLY when qr event fires and socket is ready
+            if (qr && !XeonBotInc.authState.creds.registered && !pairingRequested) {
+                pairingRequested = true
+                if (useMobile) {
+                    console.log(chalk.red('Cannot use pairing code with mobile api'))
+                    process.exit(1)
+                }
 
-            phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
+                let phoneNumber
+                if (!!global.phoneNumber) {
+                    phoneNumber = global.phoneNumber
+                } else {
+                    phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 6281376552730 (without + or spaces) : `)))
+                }
 
-            const pn = require('awesome-phonenumber');
-            if (!pn('+' + phoneNumber).isValid()) {
-                console.log(chalk.red('Invalid phone number. Please enter your full international number without + or spaces.'));
-                process.exit(1);
-            }
+                phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
 
-            setTimeout(async () => {
+                const pn = require('awesome-phonenumber');
+                if (!pn('+' + phoneNumber).isValid()) {
+                    console.log(chalk.red('Invalid phone number. Please enter your full international number without + or spaces.'));
+                    process.exit(1);
+                }
+
                 try {
                     let code = await XeonBotInc.requestPairingCode(phoneNumber)
                     code = code?.match(/.{1,4}/g)?.join("-") || code
@@ -336,19 +344,8 @@ async function startXeonBotInc() {
                 } catch (error) {
                     console.error('Error requesting pairing code:', error)
                     console.log(chalk.red('Failed to get pairing code. Please check your phone number and try again.'))
+                    pairingRequested = false // Allow retry
                 }
-            }, 3000)
-        }
-
-        // ═══════════════════════════════════════════════════
-        // CONNECTION HANDLER (Fixed: Auto re-auth on 401/session loss)
-        // ═══════════════════════════════════════════════════
-
-        XeonBotInc.ev.on('connection.update', async (s) => {
-            const { connection, lastDisconnect, qr } = s
-
-            if (qr) {
-                console.log(chalk.yellow('📱 QR Code generated. Please scan with WhatsApp.'))
             }
 
             if (connection === 'connecting') {
@@ -423,6 +420,7 @@ async function startXeonBotInc() {
                     } catch (error) {
                         console.error('Error deleting session:', error)
                     }
+                    pairingRequested = false // Reset for fresh pairing
                     isConnecting = false
                     // FIX: Restart bot to trigger fresh pairing code / QR
                     const delayMs = getReconnectDelay()
