@@ -1,6 +1,12 @@
 /**
  * MEHTAB-MD - A WhatsApp Bot (Ultra-Light Edition)
  * Copyright (c) 2024 MALIK MEHTAB
+ * 
+ * FIXES:
+ * - Pairing 515 error: waits for socket readiness, asks number only once.
+ * - Reconnection "already in progress" fixed by resetting flags properly.
+ * - Anti-edit detection (messages.update) integrated.
+ * - Clean reconnection backoff.
  */
 require('./settings')
 const { Boom } = require('@hapi/boom')
@@ -19,7 +25,7 @@ const {
     jidNormalizedUser,
     makeCacheableSignalKeyStore,
     delay
-} = require("@whiskeysockets/baileys")
+} = require("@crysnovax/baileys") // Updated fork for HD PP support
 const NodeCache = require("node-cache")
 const pino = require("pino")
 const readline = require("readline")
@@ -27,6 +33,8 @@ const { rmSync, existsSync } = require('fs')
 
 // Import lightweight store
 const store = require('./lib/lightweight_store')
+// Anti-edit handler
+const { handleMessageEdit } = require('./commands/antidelete')
 
 // ═══════════════════════════════════════════════════════════
 // STABILITY & MEMORY CONFIG (256MB VPS TUNED)
@@ -58,6 +66,7 @@ let storeTimer = null
 let memoryTimer = null
 let pairingRequested = false
 let socketReady = false
+let pairingInProgress = false // prevent multiple pairing attempts
 
 // ═══════════════════════════════════════════════════════════
 // STORE INITIALIZATION
@@ -165,6 +174,7 @@ async function startXeonBotInc() {
     isConnecting = true
     pairingRequested = false
     socketReady = false
+    pairingInProgress = false
 
     try {
         let { version, isLatest } = await fetchLatestBaileysVersion()
@@ -233,11 +243,36 @@ async function startXeonBotInc() {
             }
         })
 
+        // ═══════════════════════════════════════════════════
+        // MESSAGES.UPDATE – for anti‑edit and revocation
+        // ═══════════════════════════════════════════════════
         XeonBotInc.ev.on('messages.update', async (updates) => {
-            try {
-                await handleMessageUpdates(XeonBotInc, updates)
-            } catch (err) {
-                console.error("Error in messages.update:", err)
+            for (const update of updates) {
+                try {
+                    if (update.update?.edited) {
+                        await handleMessageEdit(XeonBotInc, update)
+                    }
+                    // Existing revocation (delete) handler from main.js
+                    if (update.update?.revoke) {
+                        // Build a fake message object for handleMessageRevocation
+                        const fakeMsg = {
+                            message: {
+                                protocolMessage: {
+                                    key: update.key,
+                                    type: 0
+                                }
+                            },
+                            participant: update.key.participant || update.key.remoteJid,
+                            key: update.key
+                        }
+                        // We can call the handler from main.js or from antidelete.js
+                        // We'll import handleMessageRevocation and use it
+                        const { handleMessageRevocation } = require('./commands/antidelete')
+                        await handleMessageRevocation(XeonBotInc, fakeMsg)
+                    }
+                } catch (err) {
+                    console.error("Error in messages.update:", err)
+                }
             }
         })
 
@@ -291,9 +326,10 @@ async function startXeonBotInc() {
         XeonBotInc.ev.on('connection.update', async (s) => {
             const { connection, lastDisconnect, qr } = s
 
-            // FIX: Wait for socket to be ready before requesting pairing code
-            if (qr && !XeonBotInc.authState.creds.registered && !pairingRequested) {
+            // --- PAIRING CODE LOGIC (only once) ---
+            if (qr && !XeonBotInc.authState.creds.registered && !pairingRequested && !pairingInProgress) {
                 pairingRequested = true
+                pairingInProgress = true
 
                 if (useMobile) {
                     console.log(chalk.red('Cannot use pairing code with mobile api'))
@@ -328,6 +364,7 @@ async function startXeonBotInc() {
                     console.error('Error requesting pairing code:', error)
                     console.log(chalk.red('Failed to get pairing code. Retrying...'))
                     pairingRequested = false
+                    pairingInProgress = false
                 }
             }
 
@@ -338,6 +375,7 @@ async function startXeonBotInc() {
             if (connection == "open") {
                 resetReconnectDelay()
                 socketReady = true
+                pairingInProgress = false // pairing done
                 console.log(chalk.magenta(` `))
                 console.log(chalk.yellow(`🌿Connected to => ` + JSON.stringify(XeonBotInc.user, null, 2)))
 
@@ -388,6 +426,10 @@ async function startXeonBotInc() {
                 const reason = lastDisconnect?.error?.message || "Unknown"
                 console.log(chalk.red(`Connection closed. Status: ${statusCode}, Reason: ${reason}`))
 
+                // Reset connection flag so we can reconnect
+                isConnecting = false
+                pairingInProgress = false
+
                 // FIX: 515 is restartRequired - treat as retryable, NOT fatal
                 const isRestartRequired = statusCode === 515 || statusCode === DisconnectReason.restartRequired
                 const needsReauth = [
@@ -405,13 +447,11 @@ async function startXeonBotInc() {
                         console.error('Error deleting session:', error)
                     }
                     pairingRequested = false
-                    isConnecting = false
                     const delayMs = getReconnectDelay()
                     console.log(chalk.yellow(`🔄 Restarting for re-authentication in ${(delayMs/1000).toFixed(1)}s...`))
                     setTimeout(() => {
                         startXeonBotInc().catch(err => {
                             console.error('Reconnection failed:', err)
-                            isConnecting = false
                         })
                     }, delayMs)
                     return
@@ -421,21 +461,16 @@ async function startXeonBotInc() {
                 const shouldReconnect = statusCode !== DisconnectReason.loggedOut
 
                 if (shouldReconnect || isRestartRequired) {
-                    if (isConnecting) {
-                        console.log(chalk.gray('⏳ Reconnection already scheduled, skipping...'))
-                        return
-                    }
                     const delayMs = getReconnectDelay()
                     console.log(chalk.yellow(`Reconnecting in ${(delayMs/1000).toFixed(1)}s... (crash #${crashCount})`))
-                    isConnecting = true
                     setTimeout(() => {
                         startXeonBotInc().catch(err => {
                             console.error('Reconnection failed:', err)
-                            isConnecting = false
                         })
                     }, delayMs)
                 } else {
-                    isConnecting = false
+                    console.log(chalk.red('Logged out. Exiting.'))
+                    process.exit(0)
                 }
             }
         })
@@ -494,6 +529,7 @@ async function startXeonBotInc() {
     } catch (error) {
         console.error('Error in startXeonBotInc:', error)
         isConnecting = false
+        pairingInProgress = false
         const delayMs = getReconnectDelay()
         console.log(chalk.yellow(`Restarting bot in ${(delayMs/1000).toFixed(1)}s due to error...`))
         setTimeout(() => {
