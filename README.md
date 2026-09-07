@@ -25,10 +25,26 @@
 
 <br>
 
+<!-- CLICK NOTICE -->
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=20&duration=3000&pause=800&color=00E5FF&center=true&vCenter=true&width=700&lines=👇+Click+any+section+below+to+expand+and+see+details" alt="Click Notice"/>
+</div>
+
+<br>
+
+<!-- DARK BLUE & RED HORIZONTAL DIVIDER LINE -->
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A192F,35:0D47A1,65:B91C1C,100:DC2626&height=6" width="100%"/>
+
+<br>
+
 ## ⚠️ IMPORTANT WARNINGS
 
 <details>
-<summary><h3>👆 CLICK HERE TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=600&lines=⚠️+IMPORTANT+WARNINGS" alt="Important Warnings" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -72,7 +88,11 @@
 
 <!-- FIRST METHOD OPEN BY DEFAULT -->
 <details open>
-<summary><h3>🎮 Game / Discord Bot Panel (Pterodactyl) — 👆 CLICK TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=00E5FF&center=true&vCenter=true&width=700&lines=🎮+Game+/+Discord+Bot+Panel+(Pterodactyl)" alt="Panel" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -98,7 +118,11 @@
 
 <!-- MANUAL CODE FALLBACK DROPDOWN -->
 <details>
-<summary><h3>📋 MANUAL CODE — Only if unable to download file — 👆 CLICK TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=24&duration=3000&pause=1000&color=FF6B6B&center=true&vCenter=true&width=600&lines=📋+MANUAL+CODE" alt="Manual Code" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -200,7 +224,11 @@ startNode()
 <br>
 
 <details>
-<summary><h3>🖥️ VPS / Dedicated Server (Ubuntu/Debian) — 👆 CLICK TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=700&lines=🖥️+VPS+/+Dedicated+Server+(Ubuntu/Debian)" alt="VPS" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -252,7 +280,11 @@ pm2 startup
 <br>
 
 <details>
-<summary><h3>☁️ Heroku Deployment (One-Click/Manual) — 👆 CLICK TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=7B2FF7&center=true&vCenter=true&width=600&lines=☁️+Heroku+Deployment" alt="Heroku" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -277,7 +309,11 @@ pm2 startup
 <br>
 
 <details>
-<summary><h3>🚂 Railway Cloud Deployment — 👆 CLICK TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=0B0B0B&center=true&vCenter=true&width=600&lines=🚂+Railway+Cloud+Deployment" alt="Railway" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -299,7 +335,11 @@ pm2 startup
 <br>
 
 <details>
-<summary><h3>🎨 Render Web Service — 👆 CLICK TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=46E3B7&center=true&vCenter=true&width=600&lines=🎨+Render+Web+Service" alt="Render" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -318,7 +358,11 @@ pm2 startup
 <br>
 
 <details>
-<summary><h3>📱 Termux Mobile Deployment (Android) — 👆 CLICK TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=000000&center=true&vCenter=true&width=600&lines=📱+Termux+Mobile+Deployment" alt="Termux" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -346,7 +390,11 @@ node index.js
 ## 🔧 ENVIRONMENT VARIABLES
 
 <details>
-<summary><h3>👆 CLICK HERE TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=00E5FF&center=true&vCenter=true&width=600&lines=🔧+ENVIRONMENT+VARIABLES" alt="Environment Variables" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -391,12 +439,20 @@ OPENAI_API_KEY=your_key_here
 ## 🛠️ TROUBLESHOOTING CENTER
 
 <details>
-<summary><h3>👆 CLICK HERE TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=🛠️+TROUBLESHOOTING+CENTER" alt="Troubleshooting" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
 <details>
-<summary><h4>✅ Session folder deleted. Please re-authenticate. — 👆 CLICK TO EXPAND</h4></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=700&lines=✅+Session+folder+deleted.+Re--authenticate." alt="Session Issue" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -411,7 +467,11 @@ This happens when WhatsApp terminates the session (status 401).
 <br>
 
 <details>
-<summary><h4>✅ Cannot find module '@whiskeysockets/baileys' — 👆 CLICK TO EXPAND</h4></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=700&lines=✅+Cannot+find+module+@whiskeysockets/baileys" alt="Module Issue" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -426,7 +486,11 @@ npm install
 <br>
 
 <details>
-<summary><h4>✅ Bot connects but does not respond to commands — 👆 CLICK TO EXPAND</h4></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=3000&pause=1000&color=0D47A1&center=true&vCenter=true&width=700&lines=✅+Bot+connects+but+does+not+respond" alt="No Response" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -439,7 +503,11 @@ npm install
 <br>
 
 <details>
-<summary><h4>✅ RAM too high or process killed — 👆 CLICK TO EXPAND</h4></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=700&lines=✅+RAM+too+high+or+process+killed" alt="RAM Issue" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -452,7 +520,11 @@ npm install
 <br>
 
 <details>
-<summary><h4>✅ QR Code not displaying / Pairing code issue — 👆 CLICK TO EXPAND</h4></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=3000&pause=1000&color=0D47A1&center=true&vCenter=true&width=700&lines=✅+QR+Code+not+displaying+/+Pairing+issue" alt="QR Issue" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -511,7 +583,11 @@ npm install
 
 <!-- CONTRIBUTIONS DROPDOWN -->
 <details>
-<summary><h3>🤝 Special Contributions & Acknowledgements — 👆 CLICK TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=24&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=700&lines=🤝+Special+Contributions+&+Acknowledgements" alt="Contributions" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
@@ -534,7 +610,11 @@ npm install
 ## 📜 LICENSE AGREEMENT
 
 <details>
-<summary><h3>📄 MIT License Terms — 👆 CLICK TO EXPAND</h3></summary>
+<summary>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=600&lines=📄+MIT+License+Terms" alt="License" style="pointer-events: none;"/>
+
+</summary>
 
 <br>
 
