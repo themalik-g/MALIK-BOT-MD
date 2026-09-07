@@ -1,25 +1,18 @@
-#!/bin/bash
-# 𝙈𝘼𝙇𝙄𝙆 𝙈𝘿 Startup Script
-# Owner: 𝙈𝘼𝙇𝙄𝙆 𝙈𝙀𝙃𝙏𝘼𝘽
+#!/bin/sh
+# Optimized startup script for 256MB VPS
 
-echo "🚀 Starting 𝙈𝘼𝙇𝙄𝙆 𝙈𝘿..."
+export NODE_ENV=production
+export NODE_OPTIONS="--max-old-space-size=192 --optimize-for-size --gc-interval=100"
 
-# Create logs directory
-mkdir -p logs
+echo "🚀 Starting MALIK-BOT-MD (Optimized for 256MB RAM)..."
+echo "   Node Options: $NODE_OPTIONS"
+echo ""
 
-# Install dependencies if needed
-if [ ! -d "node_modules" ]; then
-    echo "📦 Installing dependencies..."
-    npm install --legacy-peer-deps
-fi
+# Ensure directories exist
+mkdir -p session data temp assets logs
 
-# Start with PM2
-if command -v pm2 &> /dev/null; then
-    pm2 start ecosystem.config.js
-    pm2 save
-    echo "✅ 𝙈𝘼𝙇𝙄𝙆 𝙈𝘿 started with PM2"
-    echo "📊 Monitor: pm2 logs malik-md"
-else
-    echo "⚠️ PM2 not found. Starting with node..."
-    node --max-old-space-size=768 --optimize-for-size index.js
-fi
+# Run cleanup first
+node cleanup.js
+
+# Start bot
+exec node $NODE_OPTIONS index.js
