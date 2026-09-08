@@ -12,7 +12,7 @@
    - Replaced heavy `makeInMemoryStore` with `lightweight_store.js`
 
 2. **package.json** - Optimized dependencies:
-   - Kept `@whiskeysockets/baileys` at v7 (all latest features preserved)
+   - Updated to `toxic-baileys` (all latest WhatsApp features preserved)
    - Downgraded `jimp` from v1.6.0 to v0.22.12 (saves ~80MB RAM)
    - Removed `@ffmpeg/ffmpeg` (WASM ffmpeg, 50MB+ bloat)
    - Removed unused: cookie, events, performance-now, phin, qrcode-reader, request, set-cookie, tough-cookie
@@ -41,17 +41,17 @@
 8. **reset-session.js** (NEW) - Deletes session for fresh auth
 9. **start.sh** (NEW) - Optimized startup script
 
-### Feature Compatibility (Baileys v7 Kept)
+### Feature Compatibility (toxic-baileys)
 
 | Feature | Status |
 |---------|--------|
-| WhatsApp Story/Status reactions with custom emoji | ✅ Supported (v7) |
-| Edit messages | ✅ Supported (v7) |
-| View once messages | ✅ Supported (v7) |
+| WhatsApp Story/Status reactions with custom emoji | ✅ Supported |
+| Edit messages | ✅ Supported |
+| View once messages | ✅ Supported |
 | Pairing code auth | ✅ Fixed (515 error resolved) |
-| Poll messages | ✅ Supported (v7) |
-| Pin messages | ✅ Supported (v7) |
-| Group management | ✅ Supported (v7) |
+| Poll messages | ✅ Supported |
+| Pin messages | ✅ Supported |
+| Group management | ✅ Supported |
 
 ### How to Use
 

@@ -10,7 +10,7 @@
 <p>
   <img src="https://img.shields.io/badge/Version-2.0.0-0D47A1?style=for-the-badge&logo=github&logoColor=white&labelColor=000000"/>
   <img src="https://img.shields.io/badge/Node.js-18%2B-DC2626?style=for-the-badge&logo=node.js&logoColor=white&labelColor=000000"/>
-  <img src="https://img.shields.io/badge/Baileys-Latest-0D47A1?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000000"/>
+  <img src="https://img.shields.io/badge/toxic--baileys-Latest-0D47A1?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000000"/>
   <img src="https://img.shields.io/badge/License-MIT-DC2626?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=000000"/>
   <img src="https://img.shields.io/badge/Platform-WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=000000"/>
 </p>
@@ -469,7 +469,7 @@ This happens when WhatsApp terminates the session (status 401).
 <details>
 <summary>
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=700&lines=✅+Cannot+find+module+@whiskeysockets/baileys" alt="Module Issue" style="pointer-events: none;"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=22&duration=3000&pause=1000&color=DC2626&center=true&vCenter=true&width=700&lines=✅+Cannot+find+module+toxic-baileys" alt="Module Issue" style="pointer-events: none;"/>
 
 </summary>
 

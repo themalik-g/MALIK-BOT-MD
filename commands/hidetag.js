@@ -1,5 +1,5 @@
 const isAdmin = require('../lib/isAdmin');
-const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
+const { downloadContentFromMessage } = require('toxic-baileys');
 const fs = require('fs');
 const path = require('path');
 
