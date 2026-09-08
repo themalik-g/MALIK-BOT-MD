@@ -2,28 +2,12 @@
 const fs = require('fs');
 const path = require('path');
 
-// Redirect temp storage away from system /tmp
+// Redirect temp storage
 const customTemp = path.join(process.cwd(), 'temp');
 if (!fs.existsSync(customTemp)) fs.mkdirSync(customTemp, { recursive: true });
 process.env.TMPDIR = customTemp;
 process.env.TEMP = customTemp;
 process.env.TMP = customTemp;
-
-// Auto-cleaner every 3 hours
-setInterval(() => {
-    fs.readdir(customTemp, (err, files) => {
-        if (err) return;
-        for (const file of files) {
-            const filePath = path.join(customTemp, file);
-            fs.stat(filePath, (err, stats) => {
-                if (!err && Date.now() - stats.mtimeMs > 3 * 60 * 60 * 1000) {
-                    fs.unlink(filePath, () => { });
-                }
-            });
-        }
-    });
-    console.log('🧹 Temp folder auto-cleaned');
-}, 3 * 60 * 60 * 1000);
 
 const settings = require('./settings');
 require('./config.js');
@@ -38,12 +22,17 @@ const { isSudo } = require('./lib/index');
 const isOwnerOrSudo = require('./lib/isOwner');
 const { autotypingCommand, isAutotypingEnabled, handleAutotypingForMessage, handleAutotypingForCommand, showTypingAfterCommand } = require('./commands/autotyping');
 const { autoreadCommand, isAutoreadEnabled, handleAutoread } = require('./commands/autoread');
-
-// ─── NEW IMPORT ───────────────────────────────────────────────
 const { getAntiSticker } = require('./lib/index');
-// ──────────────────────────────────────────────────────────────
 
-// Command imports
+// ─── Import anti‑delete handlers ────────────────────────────
+const {
+    handleAntideleteCommand,
+    handleMessageRevocation,
+    storeMessage,
+    handleMessageEdit
+} = require('./commands/antidelete');
+
+// ─── Import all commands ────────────────────────────────────
 const tagAllCommand = require('./commands/tagall');
 const helpCommand = require('./commands/help');
 const banCommand = require('./commands/ban');
@@ -113,7 +102,6 @@ const { simpCommand } = require('./commands/simp');
 const { stupidCommand } = require('./commands/stupid');
 const stickerTelegramCommand = require('./commands/stickertelegram');
 const textmakerCommand = require('./commands/textmaker');
-const { handleAntideleteCommand, handleMessageRevocation, storeMessage } = require('./commands/antidelete');
 const clearTmpCommand = require('./commands/cleartmp');
 const setProfilePicture = require('./commands/setpp');
 const { setGroupDescription, setGroupName, setGroupPhoto } = require('./commands/groupmanage');
@@ -147,7 +135,7 @@ const { pmblockerCommand, readState: readPmBlockerState } = require('./commands/
 const settingsCommand = require('./commands/settings');
 const soraCommand = require('./commands/sora');
 
-// Global settings
+// ─── Global Settings ──────────────────────────────────────
 global.packname = settings.packname;
 global.author = settings.author;
 global.channelLink = "https://chat.whatsapp.com/FfJZtyvL1PM46pLmInoHcZ";
@@ -165,9 +153,7 @@ const channelInfo = {
     }
 };
 
-// ============================================================
-// MAIN HANDLER
-// ============================================================
+// ─── MAIN MESSAGE HANDLER ──────────────────────────────────
 async function handleMessages(sock, messageUpdate, printLog) {
     try {
         const { messages, type } = messageUpdate;
@@ -178,15 +164,6 @@ async function handleMessages(sock, messageUpdate, printLog) {
 
         // Handle autoread
         await handleAutoread(sock, message);
-
-        // Store for antidelete
-        if (message.message) storeMessage(sock, message);
-
-        // Handle message revocation
-        if (message.message?.protocolMessage?.type === 0) {
-            await handleMessageRevocation(sock, message);
-            return;
-        }
 
         const chatId = message.key.remoteJid;
         const senderId = message.key.participant || message.key.remoteJid;
@@ -251,7 +228,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
 
         if (!message.key.fromMe) incrementMessageCount(chatId, senderId);
 
-        // ===== ANTI-STICKER ===== (INSERTED HERE)
+        // ─── ANTI-STICKER ────────────────────────────────────
         if (isGroup && message.message?.stickerMessage) {
             const isEnabled = await getAntiSticker(chatId);
             if (isEnabled) {
@@ -262,7 +239,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
                         mentions: [senderId]
                     });
                 } catch (e) { console.error('Anti-sticker delete failed:', e); }
-                return; // Stop processing
+                return;
             }
         }
 
@@ -326,8 +303,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
             return;
         }
 
-        // ─── COMMAND SWITCH ──────────────────────────────────────────────
-        // (Full command switch from your original main.js – all commands preserved)
+        // ─── COMMAND SWITCH ──────────────────────────────────
         let commandExecuted = false;
 
         switch (true) {
@@ -912,7 +888,12 @@ async function handleMessages(sock, messageUpdate, printLog) {
                 await imagineCommand(sock, chatId, message);
                 break;
             case userMessage === '.jid':
-                await groupJidCommand(sock, chatId, message);
+                const groupJid = message.key.remoteJid;
+                if (!groupJid.endsWith('@g.us')) {
+                    await sock.sendMessage(chatId, { text: "❌ This command can only be used in a group." });
+                } else {
+                    await sock.sendMessage(chatId, { text: `✅ Group JID: ${groupJid}` }, { quoted: message });
+                }
                 break;
             case userMessage.startsWith('.autotyping'):
                 await autotypingCommand(sock, chatId, message);
@@ -1117,20 +1098,6 @@ async function handleMessages(sock, messageUpdate, printLog) {
             await showTypingAfterCommand(sock, chatId);
         }
 
-        async function groupJidCommand(sock, chatId, message) {
-            const groupJid = message.key.remoteJid;
-            if (!groupJid.endsWith('@g.us')) {
-                return await sock.sendMessage(chatId, {
-                    text: "❌ This command can only be used in a group."
-                });
-            }
-            await sock.sendMessage(chatId, {
-                text: `✅ Group JID: ${groupJid}`
-            }, {
-                quoted: message
-            });
-        }
-
         if (userMessage.startsWith('.')) {
             await addCommandReaction(sock, message);
         }
@@ -1145,9 +1112,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
     }
 }
 
-// ============================================================
-// GROUP PARTICIPANT HANDLER
-// ============================================================
+// ─── GROUP PARTICIPANT HANDLER ────────────────────────────
 async function handleGroupParticipantUpdate(sock, update) {
     try {
         const { id, participants, action, author } = update;
@@ -1178,15 +1143,17 @@ async function handleGroupParticipantUpdate(sock, update) {
     }
 }
 
-// ============================================================
-// STATUS HANDLER
-// ============================================================
+// ─── STATUS HANDLER ──────────────────────────────────────────
 async function handleStatus(sock, status) {
     await handleStatusUpdate(sock, status);
 }
 
+// ─── EXPORTS ──────────────────────────────────────────────────
 module.exports = {
     handleMessages,
     handleGroupParticipantUpdate,
-    handleStatus
+    handleStatus,
+    handleMessageRevocation,
+    handleMessageEdit,
+    storeMessage
 };
