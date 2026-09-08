@@ -1,12 +1,6 @@
 /**
  * MEHTAB-MD - A WhatsApp Bot (Ultra-Light Edition)
  * Copyright (c) 2024 MALIK MEHTAB
- * 
- * FIXES:
- * - Pairing 515 error: waits for socket readiness, uses old working pairing flow.
- * - Reconnection "already in progress" fixed by resetting flags properly.
- * - Anti-edit detection (messages.update) integrated.
- * - Clean reconnection backoff.
  */
 require('./settings')
 const { Boom } = require('@hapi/boom')
@@ -25,21 +19,17 @@ const {
     jidNormalizedUser,
     makeCacheableSignalKeyStore,
     delay
-} = require("toxic-baileys") // Updated fork for HD PP support
+} = require("toxic-baileys")
 const NodeCache = require("node-cache")
 const pino = require("pino")
 const readline = require("readline")
 const { rmSync, existsSync } = require('fs')
 
-// Import lightweight store
 const store = require('./lib/lightweight_store')
-// Anti-edit handler
 const { handleMessageEdit } = require('./commands/antidelete')
+const { startScheduler } = require('./lib/scheduler')
 
-// ═══════════════════════════════════════════════════════════
-// STABILITY & MEMORY CONFIG (256MB VPS TUNED)
-// ═══════════════════════════════════════════════════════════
-
+// ------------------ CONFIG ------------------
 const STABILITY_CONFIG = {
     maxReconnectDelay: 30000,
     initialReconnectDelay: 3000,
@@ -57,17 +47,7 @@ const STABILITY_CONFIG = {
     pairingDelay: 8000,
 }
 
-let crashCount = 0
-let lastCrashTime = Date.now()
-let reconnectDelay = STABILITY_CONFIG.initialReconnectDelay
-let isConnecting = false
-let gcTimer = null
-let storeTimer = null
-let memoryTimer = null
-
-// ═══════════════════════════════════════════════════════════
-// STORE INITIALIZATION
-// ═══════════════════════════════════════════════════════════
+let crashCount = 0, lastCrashTime = Date.now(), reconnectDelay = STABILITY_CONFIG.initialReconnectDelay, isConnecting = false, gcTimer = null, storeTimer = null, memoryTimer = null
 
 store.readFromFile()
 const settings = require('./settings')
@@ -76,18 +56,8 @@ storeTimer = setInterval(() => {
     try { store.writeToFile() } catch (e) { console.error('Store write error:', e.message) }
 }, settings.storeWriteInterval || STABILITY_CONFIG.storeWriteInterval)
 
-// ═══════════════════════════════════════════════════════════
-// MEMORY MANAGEMENT
-// ═══════════════════════════════════════════════════════════
-
 gcTimer = setInterval(() => {
-    try {
-        if (global.gc) {
-            global.gc()
-            const used = process.memoryUsage().rss / 1024 / 1024
-            if (used > 150) console.log(`🧹 GC | RAM: ${used.toFixed(1)}MB`)
-        }
-    } catch (e) {}
+    try { if (global.gc) { global.gc(); const used = process.memoryUsage().rss / 1024 / 1024; if (used > 150) console.log(`🧹 GC | RAM: ${used.toFixed(1)}MB`) } } catch (e) {}
 }, STABILITY_CONFIG.gcInterval)
 
 memoryTimer = setInterval(() => {
@@ -110,42 +80,23 @@ memoryTimer = setInterval(() => {
     } catch (e) {}
 }, STABILITY_CONFIG.healthCheckInterval)
 
-// ═══════════════════════════════════════════════════════════
-// BOT CONFIG
-// ═══════════════════════════════════════════════════════════
-
 let phoneNumber = "923257853673"
 let owner = []
-try {
-    owner = JSON.parse(fs.readFileSync('./data/owner.json'))
-} catch (e) {
-    owner = [phoneNumber]
-}
-
+try { owner = JSON.parse(fs.readFileSync('./data/owner.json')) } catch (e) { owner = [phoneNumber] }
 global.botname = "MEHTAB-MD"
 global.themeemoji = "•"
-const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")  // ← old working flag
+const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
 const useMobile = process.argv.includes("--mobile")
-
 const rl = process.stdin.isTTY ? readline.createInterface({ input: process.stdin, output: process.stdout }) : null
 const question = (text) => {
     if (rl) return new Promise((resolve) => rl.question(text, resolve))
     return Promise.resolve(settings.ownerNumber || phoneNumber)
 }
 
-// ═══════════════════════════════════════════════════════════
-// RECONNECTION BACKOFF
-// ═══════════════════════════════════════════════════════════
-
 function getReconnectDelay() {
     const now = Date.now()
-    if (now - lastCrashTime > STABILITY_CONFIG.crashResetInterval) {
-        crashCount = 0
-        reconnectDelay = STABILITY_CONFIG.initialReconnectDelay
-    }
-    crashCount++
-    lastCrashTime = now
-
+    if (now - lastCrashTime > STABILITY_CONFIG.crashResetInterval) { crashCount = 0; reconnectDelay = STABILITY_CONFIG.initialReconnectDelay }
+    crashCount++; lastCrashTime = now
     if (crashCount > STABILITY_CONFIG.maxConsecutiveCrashes) {
         console.log(`❌ Too many crashes (${crashCount}). Waiting ${(STABILITY_CONFIG.crashResetInterval/1000/60).toFixed(0)} min...`)
         return STABILITY_CONFIG.crashResetInterval
@@ -154,32 +105,19 @@ function getReconnectDelay() {
     reconnectDelay = Math.min(reconnectDelay * STABILITY_CONFIG.reconnectBackoffMultiplier, STABILITY_CONFIG.maxReconnectDelay)
     return delay
 }
-
-function resetReconnectDelay() {
-    crashCount = 0
-    reconnectDelay = STABILITY_CONFIG.initialReconnectDelay
-}
-
-// ═══════════════════════════════════════════════════════════
-// MAIN BOT FUNCTION
-// ═══════════════════════════════════════════════════════════
+function resetReconnectDelay() { crashCount = 0; reconnectDelay = STABILITY_CONFIG.initialReconnectDelay }
 
 async function startXeonBotInc() {
-    if (isConnecting) {
-        console.log('⏳ Connection already in progress, skipping...')
-        return
-    }
+    if (isConnecting) { console.log('⏳ Connection already in progress, skipping...'); return }
     isConnecting = true
-
     try {
         let { version, isLatest } = await fetchLatestBaileysVersion()
         const { state, saveCreds } = await useMultiFileAuthState(`./session`)
         const msgRetryCounterCache = new NodeCache({ stdTTL: 300, checkperiod: 60 })
-
         const XeonBotInc = makeWASocket({
             version,
             logger: pino({ level: 'silent' }),
-            printQRInTerminal: !pairingCode,  // ← old working logic
+            printQRInTerminal: !pairingCode,
             browser: ["Ubuntu", "Chrome", "20.0.04"],
             auth: {
                 creds: state.creds,
@@ -207,70 +145,40 @@ async function startXeonBotInc() {
         XeonBotInc.ev.on('creds.update', saveCreds)
         store.bind(XeonBotInc.ev)
 
-        // ═══════════════════════════════════════════════════
-        // MESSAGE HANDLING
-        // ═══════════════════════════════════════════════════
-
         XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
             try {
                 const mek = chatUpdate.messages[0]
                 if (!mek.message) return
                 mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
-
                 if (mek.key && mek.key.remoteJid === 'status@broadcast') {
                     await handleStatus(XeonBotInc, chatUpdate)
                     return
                 }
-
                 if (!XeonBotInc.public && !mek.key.fromMe && chatUpdate.type === 'notify') {
                     const isGroup = mek.key?.remoteJid?.endsWith('@g.us')
                     if (!isGroup) return
                 }
-
                 if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
-
-                try {
-                    await handleMessages(XeonBotInc, chatUpdate, true)
-                } catch (err) {
-                    console.error("Error in handleMessages:", err)
-                }
-            } catch (err) {
-                console.error("Error in messages.upsert:", err)
-            }
+                try { await handleMessages(XeonBotInc, chatUpdate, true) } catch (err) { console.error("Error in handleMessages:", err) }
+            } catch (err) { console.error("Error in messages.upsert:", err) }
         })
 
-        // ═══════════════════════════════════════════════════
-        // MESSAGES.UPDATE – for anti‑edit and revocation
-        // ═══════════════════════════════════════════════════
         XeonBotInc.ev.on('messages.update', async (updates) => {
             for (const update of updates) {
                 try {
-                    if (update.update?.edited) {
-                        await handleMessageEdit(XeonBotInc, update)
-                    }
+                    if (update.update?.edited) await handleMessageEdit(XeonBotInc, update)
                     if (update.update?.revoke) {
                         const { handleMessageRevocation } = require('./commands/antidelete')
                         const fakeMsg = {
-                            message: {
-                                protocolMessage: {
-                                    key: update.key,
-                                    type: 0
-                                }
-                            },
+                            message: { protocolMessage: { key: update.key, type: 0 } },
                             participant: update.key.participant || update.key.remoteJid,
                             key: update.key
                         }
                         await handleMessageRevocation(XeonBotInc, fakeMsg)
                     }
-                } catch (err) {
-                    console.error("Error in messages.update:", err)
-                }
+                } catch (err) { console.error("Error in messages.update:", err) }
             }
         })
-
-        // ═══════════════════════════════════════════════════
-        // JID DECODE & CONTACTS
-        // ═══════════════════════════════════════════════════
 
         XeonBotInc.decodeJid = (jid) => {
             if (!jid) return jid
@@ -288,10 +196,7 @@ async function startXeonBotInc() {
         })
 
         XeonBotInc.ev.on('presence.update', (update) => {
-            try {
-                const { handlePresenceUpdate } = require('./commands/getonline')
-                handlePresenceUpdate(update)
-            } catch (e) {}
+            try { const { handlePresenceUpdate } = require('./commands/getonline'); handlePresenceUpdate(update) } catch (e) {}
         })
 
         XeonBotInc.getName = (jid, withoutContact = false) => {
@@ -311,28 +216,21 @@ async function startXeonBotInc() {
         XeonBotInc.public = true
         XeonBotInc.serializeM = (m) => smsg(XeonBotInc, m, store)
 
-        // ═══════════════════════════════════════════════════
-        // PAIRING CODE (old working logic)
-        // ═══════════════════════════════════════════════════
+        // Pairing code
         if (pairingCode && !XeonBotInc.authState.creds.registered) {
             if (useMobile) throw new Error('Cannot use pairing code with mobile api')
-
             let phoneNumber
             if (!!global.phoneNumber) {
                 phoneNumber = global.phoneNumber
             } else {
-                phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 🇵🇰\nFormat: 923257853673 (without + or spaces) : `)))
+                phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 6281376552730 (without + or spaces) : `)))
             }
-
             phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
-
             const pn = require('awesome-phonenumber');
             if (!pn('+' + phoneNumber).isValid()) {
                 console.log(chalk.red('Invalid phone number. Please enter your full international number without + or spaces.'));
                 process.exit(1);
             }
-
-            // Wait for socket to stabilize before requesting
             setTimeout(async () => {
                 try {
                     let code = await XeonBotInc.requestPairingCode(phoneNumber)
@@ -343,41 +241,27 @@ async function startXeonBotInc() {
                     console.error('Error requesting pairing code:', error)
                     console.log(chalk.red('Failed to get pairing code. Please check your phone number and try again.'))
                 }
-            }, 3000)  // ← old working delay
+            }, 3000)
         }
-
-        // ═══════════════════════════════════════════════════
-        // CONNECTION HANDLER (Fixed 515 + reconnection)
-        // ═══════════════════════════════════════════════════
 
         XeonBotInc.ev.on('connection.update', async (s) => {
             const { connection, lastDisconnect, qr } = s
-
-            if (qr) {
-                console.log(chalk.yellow('📱 QR Code generated. Please scan with WhatsApp.'))
-            }
-
-            if (connection === 'connecting') {
-                console.log(chalk.yellow('🔄 Connecting to WhatsApp...'))
-            }
-
+            if (qr) console.log(chalk.yellow('📱 QR Code generated. Please scan with WhatsApp.'))
+            if (connection === 'connecting') console.log(chalk.yellow('🔄 Connecting to WhatsApp...'))
             if (connection == "open") {
                 resetReconnectDelay()
                 console.log(chalk.magenta(` `))
                 console.log(chalk.yellow(`🌿Connected to => ` + JSON.stringify(XeonBotInc.user, null, 2)))
 
+                // Start scheduler
+                startScheduler(XeonBotInc);
+
                 const { isAlwaysOnlineEnabled } = require('./commands/alwaysonline');
                 if (global.alwaysOnlineInterval) clearInterval(global.alwaysOnlineInterval);
                 global.alwaysOnlineInterval = setInterval(async () => {
-                    try {
-                        if (XeonBotInc?.user) {
-                            await XeonBotInc.sendPresenceUpdate(isAlwaysOnlineEnabled() ? 'available' : 'unavailable');
-                        }
-                    } catch (e) {}
+                    try { if (XeonBotInc?.user) await XeonBotInc.sendPresenceUpdate(isAlwaysOnlineEnabled() ? 'available' : 'unavailable'); } catch (e) {}
                 }, 30000);
-                try {
-                    await XeonBotInc.sendPresenceUpdate(isAlwaysOnlineEnabled() ? 'available' : 'unavailable');
-                } catch (e) {}
+                try { await XeonBotInc.sendPresenceUpdate(isAlwaysOnlineEnabled() ? 'available' : 'unavailable'); } catch (e) {}
 
                 try {
                     const botNumber = XeonBotInc.user.id.split(':')[0] + '@s.whatsapp.net';
@@ -393,9 +277,7 @@ async function startXeonBotInc() {
                             }
                         }
                     });
-                } catch (error) {
-                    console.error('Error sending connection message:', error.message)
-                }
+                } catch (error) { console.error('Error sending connection message:', error.message) }
 
                 await delay(1999)
                 console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${global.botname || 'MEHTAB-MD'} ]`)}\n\n`))
@@ -412,97 +294,50 @@ async function startXeonBotInc() {
                 const statusCode = lastDisconnect?.error?.output?.statusCode
                 const reason = lastDisconnect?.error?.message || "Unknown"
                 console.log(chalk.red(`Connection closed. Status: ${statusCode}, Reason: ${reason}`))
-
-                // Reset connection flag so we can reconnect
                 isConnecting = false
-
-                // FIX: 515 is restartRequired - treat as retryable, NOT fatal
                 const isRestartRequired = statusCode === 515 || statusCode === DisconnectReason.restartRequired
-                const needsReauth = [
-                    DisconnectReason.loggedOut,
-                    DisconnectReason.badSession,
-                    DisconnectReason.multideviceMismatch
-                ].includes(statusCode)
-
+                const needsReauth = [DisconnectReason.loggedOut, DisconnectReason.badSession, DisconnectReason.multideviceMismatch].includes(statusCode)
                 if (needsReauth) {
                     console.log(chalk.yellow('🔄 Session invalid. Clearing auth and restarting...'))
-                    try {
-                        rmSync('./session', { recursive: true, force: true })
-                        console.log(chalk.green('✅ Session folder cleared.'))
-                    } catch (error) {
-                        console.error('Error deleting session:', error)
-                    }
+                    try { rmSync('./session', { recursive: true, force: true }); console.log(chalk.green('✅ Session folder cleared.')) } catch (error) { console.error('Error deleting session:', error) }
                     const delayMs = getReconnectDelay()
                     console.log(chalk.yellow(`🔄 Restarting for re-authentication in ${(delayMs/1000).toFixed(1)}s...`))
-                    setTimeout(() => {
-                        startXeonBotInc().catch(err => {
-                            console.error('Reconnection failed:', err)
-                        })
-                    }, delayMs)
+                    setTimeout(() => { startXeonBotInc().catch(err => { console.error('Reconnection failed:', err) }) }, delayMs)
                     return
                 }
-
-                // For 515 and other disconnects, reconnect normally
                 const shouldReconnect = statusCode !== DisconnectReason.loggedOut
-
                 if (shouldReconnect || isRestartRequired) {
                     const delayMs = getReconnectDelay()
                     console.log(chalk.yellow(`Reconnecting in ${(delayMs/1000).toFixed(1)}s... (crash #${crashCount})`))
-                    setTimeout(() => {
-                        startXeonBotInc().catch(err => {
-                            console.error('Reconnection failed:', err)
-                        })
-                    }, delayMs)
-                } else {
-                    console.log(chalk.red('Logged out. Exiting.'))
-                    process.exit(0)
-                }
+                    setTimeout(() => { startXeonBotInc().catch(err => { console.error('Reconnection failed:', err) }) }, delayMs)
+                } else { console.log(chalk.red('Logged out. Exiting.')); process.exit(0) }
             }
         })
 
-        // ═══════════════════════════════════════════════════
-        // ANTI-CALL
-        // ═══════════════════════════════════════════════════
-
+        // Anti-call
         let anticallModule = null
         try { anticallModule = require('./commands/anticall') } catch (e) {}
-
         const antiCallNotified = new Set()
-
         XeonBotInc.ev.on('call', async (calls) => {
             try {
                 if (!anticallModule) return
                 const state = anticallModule.readState ? anticallModule.readState() : { enabled: false }
                 if (!state.enabled) return
-
                 for (const call of calls) {
                     const callerJid = call.from || call.peerJid || call.chatId
                     if (!callerJid) continue
-
                     try {
-                        try {
-                            if (typeof XeonBotInc.rejectCall === 'function' && call.id) {
-                                await XeonBotInc.rejectCall(call.id, callerJid)
-                            }
-                        } catch {}
-
+                        try { if (typeof XeonBotInc.rejectCall === 'function' && call.id) await XeonBotInc.rejectCall(call.id, callerJid) } catch {}
                         if (!antiCallNotified.has(callerJid)) {
                             antiCallNotified.add(callerJid)
                             setTimeout(() => antiCallNotified.delete(callerJid), 60000)
                             await XeonBotInc.sendMessage(callerJid, { text: '📵 Anticall is enabled. Your call was rejected.' })
                         }
                     } catch {}
-
-                    setTimeout(async () => {
-                        try { await XeonBotInc.updateBlockStatus(callerJid, 'block') } catch {}
-                    }, 800)
+                    setTimeout(async () => { try { await XeonBotInc.updateBlockStatus(callerJid, 'block') } catch {} }, 800)
                 }
             } catch (e) {}
         })
-
-        // ═══════════════════════════════════════════════════
-        // GROUP PARTICIPANTS
-        // ═══════════════════════════════════════════════════
 
         XeonBotInc.ev.on('group-participants.update', async (update) => {
             await handleGroupParticipantUpdate(XeonBotInc, update)
@@ -510,59 +345,24 @@ async function startXeonBotInc() {
 
         isConnecting = false
         return XeonBotInc
-
     } catch (error) {
         console.error('Error in startXeonBotInc:', error)
         isConnecting = false
         const delayMs = getReconnectDelay()
         console.log(chalk.yellow(`Restarting bot in ${(delayMs/1000).toFixed(1)}s due to error...`))
-        setTimeout(() => {
-            startXeonBotInc().catch(err => {
-                console.error('Fatal restart error:', err)
-            })
-        }, delayMs)
+        setTimeout(() => { startXeonBotInc().catch(err => { console.error('Fatal restart error:', err) }) }, delayMs)
     }
 }
 
-// ═══════════════════════════════════════════════════════════
-// PROCESS HANDLERS
-// ═══════════════════════════════════════════════════════════
-
-process.on('uncaughtException', (err) => {
-    console.error('⚠️ Uncaught Exception:', err.message)
-})
-
-process.on('unhandledRejection', (err) => {
-    console.error('⚠️ Unhandled Rejection:', err?.message || err)
-})
-
-process.on('SIGTERM', () => {
-    console.log('SIGTERM received. Cleaning up...')
-    if (storeTimer) clearInterval(storeTimer)
-    if (gcTimer) clearInterval(gcTimer)
-    if (memoryTimer) clearInterval(memoryTimer)
-    process.exit(0)
-})
-
-process.on('SIGINT', () => {
-    console.log('SIGINT received. Cleaning up...')
-    if (storeTimer) clearInterval(storeTimer)
-    if (gcTimer) clearInterval(gcTimer)
-    if (memoryTimer) clearInterval(memoryTimer)
-    process.exit(0)
-})
-
-// ═══════════════════════════════════════════════════════════
-// START
-// ═══════════════════════════════════════════════════════════
+process.on('uncaughtException', (err) => { console.error('⚠️ Uncaught Exception:', err.message) })
+process.on('unhandledRejection', (err) => { console.error('⚠️ Unhandled Rejection:', err?.message || err) })
+process.on('SIGTERM', () => { console.log('SIGTERM received. Cleaning up...'); if (storeTimer) clearInterval(storeTimer); if (gcTimer) clearInterval(gcTimer); if (memoryTimer) clearInterval(memoryTimer); process.exit(0) })
+process.on('SIGINT', () => { console.log('SIGINT received. Cleaning up...'); if (storeTimer) clearInterval(storeTimer); if (gcTimer) clearInterval(gcTimer); if (memoryTimer) clearInterval(memoryTimer); process.exit(0) })
 
 startXeonBotInc().catch(error => {
     console.error('Fatal startup error:', error)
     const delayMs = getReconnectDelay()
     setTimeout(() => {
-        startXeonBotInc().catch(err => {
-            console.error('Second startup attempt failed:', err)
-            process.exit(1)
-        })
+        startXeonBotInc().catch(err => { console.error('Second startup attempt failed:', err); process.exit(1) })
     }, delayMs)
 })
