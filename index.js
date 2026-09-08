@@ -3,7 +3,7 @@
  * Copyright (c) 2024 MALIK MEHTAB
  * 
  * FIXES:
- * - Pairing 515 error: waits for socket readiness, asks number only once.
+ * - Pairing 515 error: waits for socket readiness, uses old working pairing flow.
  * - Reconnection "already in progress" fixed by resetting flags properly.
  * - Anti-edit detection (messages.update) integrated.
  * - Clean reconnection backoff.
@@ -64,9 +64,6 @@ let isConnecting = false
 let gcTimer = null
 let storeTimer = null
 let memoryTimer = null
-let pairingRequested = false
-let socketReady = false
-let pairingInProgress = false // prevent multiple pairing attempts
 
 // ═══════════════════════════════════════════════════════════
 // STORE INITIALIZATION
@@ -127,6 +124,7 @@ try {
 
 global.botname = "MEHTAB-MD"
 global.themeemoji = "•"
+const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")  // ← old working flag
 const useMobile = process.argv.includes("--mobile")
 
 const rl = process.stdin.isTTY ? readline.createInterface({ input: process.stdin, output: process.stdout }) : null
@@ -172,9 +170,6 @@ async function startXeonBotInc() {
         return
     }
     isConnecting = true
-    pairingRequested = false
-    socketReady = false
-    pairingInProgress = false
 
     try {
         let { version, isLatest } = await fetchLatestBaileysVersion()
@@ -184,6 +179,7 @@ async function startXeonBotInc() {
         const XeonBotInc = makeWASocket({
             version,
             logger: pino({ level: 'silent' }),
+            printQRInTerminal: !pairingCode,  // ← old working logic
             browser: ["Ubuntu", "Chrome", "20.0.04"],
             auth: {
                 creds: state.creds,
@@ -252,9 +248,8 @@ async function startXeonBotInc() {
                     if (update.update?.edited) {
                         await handleMessageEdit(XeonBotInc, update)
                     }
-                    // Existing revocation (delete) handler from main.js
                     if (update.update?.revoke) {
-                        // Build a fake message object for handleMessageRevocation
+                        const { handleMessageRevocation } = require('./commands/antidelete')
                         const fakeMsg = {
                             message: {
                                 protocolMessage: {
@@ -265,9 +260,6 @@ async function startXeonBotInc() {
                             participant: update.key.participant || update.key.remoteJid,
                             key: update.key
                         }
-                        // We can call the handler from main.js or from antidelete.js
-                        // We'll import handleMessageRevocation and use it
-                        const { handleMessageRevocation } = require('./commands/antidelete')
                         await handleMessageRevocation(XeonBotInc, fakeMsg)
                     }
                 } catch (err) {
@@ -320,41 +312,28 @@ async function startXeonBotInc() {
         XeonBotInc.serializeM = (m) => smsg(XeonBotInc, m, store)
 
         // ═══════════════════════════════════════════════════
-        // CONNECTION HANDLER (Fixed 515 + Pairing)
+        // PAIRING CODE (old working logic)
         // ═══════════════════════════════════════════════════
+        if (pairingCode && !XeonBotInc.authState.creds.registered) {
+            if (useMobile) throw new Error('Cannot use pairing code with mobile api')
 
-        XeonBotInc.ev.on('connection.update', async (s) => {
-            const { connection, lastDisconnect, qr } = s
+            let phoneNumber
+            if (!!global.phoneNumber) {
+                phoneNumber = global.phoneNumber
+            } else {
+                phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 🇵🇰\nFormat: 923257853673 (without + or spaces) : `)))
+            }
 
-            // --- PAIRING CODE LOGIC (only once) ---
-            if (qr && !XeonBotInc.authState.creds.registered && !pairingRequested && !pairingInProgress) {
-                pairingRequested = true
-                pairingInProgress = true
+            phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
 
-                if (useMobile) {
-                    console.log(chalk.red('Cannot use pairing code with mobile api'))
-                    process.exit(1)
-                }
+            const pn = require('awesome-phonenumber');
+            if (!pn('+' + phoneNumber).isValid()) {
+                console.log(chalk.red('Invalid phone number. Please enter your full international number without + or spaces.'));
+                process.exit(1);
+            }
 
-                let phoneNumber
-                if (!!global.phoneNumber) {
-                    phoneNumber = global.phoneNumber
-                } else {
-                    phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 6281376552730 (without + or spaces) : `)))
-                }
-
-                phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
-
-                const pn = require('awesome-phonenumber');
-                if (!pn('+' + phoneNumber).isValid()) {
-                    console.log(chalk.red('Invalid phone number. Please enter your full international number without + or spaces.'));
-                    process.exit(1);
-                }
-
-                // CRITICAL FIX: Wait for socket to stabilize before requesting pairing code
-                console.log(chalk.yellow(`⏳ Waiting ${STABILITY_CONFIG.pairingDelay/1000}s for socket to be ready...`))
-                await delay(STABILITY_CONFIG.pairingDelay)
-
+            // Wait for socket to stabilize before requesting
+            setTimeout(async () => {
                 try {
                     let code = await XeonBotInc.requestPairingCode(phoneNumber)
                     code = code?.match(/.{1,4}/g)?.join("-") || code
@@ -362,10 +341,20 @@ async function startXeonBotInc() {
                     console.log(chalk.yellow(`\nPlease enter this code in your WhatsApp app:\n1. Open WhatsApp\n2. Go to Settings > Linked Devices\n3. Tap "Link a Device"\n4. Enter the code shown above`))
                 } catch (error) {
                     console.error('Error requesting pairing code:', error)
-                    console.log(chalk.red('Failed to get pairing code. Retrying...'))
-                    pairingRequested = false
-                    pairingInProgress = false
+                    console.log(chalk.red('Failed to get pairing code. Please check your phone number and try again.'))
                 }
+            }, 3000)  // ← old working delay
+        }
+
+        // ═══════════════════════════════════════════════════
+        // CONNECTION HANDLER (Fixed 515 + reconnection)
+        // ═══════════════════════════════════════════════════
+
+        XeonBotInc.ev.on('connection.update', async (s) => {
+            const { connection, lastDisconnect, qr } = s
+
+            if (qr) {
+                console.log(chalk.yellow('📱 QR Code generated. Please scan with WhatsApp.'))
             }
 
             if (connection === 'connecting') {
@@ -374,8 +363,6 @@ async function startXeonBotInc() {
 
             if (connection == "open") {
                 resetReconnectDelay()
-                socketReady = true
-                pairingInProgress = false // pairing done
                 console.log(chalk.magenta(` `))
                 console.log(chalk.yellow(`🌿Connected to => ` + JSON.stringify(XeonBotInc.user, null, 2)))
 
@@ -428,7 +415,6 @@ async function startXeonBotInc() {
 
                 // Reset connection flag so we can reconnect
                 isConnecting = false
-                pairingInProgress = false
 
                 // FIX: 515 is restartRequired - treat as retryable, NOT fatal
                 const isRestartRequired = statusCode === 515 || statusCode === DisconnectReason.restartRequired
@@ -446,7 +432,6 @@ async function startXeonBotInc() {
                     } catch (error) {
                         console.error('Error deleting session:', error)
                     }
-                    pairingRequested = false
                     const delayMs = getReconnectDelay()
                     console.log(chalk.yellow(`🔄 Restarting for re-authentication in ${(delayMs/1000).toFixed(1)}s...`))
                     setTimeout(() => {
@@ -529,7 +514,6 @@ async function startXeonBotInc() {
     } catch (error) {
         console.error('Error in startXeonBotInc:', error)
         isConnecting = false
-        pairingInProgress = false
         const delayMs = getReconnectDelay()
         console.log(chalk.yellow(`Restarting bot in ${(delayMs/1000).toFixed(1)}s due to error...`))
         setTimeout(() => {
