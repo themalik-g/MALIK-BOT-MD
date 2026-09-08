@@ -75,7 +75,9 @@ async function setGroupPhoto(sock, chatId, senderId, message) {
         const imgPath = path.join(tmpDir, `gpp_${Date.now()}.jpg`);
         fs.writeFileSync(imgPath, buffer);
 
-        await sock.updateProfilePicture(chatId, { url: imgPath });
+        // ... (same code) ...
+await sock.updateProfilePicture(chatId, { url: imgPath }, { hd: true });
+// ... rest unchanged ...
         try { fs.unlinkSync(imgPath); } catch (_) {}
         await sock.sendMessage(chatId, { text: '✅ Group profile photo updated.' }, { quoted: message });
     } catch (e) {
