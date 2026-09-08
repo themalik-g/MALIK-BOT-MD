@@ -1,4 +1,4 @@
-const { downloadMediaMessage } = require('@crysnovax/baileys');
+const { downloadMediaMessage } = require('toxic-baileys');
 
 async function viewonceCommand(sock, chatId, message) {
     const quoted = message.message?.extendedTextMessage?.contextInfo?.quotedMessage;

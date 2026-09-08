@@ -25,7 +25,7 @@ const {
     jidNormalizedUser,
     makeCacheableSignalKeyStore,
     delay
-} = require("@crysnovax/baileys") // Updated fork for HD PP support
+} = require("toxic-baileys") // Updated fork for HD PP support
 const NodeCache = require("node-cache")
 const pino = require("pino")
 const readline = require("readline")

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { downloadMediaMessage } = require('@crysnovax/baileys');
+const { downloadMediaMessage } = require('toxic-baileys');
 const sharp = require('sharp');
 const isOwnerOrSudo = require('../lib/isOwner');
 

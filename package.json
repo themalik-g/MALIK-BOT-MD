@@ -20,7 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
-    "@crysnovax/baileys": "^1.0.0",
+    "toxic-baileys": "^1.3.0",
     "@hapi/boom": "^10.0.1",
     "@types/node": "^18.0.6",
     "awesome-phonenumber": "^5.9.0",
